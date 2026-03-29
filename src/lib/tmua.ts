@@ -48,6 +48,8 @@ export interface Question {
   correctAnswer: string;
   options: { letter: string; tex: string }[];
   hasWalkthrough: boolean;
+  /** If true, a diagram component exists in QuestionDiagrams for this question */
+  hasDiagram?: boolean;
 }
 
 export function getResult(q: Question, answers: Record<number, string>): "correct" | "incorrect" | "unanswered" {

@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef, use } from "react";
 import { useRouter } from "next/navigation";
 import { papers } from "@/lib/papers";
 import { C } from "@/lib/tmua";
+import QuestionDiagram from "@/components/QuestionDiagrams";
 
 const KATEX_CSS = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css";
 const KATEX_JS = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js";
@@ -475,6 +476,7 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
               ) : (
                 <p style={{ fontSize: 14, color: t.text, lineHeight: 1.85, margin: 0, fontFamily: "'Cambria Math','Latin Modern Math','STIX Two Math',Georgia,serif" }}>{q.text}</p>
               )}
+              {q.hasDiagram && <QuestionDiagram paperId={paperId} displayNum={q.displayNum} theme={mode === "vue" ? "light" : "dark"} />}
             </div>
 
             {/* Options */}

@@ -85,7 +85,7 @@ export const papers: Record<string, { title: string; source: string; questions: 
         richText: ["The solutions to", "br", {display:"8x^4 - 10x^2 + 3 = 0"}, "are ", {tex:"\\pm\\cos\\alpha"}, " and ", {tex:"\\pm\\cos\\beta"}, ".", "br", "Which one of the following equations has solutions ", {tex:"\\pm\\sin\\alpha"}, " and ", {tex:"\\pm\\sin\\beta"}, "?"],
         options: [{letter:"A",tex:"8x^4 - 6x^2 + 1 = 0"},{letter:"B",tex:"8x^4 + 6x^2 - 1 = 0"},{letter:"C",tex:"8x^4 - 10x^2 + 3 = 0"},{letter:"D",tex:"3x^4 - 10x^2 + 8 = 0"},{letter:"E",tex:"3x^4 - 8x^2 + 3 = 0"},{letter:"F",tex:"3x^4 + 8x^2 - 3 = 0"}] },
 
-      { displayNum: 17, topic: "Geometry", correctAnswer: "D", hasWalkthrough: true,
+      { displayNum: 17, topic: "Geometry", correctAnswer: "D", hasWalkthrough: true, hasDiagram: true,
         text: "Square S_n vertices (\u00B1n,\u00B1n). Pairs shaded. Total area?",
         richText: ["A square ", {tex:"S_n"}, " has vertices at ", {tex:"(\\pm n, \\pm n)"}, ".", "br", {tex:"S_1"}, " and ", {tex:"S_2"}, " are drawn and the region between them is shaded. Then ", {tex:"S_3"}, " and ", {tex:"S_4"}, " are drawn and the region between them is shaded.", "br", "This continues until ", {tex:"50"}, " squares have been drawn. What is the total shaded area?"],
         options: [{letter:"A",tex:"2500"},{letter:"B",tex:"3400"},{letter:"C",tex:"4800"},{letter:"D",tex:"5100"},{letter:"E",tex:"5200"},{letter:"F",tex:"10200"}] },

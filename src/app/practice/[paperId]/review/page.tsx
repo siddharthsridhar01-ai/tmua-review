@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { C, topicColors, getResult } from "@/lib/tmua";
 import { papers } from "@/lib/papers";
 import WalkthroughLoader from "@/components/walkthroughs/WalkthroughLoader";
+import QuestionDiagram from "@/components/QuestionDiagrams";
 
 const KATEX_CSS = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css";
 const KATEX_JS = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js";
@@ -301,6 +302,7 @@ export default function ReviewPage({ params }: { params: Promise<{ paperId: stri
                         return <Tex key={i}>{seg.tex}</Tex>;
                       }) : currentQ.text}
                     </div>
+                    {currentQ.hasDiagram && <QuestionDiagram paperId={paperId} displayNum={currentQ.displayNum} theme="dark" />}
                   </div>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 20 }}>
