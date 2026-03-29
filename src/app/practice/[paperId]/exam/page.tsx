@@ -641,7 +641,7 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
               padding: "4px 14px", background: V.card, border: `1px solid ${V.border}`,
               fontSize: 13, color: V.text, cursor: "pointer", fontFamily: V.font,
             }}>⚙ Navigator</button>
-            <button onClick={() => { if (currentQ < total - 1) goNext(); else setPhase("review-screen"); }} style={{
+            <button onClick={() => { if (currentQ < total - 1) goNext(); else setNavOpen(true); }} style={{
               padding: "4px 14px", background: V.card, border: `1px solid ${V.border}`,
               fontSize: 13, color: V.text, cursor: "pointer", fontFamily: V.font,
             }}>Next ➜</button>
