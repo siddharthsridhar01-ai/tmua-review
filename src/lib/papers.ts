@@ -52,7 +52,7 @@ export const papers: Record<string, { title: string; source: string; questions: 
 
       { displayNum: 10, topic: "Algebra", correctAnswer: "E", hasWalkthrough: true,
         text: "Translations of y = x\u00B2. Which graphs could result?",
-        richText: ["A sequence of translations is applied to the graph of ", {tex:"y = x^2"}, ".", "br", "Which of the following graphs could be the result of this sequence of translations?"],
+        richText: ["A sequence of translations is applied to the graph of ", {tex:"y = x^2"}, ".", "br", "Which of the following graphs could be the result of this sequence of translations?", "br", {items:[{label:"I",tex:"y = x^2 - 4x + 6"},{label:"II",tex:"y = x^2 + 6x + 9"},{label:"III",tex:"y = 4x^2 - 4x + 1"}]}],
         options: [{letter:"A",tex:"\\text{none}"},{letter:"B",tex:"\\text{I only}"},{letter:"C",tex:"\\text{II only}"},{letter:"D",tex:"\\text{III only}"},{letter:"E",tex:"\\text{I and II only}"},{letter:"F",tex:"\\text{I and III only}"},{letter:"G",tex:"\\text{II and III only}"},{letter:"H",tex:"\\text{I, II and III}"}] },
 
       { displayNum: 11, topic: "Sequences & Series", correctAnswer: "E", hasWalkthrough: true,

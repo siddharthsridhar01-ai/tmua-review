@@ -5,6 +5,56 @@ import { useRouter } from "next/navigation";
 import { papers } from "@/lib/papers";
 import { C } from "@/lib/tmua";
 
+const KATEX_CSS = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css";
+const KATEX_JS = "https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js";
+let katexLoadPromise: Promise<void> | null = null;
+function loadKaTeX(): Promise<void> {
+  if ((window as any).katex) return Promise.resolve();
+  if (katexLoadPromise) return katexLoadPromise;
+  katexLoadPromise = new Promise((resolve) => {
+    if (!document.getElementById("katex-css")) {
+      const link = document.createElement("link"); link.id = "katex-css"; link.rel = "stylesheet"; link.href = KATEX_CSS; document.head.appendChild(link);
+      const fix = document.createElement("style"); fix.id = "katex-fix"; fix.textContent = ".katex { font-size: 1.05em; }"; document.head.appendChild(fix);
+    }
+    const script = document.createElement("script"); script.src = KATEX_JS; script.onload = () => resolve(); document.head.appendChild(script);
+  });
+  return katexLoadPromise;
+}
+function Tex({ children }: { children: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [ready, setReady] = useState(false);
+  useEffect(() => { loadKaTeX().then(() => setReady(true)); }, []);
+  useEffect(() => { if (ready && ref.current && (window as any).katex) { try { (window as any).katex.render(String(children), ref.current, { displayMode: false, throwOnError: false }); } catch {} } }, [ready, children]);
+  if (!ready) return <span style={{ fontFamily: "'Cambria Math','Latin Modern Math','STIX Two Math',Georgia,serif" }}>{children}</span>;
+  return <span ref={ref} />;
+}
+function RichText({ segments, themeBg, themeBorder }: { segments: any[]; themeBg: string; themeBorder: string }) {
+  return (
+    <div style={{ fontSize: 15.5, color: C.text, lineHeight: 1.8 }}>
+      {segments.map((seg: any, i: number) => {
+        if (seg === "br") return <br key={i} />;
+        if (typeof seg === "string") return <span key={i}>{seg}</span>;
+        if ("display" in seg) return (
+          <div key={i} style={{ background: themeBg, border: `1px solid ${themeBorder}`, borderRadius: 10, padding: "12px 14px", margin: "8px 0", textAlign: "center", fontSize: 17 }}>
+            <Tex>{seg.display}</Tex>
+          </div>
+        );
+        if ("items" in seg) return (
+          <div key={i} style={{ background: themeBg, border: `1px solid ${themeBorder}`, borderRadius: 10, padding: "10px 16px", margin: "8px 0" }}>
+            {seg.items.map((item: any, j: number) => (
+              <div key={j} style={{ display: "flex", gap: 6, marginBottom: j < seg.items.length - 1 ? 2 : 0 }}>
+                <span style={{ fontWeight: 700, color: C.muted, minWidth: 28 }}>{item.label}</span>
+                <span><Tex>{item.tex}</Tex></span>
+              </div>
+            ))}
+          </div>
+        );
+        return <Tex key={i}>{seg.tex}</Tex>;
+      })}
+    </div>
+  );
+}
+
 type ExamPhase = "intro" | "exam" | "review-screen" | "submitted";
 type ThemeMode = "tara" | "vue";
 
@@ -420,7 +470,11 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
               border: `1px solid ${t.border}`, borderRadius: mode === "vue" ? 3 : 12,
               padding: "18px 22px", margin: "0 0 18px",
             }}>
-              <p style={{ fontSize: 14, color: t.text, lineHeight: 1.85, margin: 0, fontFamily: "'Cambria Math','Latin Modern Math','STIX Two Math',Georgia,serif" }}>{q.text}</p>
+              {q.richText ? (
+                <RichText segments={q.richText} themeBg={mode === "vue" ? "#eef1f5" : "#1e2030"} themeBorder={t.border} />
+              ) : (
+                <p style={{ fontSize: 14, color: t.text, lineHeight: 1.85, margin: 0, fontFamily: "'Cambria Math','Latin Modern Math','STIX Two Math',Georgia,serif" }}>{q.text}</p>
+              )}
             </div>
 
             {/* Options */}
@@ -446,8 +500,8 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
                       fontSize: 12, fontWeight: 700,
                       color: isSelected ? "#fff" : t.muted, flexShrink: 0,
                     }}>{mode === "vue" && isSelected ? "●" : opt.letter}</span>
-                    <span style={{ fontSize: 14, color: isSelected ? t.text : t.muted, fontWeight: isSelected ? 600 : 400, fontFamily: "'Cambria Math','Latin Modern Math','STIX Two Math',Georgia,serif" }}>
-                      {opt.tex}
+                    <span style={{ fontSize: 14, color: isSelected ? t.text : t.muted, fontWeight: isSelected ? 600 : 400 }}>
+                      <Tex>{opt.tex}</Tex>
                     </span>
                   </button>
                 );

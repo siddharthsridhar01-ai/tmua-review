@@ -43,8 +43,8 @@ export interface Question {
   displayNum: number;
   topic: string;
   text: string;
-  /** Rich text segments: string = text, {tex} = inline math, {display} = display math box, "br" = line break */
-  richText?: (string | { tex: string } | { display: string } | "br")[];
+  /** Rich text segments: string = text, {tex} = inline math, {display} = display math box, "br" = line break, {items} = labelled list (e.g. roman numerals) */
+  richText?: (string | { tex: string } | { display: string } | { items: { label: string; tex: string }[] } | "br")[];
   correctAnswer: string;
   options: { letter: string; tex: string }[];
   hasWalkthrough: boolean;

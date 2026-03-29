@@ -280,12 +280,22 @@ export default function ReviewPage({ params }: { params: Promise<{ paperId: stri
                     padding: "18px 22px", margin: "0 0 18px",
                   }}>
                     <div style={{ fontSize: 15.5, color: C.text, lineHeight: 1.8 }}>
-                      {currentQ.richText ? currentQ.richText.map((seg, i) => {
+                      {currentQ.richText ? currentQ.richText.map((seg: any, i: number) => {
                         if (seg === "br") return <br key={i} />;
                         if (typeof seg === "string") return <span key={i}>{seg}</span>;
                         if ("display" in seg) return (
                           <div key={i} style={{ background: "#1e2030", border: `1px solid ${C.border}`, borderRadius: 10, padding: "12px 14px", margin: "8px 0", textAlign: "center", fontSize: 17 }}>
                             <Tex>{seg.display}</Tex>
+                          </div>
+                        );
+                        if ("items" in seg) return (
+                          <div key={i} style={{ background: "#1e2030", border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 16px", margin: "8px 0" }}>
+                            {seg.items.map((item: any, j: number) => (
+                              <div key={j} style={{ display: "flex", gap: 6, marginBottom: j < seg.items.length - 1 ? 2 : 0 }}>
+                                <span style={{ fontWeight: 700, color: C.muted, minWidth: 28 }}>{item.label}</span>
+                                <span><Tex>{item.tex}</Tex></span>
+                              </div>
+                            ))}
                           </div>
                         );
                         return <Tex key={i}>{seg.tex}</Tex>;
