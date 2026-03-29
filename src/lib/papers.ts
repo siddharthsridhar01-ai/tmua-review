@@ -36,18 +36,18 @@ export const papers: Record<string, { title: string; source: string; questions: 
         options: [{letter:"A",tex:"0"},{letter:"B",tex:"\\tfrac{1}{3}"},{letter:"C",tex:"\\tfrac{1}{2}"},{letter:"D",tex:"\\tfrac{2}{3}"},{letter:"E",tex:"1"},{letter:"F",tex:"2"}] },
 
       { displayNum: 7, topic: "Calculus", correctAnswer: "D", hasWalkthrough: true,
-        text: "Find total area between y = 0 and y = x\u00B2 \u2212 6|x| + 5.",
-        richText: ["Find the total area of the region enclosed by ", {tex:"y = 0"}, " and", "br", {display:"y = x^2 - 6|x| + 5"}],
+        text: "Find the finite area enclosed between y = 0 and y = x\u00B2 \u2212 6|x| + 5.",
+        richText: ["Find the finite area enclosed between the line ", {tex:"y = 0"}, " and the curve", "br", {display:"y = x^2 - 6|x| + 5"}],
         options: [{letter:"A",tex:"\\tfrac{32}{3}"},{letter:"B",tex:"16"},{letter:"C",tex:"\\tfrac{56}{3}"},{letter:"D",tex:"\\tfrac{64}{3}"},{letter:"E",tex:"24"},{letter:"F",tex:"32"}] },
 
       { displayNum: 8, topic: "Sequences & Series", correctAnswer: "B", hasWalkthrough: true,
-        text: "Sum of first n terms of GP is 5\u207F \u2212 1. Find S\u2082\u2080/S\u2081\u2080.",
-        richText: ["The sum of the first ", {tex:"n"}, " terms of a geometric series is ", {tex:"5^n - 1"}, ".", "br", "Find ", {tex:"\\dfrac{S_{20}}{S_{10}}"}, "."],
+        text: "Geometric sequence with integer a, r > 1. S\u2082\u2080 \u2212 S\u2081\u2080 = k\u00B7S\u2081\u2080. Find smallest k.",
+        richText: ["A geometric sequence has first term ", {tex:"a"}, " and common ratio ", {tex:"r"}, ", where ", {tex:"a"}, " and ", {tex:"r"}, " are positive integers and ", {tex:"r > 1"}, ".", "br", "It is given that", "br", {display:"S_{20} - S_{10} = k \\cdot S_{10}"}, "for some positive integer ", {tex:"k"}, ".", "br", "What is the smallest possible value of ", {tex:"k"}, "?"],
         options: [{letter:"A",tex:"2^5"},{letter:"B",tex:"2^{10}"},{letter:"C",tex:"2^{15}"},{letter:"D",tex:"2^{20}"},{letter:"E",tex:"2^{10}(2^{10} - 1)"}] },
 
       { displayNum: 9, topic: "Algebra", correctAnswer: "B", hasWalkthrough: true,
-        text: "f\u00B2(x) \u2212 3cos(x)f(x) \u2212 4 = 0. Find min f(x).",
-        richText: ["The function ", {tex:"f"}, " satisfies", "br", {display:"f^2(x) - 3\\cos(x)\\,f(x) - 4 = 0"}, "for all real ", {tex:"x"}, ". Find the minimum value of ", {tex:"f(x)"}, "."],
+        text: "f(x) \u2212 g(x) = 3cos x and f(x)\u00B7g(x) = sin\u00B2x. Find min f(x).",
+        richText: ["This question is about pairs of functions ", {tex:"f"}, " and ", {tex:"g"}, " that satisfy", "br", {display:"f(x) - g(x) = 3\\cos x"}, "and", "br", {display:"f(x) \\cdot g(x) = \\sin^2 x"}, "for all real numbers ", {tex:"x"}, ".", "br", "Across all solutions for ", {tex:"f(x)"}, ", what is the minimum value that ", {tex:"f(x)"}, " attains for any ", {tex:"x"}, "?"],
         options: [{letter:"A",tex:"-4"},{letter:"B",tex:"-3"},{letter:"C",tex:"-2"},{letter:"D",tex:"-1"},{letter:"E",tex:"0"},{letter:"F",tex:"1"}] },
 
       { displayNum: 10, topic: "Algebra", correctAnswer: "E", hasWalkthrough: true,
@@ -56,23 +56,23 @@ export const papers: Record<string, { title: string; source: string; questions: 
         options: [{letter:"A",tex:"\\text{none}"},{letter:"B",tex:"\\text{I only}"},{letter:"C",tex:"\\text{II only}"},{letter:"D",tex:"\\text{III only}"},{letter:"E",tex:"\\text{I and II only}"},{letter:"F",tex:"\\text{I and III only}"},{letter:"G",tex:"\\text{II and III only}"},{letter:"H",tex:"\\text{I, II and III}"}] },
 
       { displayNum: 11, topic: "Sequences & Series", correctAnswer: "E", hasWalkthrough: true,
-        text: "Find the telescoping log sum.",
-        richText: ["Find", "br", {display:"\\sum_{k=1}^{99} \\bigl(\\log_{10}(k+1) - \\log_{10}(k)\\bigr)"}],
+        text: "Evaluate \u03A3 log\u2081\u2080((n+1)/n) from n=1 to 99.",
+        richText: ["Evaluate", "br", {display:"\\sum_{n=1}^{99} \\log_{10}\\!\\left(\\frac{n+1}{n}\\right)"}],
         options: [{letter:"A",tex:"-2"},{letter:"B",tex:"-1"},{letter:"C",tex:"0"},{letter:"D",tex:"1"},{letter:"E",tex:"2"},{letter:"F",tex:"\\log_{10} 99"}] },
 
       { displayNum: 12, topic: "Algebra", correctAnswer: "D", hasWalkthrough: true,
-        text: "Min of x\u2074 \u2212 4kx\u00B2 + 5k\u00B2 \u2212 1 as k varies.",
-        richText: ["Find the minimum value of", "br", {display:"x^4 - 4kx^2 + 5k^2 - 1"}, "as ", {tex:"k"}, " varies over all real numbers."],
+        text: "Min of x\u2074 \u2212 2kx\u00B2 is \u22124, k > 0. Find min of x\u00B2 \u2212 2kx + 5.",
+        richText: ["The minimum value of the function", "br", {display:"x^4 - 2kx^2"}, "is ", {tex:"-4"}, ", where ", {tex:"k > 0"}, ".", "br", "Find the minimum value of the function", "br", {display:"x^2 - 2kx + 5"}],
         options: [{letter:"A",tex:"-3"},{letter:"B",tex:"-1"},{letter:"C",tex:"0"},{letter:"D",tex:"1"},{letter:"E",tex:"3"},{letter:"F",tex:"5"}] },
 
       { displayNum: 13, topic: "Calculus", correctAnswer: "C", hasWalkthrough: true,
-        text: "[0, N] divided into N sub-intervals. Find N for total area = 25.",
-        richText: ["The interval ", {tex:"[0, N]"}, " is divided into ", {tex:"N"}, " equal sub-intervals. A rectangle of height ", {tex:"f(x_i)"}, " is drawn on each.", "br", "Find ", {tex:"N"}, " such that the sum of the rectangle areas equals ", {tex:"25"}, "."],
+        text: "For every integer n \u2265 0, \u222B from n to n+1 of f(x)dx = 2n+1. Evaluate \u222B from 0 to 5 of f(x)dx.",
+        richText: ["The function ", {tex:"f"}, " is such that, for every integer ", {tex:"n \\ge 0"}, ",", "br", {display:"\\int_n^{n+1} f(x)\\,dx = 2n + 1"}, "Evaluate ", {tex:"\\displaystyle\\int_0^5 f(x)\\,dx"}, "."],
         options: [{letter:"A",tex:"15"},{letter:"B",tex:"20"},{letter:"C",tex:"25"},{letter:"D",tex:"30"},{letter:"E",tex:"35"},{letter:"F",tex:"50"}] },
 
       { displayNum: 14, topic: "Calculus", correctAnswer: "C", hasWalkthrough: true,
-        text: "y = x\u00B3 \u2212 3x + k has exactly two roots. How many integer k?",
-        richText: ["The cubic ", {tex:"y = x^3 - 3x + k"}, " has exactly two distinct real roots.", "br", "Find the number of possible integer values of ", {tex:"k"}, "."],
+        text: "f(x) = x\u00B3 \u2212 3x + k has exactly two distinct real roots. Find sum of possible k.",
+        richText: ["The function", "br", {display:"f(x) = x^3 - 3x + k"}, "has exactly two distinct real roots.", "br", "Find the sum of the possible values of ", {tex:"k"}, "."],
         options: [{letter:"A",tex:"-4"},{letter:"B",tex:"-2"},{letter:"C",tex:"0"},{letter:"D",tex:"2"},{letter:"E",tex:"4"},{letter:"F",tex:"\\pm 2"}] },
 
       { displayNum: 15, topic: "Optimisation", correctAnswer: "C", hasWalkthrough: true,
