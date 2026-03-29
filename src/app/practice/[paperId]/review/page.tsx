@@ -282,8 +282,11 @@ export default function ReviewPage({ params }: { params: Promise<{ paperId: stri
                   }}>
                     <div style={{ fontSize: 15.5, color: C.text, lineHeight: 1.8 }}>
                       {currentQ.richText ? currentQ.richText.map((seg: any, i: number) => {
-                        if (seg === "br") return <br key={i} />;
+                        if (seg === "br") return <div key={i} style={{ height: 6 }} />;
                         if (typeof seg === "string") return <span key={i}>{seg}</span>;
+                        if ("diagram" in seg) return (
+                          <QuestionDiagram key={i} paperId={paperId} displayNum={currentQ.displayNum} theme="dark" />
+                        );
                         if ("display" in seg) return (
                           <div key={i} style={{ background: "#1e2030", border: `1px solid ${C.border}`, borderRadius: 10, padding: "12px 14px", margin: "8px 0", textAlign: "center", fontSize: 17 }}>
                             <Tex>{seg.display}</Tex>
@@ -302,7 +305,6 @@ export default function ReviewPage({ params }: { params: Promise<{ paperId: stri
                         return <Tex key={i}>{seg.tex}</Tex>;
                       }) : currentQ.text}
                     </div>
-                    {currentQ.hasDiagram && <QuestionDiagram paperId={paperId} displayNum={currentQ.displayNum} theme="dark" />}
                   </div>
 
                   <div style={{ display: "flex", flexDirection: "column", gap: 6, marginBottom: 20 }}>

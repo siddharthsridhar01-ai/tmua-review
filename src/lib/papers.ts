@@ -87,7 +87,7 @@ export const papers: Record<string, { title: string; source: string; questions: 
 
       { displayNum: 17, topic: "Geometry", correctAnswer: "D", hasWalkthrough: true, hasDiagram: true,
         text: "Square S_n vertices (\u00B1n,\u00B1n). Pairs shaded. Total area?",
-        richText: ["A square ", {tex:"S_n"}, " has vertices at ", {tex:"(\\pm n, \\pm n)"}, ".", "br", {tex:"S_1"}, " and ", {tex:"S_2"}, " are drawn and the region between them is shaded. Then ", {tex:"S_3"}, " and ", {tex:"S_4"}, " are drawn and the region between them is shaded.", "br", "This continues until ", {tex:"50"}, " squares have been drawn. What is the total shaded area?"],
+        richText: ["A square ", {tex:"S_n"}, " has vertices at ", {tex:"(\\pm n, \\pm n)"}, ".", "br", {tex:"S_1"}, " and ", {tex:"S_2"}, " are drawn and the region between them is shaded. Then ", {tex:"S_3"}, " and ", {tex:"S_4"}, " are drawn and the region between them is shaded. This is shown in the diagram.", "br", {diagram:true}, "br", "This continues until ", {tex:"50"}, " squares have been drawn. What is the total shaded area?"],
         options: [{letter:"A",tex:"2500"},{letter:"B",tex:"3400"},{letter:"C",tex:"4800"},{letter:"D",tex:"5100"},{letter:"E",tex:"5200"},{letter:"F",tex:"10200"}] },
 
       { displayNum: 18, topic: "Probability", correctAnswer: "B", hasWalkthrough: true,

@@ -29,12 +29,15 @@ function Tex({ children }: { children: string }) {
   if (!ready) return <span style={{ fontFamily: "'Cambria Math','Latin Modern Math','STIX Two Math',Georgia,serif" }}>{children}</span>;
   return <span ref={ref} />;
 }
-function RichText({ segments, themeBg, themeBorder }: { segments: any[]; themeBg: string; themeBorder: string }) {
+function RichText({ segments, themeBg, themeBorder, paperId, displayNum, diagramTheme }: { segments: any[]; themeBg: string; themeBorder: string; paperId?: string; displayNum?: number; diagramTheme?: "dark" | "light" }) {
   return (
     <div style={{ fontSize: 15.5, color: C.text, lineHeight: 1.8 }}>
       {segments.map((seg: any, i: number) => {
-        if (seg === "br") return <br key={i} />;
+        if (seg === "br") return <div key={i} style={{ height: 6 }} />;
         if (typeof seg === "string") return <span key={i}>{seg}</span>;
+        if ("diagram" in seg && paperId && displayNum) return (
+          <QuestionDiagram key={i} paperId={paperId} displayNum={displayNum} theme={diagramTheme} />
+        );
         if ("display" in seg) return (
           <div key={i} style={{ background: themeBg, border: `1px solid ${themeBorder}`, borderRadius: 10, padding: "12px 14px", margin: "8px 0", textAlign: "center", fontSize: 17 }}>
             <Tex>{seg.display}</Tex>
@@ -472,11 +475,10 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
               padding: "18px 22px", margin: "0 0 18px",
             }}>
               {q.richText ? (
-                <RichText segments={q.richText} themeBg={mode === "vue" ? "#eef1f5" : "#1e2030"} themeBorder={t.border} />
+                <RichText segments={q.richText} themeBg={mode === "vue" ? "#eef1f5" : "#1e2030"} themeBorder={t.border} paperId={paperId} displayNum={q.displayNum} diagramTheme={mode === "vue" ? "light" : "dark"} />
               ) : (
                 <p style={{ fontSize: 14, color: t.text, lineHeight: 1.85, margin: 0, fontFamily: "'Cambria Math','Latin Modern Math','STIX Two Math',Georgia,serif" }}>{q.text}</p>
               )}
-              {q.hasDiagram && <QuestionDiagram paperId={paperId} displayNum={q.displayNum} theme={mode === "vue" ? "light" : "dark"} />}
             </div>
 
             {/* Options */}
