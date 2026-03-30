@@ -327,7 +327,7 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
           <button onClick={() => { setPhase("intro"); setMode("tara"); }} style={{
             padding: "4px 14px", background: V.card, border: `1px solid ${V.border}`,
             fontSize: 13, color: V.text, cursor: "pointer", fontFamily: V.font,
-          }}>✕ End Exam</button>
+          }}>End Exam</button>
           <button onClick={startVueExam} style={{
             padding: "4px 14px", background: V.card, border: `1px solid ${V.border}`,
             fontSize: 13, color: V.text, cursor: "pointer", fontFamily: V.font,
@@ -518,7 +518,7 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
                 }}>
                   <span>Question {question.displayNum}</span>
                   <span style={{ color: statusColor }}>{status}</span>
-                  <span>{isFlagged ? "🚩" : ""}</span>
+                  <span>{isFlagged ? <svg width="10" height="12" viewBox="0 0 10 12"><path d="M1 0v12M1 0h7l-2.5 3L8 6H1" fill="#0066cc" stroke="#0066cc" strokeWidth="0.5" /></svg> : ""}</span>
                 </div>
               );
             })}
@@ -543,7 +543,7 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
         <div style={{ background: V.header, padding: "8px 20px", display: "flex", alignItems: "center", justifyContent: "space-between", flexShrink: 0 }}>
           <span style={{ fontSize: 14, fontWeight: 400, color: "#ffffff", letterSpacing: 0.2 }}>Test of Mathematics for University Admission</span>
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span style={{ fontSize: 13, color: "#ccdae8" }}>📋 {currentQ + 1} of {total}</span>
+            <span style={{ fontSize: 13, color: "#ccdae8" }}>{currentQ + 1} of {total}</span>
           </div>
         </div>
 
@@ -558,7 +558,7 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
               Time Remaining: {formatTime(timeLeft)}
             </span>
             <label style={{ display: "flex", alignItems: "center", gap: 6, cursor: "pointer", fontSize: 12, color: V.text }}>
-              <span style={{ color: "#ff8800", fontSize: 14 }}>🚩</span>
+              <svg width="12" height="14" viewBox="0 0 12 14" style={{ flexShrink: 0 }}><path d="M1 0v14M1 0h8l-3 3.5L9 7H1" fill="#cc0000" stroke="#cc0000" strokeWidth="0.5" /></svg>
               <input type="checkbox" checked={flagged.has(currentQ)} onChange={toggleFlag} style={{ accentColor: V.accent }} />
               Flag for Review
             </label>
@@ -629,22 +629,23 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
             fontSize: 13, color: V.text, cursor: "pointer", fontFamily: V.font,
             display: "flex", alignItems: "center", gap: 4,
           }}>
-            ✕ End Exam
+            <svg width="12" height="12" viewBox="0 0 12 12" style={{ flexShrink: 0 }}><rect x="0" y="0" width="12" height="12" rx="1" fill="#003366" /><path d="M3 3L9 9M9 3L3 9" stroke="#fff" strokeWidth="1.5" /></svg>
+            End Exam
           </button>
           <div style={{ display: "flex", gap: 6 }}>
             <button onClick={goPrev} disabled={currentQ === 0} style={{
               padding: "4px 14px", background: V.card, border: `1px solid ${V.border}`,
               fontSize: 13, color: V.text, cursor: "pointer", fontFamily: V.font,
               opacity: currentQ === 0 ? 0.4 : 1,
-            }}>◀ Previous</button>
+            }}>{"◄ Previous"}</button>
             <button onClick={() => setNavOpen(true)} style={{
               padding: "4px 14px", background: V.card, border: `1px solid ${V.border}`,
               fontSize: 13, color: V.text, cursor: "pointer", fontFamily: V.font,
-            }}>⚙ Navigator</button>
+            }}>{"⚙ Navigator"}</button>
             <button onClick={() => { if (currentQ < total - 1) goNext(); else setNavOpen(true); }} style={{
               padding: "4px 14px", background: V.card, border: `1px solid ${V.border}`,
               fontSize: 13, color: V.text, cursor: "pointer", fontFamily: V.font,
-            }}>Next ➜</button>
+            }}>{"Next ➜"}</button>
           </div>
         </div>
       </div>
