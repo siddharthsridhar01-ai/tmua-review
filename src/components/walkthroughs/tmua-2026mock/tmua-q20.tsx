@@ -165,8 +165,8 @@ function VerifyStepContent() {
         <circle cx={sx(0)} cy={sy(0)} r={3.5} fill={C.muted} stroke={C.white} strokeWidth={1} />
         <foreignObject x={sx(0) + 6} y={sy(0) - 6 - 13} width={144} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>tangent to y = x</div></foreignObject>
         {/* Axis labels */}
-        {[-20, -10, 10, 20].filter(x => x >= xMin && x <= xMax).map(x => <foreignObject key={`x${x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
-        {[10, 20].filter(y => y >= yMin && y <= yMax).map(y => <foreignObject key={`y${y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
+        {[-20, -10, 10, 20].filter(x => x >= xMin && x <= xMax).map(x => <foreignObject key={`x${x}`} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
+        {[10, 20].filter(y => y >= yMin && y <= yMax).map(y => <foreignObject key={`y${y}`} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
       </svg>
     );
   })();

@@ -93,8 +93,8 @@ function ModCurveGraph({ compact, showBothPockets }) {
         <foreignObject x={sx(-1) - 16} y={sy(0) + 13 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{"\u22121"}</div></foreignObject>
         <foreignObject x={sx(-5) - 16} y={sy(0) + 13 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{"\u22125"}</div></foreignObject>
       </>}
-      {[-4, -2, 2, 4, 6].map(x => <foreignObject key={`lx${x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
-      {[-4, -2, 2, 4, 6].map(y => y >= yMin && y <= yMax && <foreignObject key={`ly${y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
+      {[-4, -2, 2, 4, 6].map(x => <foreignObject key={`lx${x}`} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
+      {[-4, -2, 2, 4, 6].map(y => y >= yMin && y <= yMax && <foreignObject key={`ly${y}`} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
     </svg>
   );
 }
