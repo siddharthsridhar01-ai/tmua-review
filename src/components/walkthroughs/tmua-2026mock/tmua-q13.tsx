@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q13</span>
         The function <Tex>{"f"}</Tex> is such that, for every integer <Tex>{"n \\ge 0"}</Tex>, <Tex>{"\\displaystyle\\int_n^{n+1} f(x)\\,dx = 2n + 1"}</Tex>. Evaluate <Tex>{"\\displaystyle\\int_0^5 f(x)\\,dx."}</Tex>
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","15"],["B","20"],["C","25"],["D","30"],["E","35"],["F","50"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
@@ -137,12 +137,12 @@ function VerifyStepContent() {
           const barCol = active ? (isExact ? C.ok : C.ps) : C.border;
           return (<g key={i}>
             <rect x={sx(i)} y={sy(v)} width={barW} height={sy(0) - sy(v)} rx={4} fill={active ? barCol + "44" : "#1e2030"} stroke={barCol} strokeWidth={1.5} />
-            {active && <text x={sx(i) + barW / 2} y={sy(v) - 6} textAnchor="middle" fill={barCol} fontSize={13} fontWeight={700} fontFamily={mathFont}>{v}</text>}
-            <text x={sx(i) + barW / 2} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>[{i},{i + 1}]</text>
+            {active && <foreignObject x={sx(i) + barW / 2 - 22} y={sy(v) - 6 - 12} width={44} height={16}><div style={{ fontSize: 11, color: barCol, textAlign: "center", lineHeight: 1 }}><Tex>{String(v)}</Tex></div></foreignObject>}
+            <foreignObject x={sx(i) + barW / 2 - 30} y={pH - pad.b + 14 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 400, fontStyle: "normal" }}>[{i},{i + 1}]</div></foreignObject>
           </g>);
         })}
-        {[2, 4, 6, 8].map(y => <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
-        <text x={pW / 2} y={pad.t - 4} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">Each bar = 2n + 1</text>
+        {[2, 4, 6, 8].map(y => <foreignObject x={pad.l - 8 - 48} y={sy(y) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{String(y)}</Tex></div></foreignObject>)}
+        <foreignObject x={pW / 2 - 24} y={pad.t - 4 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{"Each bar = 2n + 1"}</Tex></div></foreignObject>
       </svg>
     );
   })();

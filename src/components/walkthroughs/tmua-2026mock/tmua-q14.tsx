@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q14</span>
         The function <Tex>{"f(x) = x^3 - 3x + k"}</Tex> has exactly two distinct real roots. Find the sum of the possible values of <Tex>{"k."}</Tex>
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","-4"],["B","-2"],["C","0"],["D","2"],["E","4"],["F","\\pm 2"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
@@ -97,9 +97,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         <path d={segs.join("")} fill="none" stroke={col} strokeWidth={2} />
         {fNeg1 >= yMin && fNeg1 <= yMax && <circle cx={sx(-1)} cy={sy(fNeg1)} r={3.5} fill={Math.abs(fNeg1) < 0.01 ? C.ok : col} stroke={C.white} strokeWidth={1} />}
         {f1 >= yMin && f1 <= yMax && <circle cx={sx(1)} cy={sy(f1)} r={3.5} fill={Math.abs(f1) < 0.01 ? C.ok : col} stroke={C.white} strokeWidth={1} />}
-        {fNeg1 >= yMin && fNeg1 <= yMax && <text x={sx(-1)} y={sy(fNeg1) - 8} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbc)">({"\u2212"}1, {fmt(fNeg1)})</text>}
-        {f1 >= yMin && f1 <= yMax && <text x={sx(1)} y={sy(f1) + 16} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbc)">(1, {fmt(f1)})</text>}
-        <text x={pW / 2} y={pad.t - 6} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lbc)">{label}</text>
+        {fNeg1 >= yMin && fNeg1 <= yMax && <foreignObject x={sx(-1) - 30} y={sy(fNeg1) - 8 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>({"\u2212"}1, {fmt(fNeg1)})</div></foreignObject>}
+        {f1 >= yMin && f1 <= yMax && <foreignObject x={sx(1) - 30} y={sy(f1) + 16 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>(1, {fmt(f1)})</div></foreignObject>}
+        <foreignObject x={pW / 2 - 22} y={pad.t - 6 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(label)}</Tex></div></foreignObject>
       </svg>
     );
   };
@@ -183,11 +183,11 @@ function VerifyStepContent() {
         <path d={segs.join("")} fill="none" stroke={col} strokeWidth={2.5} />
         {fNeg1 >= yMin && fNeg1 <= yMax && <circle cx={sx(-1)} cy={sy(fNeg1)} r={6} fill={Math.abs(fNeg1) < 0.2 ? C.ok : C.assum} stroke={C.white} strokeWidth={1.5} />}
         {f1 >= yMin && f1 <= yMax && <circle cx={sx(1)} cy={sy(f1)} r={6} fill={Math.abs(f1) < 0.2 ? C.ok : C.assum} stroke={C.white} strokeWidth={1.5} />}
-        {fNeg1 >= yMin && fNeg1 <= yMax && <text x={sx(-1)} y={sy(fNeg1) - 12} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">({"\u2212"}1, {fmt(fNeg1)})</text>}
-        {f1 >= yMin && f1 <= yMax && <text x={sx(1)} y={sy(f1) + 18} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">(1, {fmt(f1)})</text>}
-        <text x={pW / 2} y={pad.t + 12} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">f(x) = x{"\u00B3"} {"\u2212"} 3x + k</text>
-        {[-2, -1, 1, 2].map(x => <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
-        {[-4, -2, 2, 4].map(y => y >= yMin && y <= yMax && <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+        {fNeg1 >= yMin && fNeg1 <= yMax && <foreignObject x={sx(-1) - 30} y={sy(fNeg1) - 12 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>({"\u2212"}1, {fmt(fNeg1)})</div></foreignObject>}
+        {f1 >= yMin && f1 <= yMax && <foreignObject x={sx(1) - 30} y={sy(f1) + 18 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>(1, {fmt(f1)})</div></foreignObject>}
+        <foreignObject x={pW / 2 - 30} y={pad.t + 12 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 400, fontStyle: "normal" }}>f(x) = x{"\u00B3"} {"\u2212"} 3x + k</div></foreignObject>
+        {[-2, -1, 1, 2].map(x => <foreignObject x={sx(x) - 22} y={pH - pad.b + 14 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(x)}</Tex></div></foreignObject>)}
+        {[-4, -2, 2, 4].map(y => y >= yMin && y <= yMax && <foreignObject x={pad.l - 8 - 48} y={sy(y) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{String(y)}</Tex></div></foreignObject>)}
       </svg>
     );
   })();

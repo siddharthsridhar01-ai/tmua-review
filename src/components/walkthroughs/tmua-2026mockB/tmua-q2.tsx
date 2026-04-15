@@ -31,7 +31,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q2</span>
         The graphs of <Tex>{"y = x^2 - 6x + 10"}</Tex> and <Tex>{"y = mx + 1"}</Tex>, where <Tex>{"m"}</Tex> is a constant, do not intersect. What is the complete range of values of <Tex>{"m"}</Tex>?
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","-12 < m < 0"],["B","m < -12 \\text{ or } m > 0"],["C","-6 < m < 6"],["D","0 < m < 12"],["E","m < 0 \\text{ or } m > 12"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>

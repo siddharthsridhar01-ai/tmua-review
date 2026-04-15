@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q8</span>
         A geometric sequence has first term <Tex>{"a"}</Tex> and common ratio <Tex>{"r"}</Tex>, where <Tex>{"a"}</Tex> and <Tex>{"r"}</Tex> are positive integers and <Tex>{"r > 1"}</Tex>. It is given that <Tex>{"S_{20} - S_{10} = k \\cdot S_{10}"}</Tex> for some positive integer <Tex>{"k"}</Tex>. What is the smallest possible value of <Tex>{"k"}</Tex>?
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","2^5"],["B","2^{10}"],["C","2^{15}"],["D","2^{20}"],["E","2^{10}(2^{10}-1)"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>

@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q18</span>
         You are given that <Tex>{"S = 5 + 5\\!\\left(\\tfrac{3k}{10}\\right) + 5\\!\\left(\\tfrac{3k}{10}\\right)^{\\!2} + \\cdots"}</Tex> The integer <Tex>{"k"}</Tex> is chosen uniformly at random from <Tex>{"-3 \\le k \\le 3"}</Tex>. What is the probability that <Tex>{"S"}</Tex> is a finite number greater than <Tex>{"8"}</Tex>?
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","\\tfrac{1}{7}"],["B","\\tfrac{2}{7}"],["C","\\tfrac{3}{7}"],["D","\\tfrac{4}{7}"],["E","\\tfrac{5}{7}"],["F","\\tfrac{6}{7}"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>

@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q4</span>
         Evaluate <Tex>{"\\displaystyle\\sum_{n=0}^{\\infty} \\cos\\!\\left(n\\pi + \\tfrac{\\pi}{3}\\right) \\cdot \\left(\\tfrac{1}{3}\\right)^{\\!n}"}</Tex>
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","0"],["B","\\tfrac{1}{4}"],["C","\\tfrac{3}{8}"],["D","\\tfrac{1}{2}"],["E","\\tfrac{3}{4}"],["F","1"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>

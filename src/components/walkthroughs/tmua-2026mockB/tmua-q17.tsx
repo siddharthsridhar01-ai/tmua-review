@@ -25,22 +25,115 @@ let katexLoadPromise = null;
 function loadKaTeX() { if (window.katex) return Promise.resolve(); if (katexLoadPromise) return katexLoadPromise; katexLoadPromise = new Promise((resolve) => { if (!document.getElementById("katex-css")) { const link = document.createElement("link"); link.id = "katex-css"; link.rel = "stylesheet"; link.href = KATEX_CSS; document.head.appendChild(link); if (!document.getElementById("katex-fix")) { const fix = document.createElement("style"); fix.id = "katex-fix"; fix.textContent = ".katex { font-size: 1.05em; }"; document.head.appendChild(fix); } } const script = document.createElement("script"); script.src = KATEX_JS; script.onload = resolve; document.head.appendChild(script); }); return katexLoadPromise; }
 function Tex({ children, display }) { const ref = useRef(null); const [ready, setReady] = useState(!!window.katex); useEffect(() => { if (!ready) loadKaTeX().then(() => setReady(true)); }, []); useEffect(() => { if (ready && ref.current && window.katex) { try { window.katex.render(String(children), ref.current, { displayMode: !!display, throwOnError: false }); } catch {} } }, [ready, children, display]); if (!ready) return <span style={{ fontFamily: mathFont }}>{children}</span>; return <span ref={ref} />; }
 
-function QuestionSummary() { return (<div style={{ background: "#1e2030", border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 16px", marginBottom: 12, textAlign: "center" }}><p style={{ margin: "0 0 4px", fontSize: 13, color: C.muted, lineHeight: 1.6 }}><span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q17</span>A triangle has one angle of <Tex>{"30^\\circ"}</Tex> with the side opposite it = <Tex>{"x - 1"}</Tex> and the side next to it = <Tex>{"-x^2 + 6x - 5"}</Tex>. Find the complete set of values of <Tex>{"x"}</Tex> for which there are two non-congruent triangles.</p><div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>{[["A","1<x<3"],["B","1<x<4"],["C","1<x<5"],["D","3<x<4"],["E","3<x<5"],["F","4<x<5"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}</div></div>); }
+function QuestionSummary() { return (<div style={{ background: "#1e2030", border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 16px", marginBottom: 12, textAlign: "center" }}><p style={{ margin: "0 0 4px", fontSize: 13, color: C.muted, lineHeight: 1.6 }}><span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q17</span>A triangle has one angle of <Tex>{"30^\\circ"}</Tex> with sides <Tex>{"x - 1"}</Tex> and <Tex>{"-x^2 + 6x - 5"}</Tex> as shown. Find the values of <Tex>{"x"}</Tex> for which there are two non-congruent triangles.</p><div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>{[["A","1<x<3"],["B","1<x<4"],["C","1<x<5"],["D","3<x<4"],["E","3<x<5"],["F","4<x<5"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}</div></div>); }
 function OptionCard({ o, expanded, animate, onClick }) { return (<div onClick={onClick} style={{ background: expanded ? (o.ok ? C.conclBg : C.failBg) : C.card, border: `1px solid ${expanded ? (o.ok ? C.ok : C.fail) + "55" : C.border}`, borderLeft: expanded ? `4px solid ${o.ok ? C.ok : C.fail}` : `1px solid ${C.border}`, borderRadius: 10, padding: "10px 14px", cursor: "pointer", transition: "all 0.3s", opacity: animate ? 1 : 0, transform: animate ? "translateY(0)" : "translateY(12px)" }}><div style={{ display: "flex", alignItems: "center", gap: 10 }}><div style={{ width: 28, height: 28, borderRadius: 7, background: expanded ? (o.ok ? C.ok + "22" : C.fail + "22") : C.accent + "22", border: `1.5px solid ${expanded ? (o.ok ? C.ok : C.fail) : C.accent}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, color: expanded ? (o.ok ? C.ok : C.fail) : C.accent, flexShrink: 0 }}>{o.letter}</div><div style={{ flex: 1 }}><p style={{ margin: 0, fontSize: 14, color: C.text }}><Tex>{o.tex}</Tex></p>{expanded && (<div style={{ marginTop: 8, padding: "8px 12px", borderRadius: 8, fontSize: 13, lineHeight: 1.6, background: o.ok ? C.conclBg : C.failBg, color: o.ok ? C.ok : C.fail, borderLeft: `3px solid ${o.ok ? C.ok : C.fail}` }}>{o.ok ? <span style={{ fontWeight: 700 }}>CORRECT: </span> : <span style={{ fontWeight: 700 }}>INCORRECT: </span>}{o.expl}</div>)}</div></div></div>); }
 function InfoBox({ type, children }) { const config = { strategy: { color: C.ps, bg: C.psBg, label: "STRATEGY" }, insight: { color: C.assum, bg: C.assumBg, label: "KEY INSIGHT" }, hint: { color: C.assum, bg: C.assumBg, label: "HINT" } }; const c = config[type]; return (<div style={{ background: c.bg, border: `1px solid ${c.color}44`, borderRadius: 10, padding: "10px 14px", marginBottom: 12 }}><div style={{ marginBottom: 8 }}><span style={{ background: c.color + "22", border: `1px solid ${c.color}`, borderRadius: 6, padding: "3px 9px", fontSize: 12, color: c.color, fontWeight: 700, whiteSpace: "nowrap" }}>{c.label}</span></div><div style={{ color: c.color, fontSize: 14, lineHeight: 1.6 }}>{children}</div></div>); }
 function MathBox({ children, style: s }) { return (<div style={{ background: "#1e2030", border: `1px solid ${C.border}`, borderRadius: 10, padding: "12px 14px", fontSize: 15, color: C.white, textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center", gap: 10, ...s }}>{children}</div>); }
 
-function ReadStep() { return (<div><div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "18px 22px", marginBottom: 14 }}><div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}><span style={{ background: C.accent + "22", color: C.accent, fontWeight: 700, fontSize: 13, padding: "3px 10px", borderRadius: 6 }}>QUESTION 17</span></div><p style={{ fontSize: 15.5, lineHeight: 1.8, color: C.text, margin: "0 0 6px" }}>A triangle has one angle of <Tex>{"30^\\circ"}</Tex>. The two given sides are:</p><MathBox style={{ fontSize: 17, padding: "12px 18px", margin: "8px 0" }}><Tex display>{"\\text{side opposite } 30^\\circ = x - 1, \\quad \\text{side next to } 30^\\circ = -x^2 + 6x - 5"}</Tex></MathBox><p style={{ fontSize: 15.5, lineHeight: 1.8, color: C.text, margin: "6px 0 0" }}>Find the complete set of values of <Tex>{"x"}</Tex> for which there are two non-congruent triangles with the side lengths and angle as shown.</p></div><div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 6, marginBottom: 16 }}>{opts.map(o => (<div key={o.letter} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, padding: "8px 12px", textAlign: "center", fontSize: 14, color: C.text }}><span style={{ fontWeight: 700, color: C.accent, marginRight: 6 }}>{o.letter}</span><Tex>{o.tex}</Tex></div>))}</div></div>); }
+function ReadStep() {
+  const readDiagram = (() => {
+    const pW = 440, pH = 200;
+    const pad = { l: 40, r: 60, t: 20, b: 36 };
+    // A at bottom-left (30° angle), B at bottom-right, C at top
+    const Ax = pad.l, Ay = pH - pad.b;
+    const Bx = pW - pad.r, By = pH - pad.b;
+    // C above and slightly right of centre
+    const Cx = 200, Cy = pad.t + 10;
+    const FO = ({ x, y, w, hh, color, children }) => (
+      <foreignObject x={x} y={y} width={w || 40} height={hh || 20}>
+        <div style={{ fontSize: 13, color: color || C.text, textAlign: "center", lineHeight: 1.2 }}>{children}</div>
+      </foreignObject>
+    );
+    // 30 degree arc at A
+    const arcR = 30;
+    const angToB = Math.atan2(-(By - Ay), Bx - Ax);
+    const angToC = Math.atan2(-(Cy - Ay), Cx - Ax);
+    const arcPts = [];
+    for (let i = 0; i <= 12; i++) {
+      const t = angToB + (i / 12) * (angToC - angToB);
+      arcPts.push(`${Ax + arcR * Math.cos(t)},${Ay - arcR * Math.sin(t)}`);
+    }
+    return (
+      <svg viewBox={`0 0 ${pW} ${pH}`} width={pW} style={{ display: "block", width: "100%", maxWidth: 440, margin: "0 auto" }}>
+        <polygon points={`${Ax},${Ay} ${Bx},${By} ${Cx},${Cy}`} fill="none" stroke={C.text} strokeWidth={1.5} />
+        <polyline points={arcPts.join(" ")} fill="none" stroke={C.text} strokeWidth={1} />
+        <FO x={Ax + 34} y={Ay - 26} w={40} hh={20} color={C.text}><Tex>{"30^\\circ"}</Tex></FO>
+        {/* x-1 opposite 30° = BC (right side from B up to C) */}
+        <FO x={(Bx + Cx) / 2 + 6} y={(By + Cy) / 2 - 10} w={40} hh={20} color={C.text}><Tex>{"x - 1"}</Tex></FO>
+        {/* -x²+6x-5 next to 30° = AB (base) */}
+        <FO x={(Ax + Bx) / 2 - 50} y={Ay + 4} w={120} hh={20} color={C.text}><Tex>{"-x^2 + 6x - 5"}</Tex></FO>
+      </svg>
+    );
+  })();
+
+  return (<div><div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "18px 22px", marginBottom: 14 }}><div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}><span style={{ background: C.accent + "22", color: C.accent, fontWeight: 700, fontSize: 13, padding: "3px 10px", borderRadius: 6 }}>QUESTION 17</span></div>
+    <div style={{ margin: "10px 0 14px" }}>{readDiagram}</div>
+    <p style={{ fontSize: 15.5, lineHeight: 1.8, color: C.text, margin: "0 0 0" }}>Find the complete set of values of <Tex>{"x"}</Tex> for which there are two non-congruent triangles with the side lengths and angle as shown in the diagram.</p></div><div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 6, marginBottom: 16 }}>{opts.map(o => (<div key={o.letter} style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 8, padding: "8px 12px", textAlign: "center", fontSize: 14, color: C.text }}><span style={{ fontWeight: 700, color: C.accent, marginRight: 6 }}>{o.letter}</span><Tex>{o.tex}</Tex></div>))}</div></div>);
+}
 
 function SetupStep() { return (<div><QuestionSummary /><InfoBox type="strategy"><p style={{ margin: 0 }}>This is the ambiguous case of the sine rule. Given angle <Tex>{"A"}</Tex>, the side opposite it (<Tex>{"a"}</Tex>), and the side next to it (<Tex>{"b"}</Tex>), two distinct triangles exist when <Tex>{"b \\sin A < a < b"}</Tex>. Also require both sides positive.</p></InfoBox><InfoBox type="insight"><p style={{ margin: "0 0 4px" }}>Let <Tex>{"a = x - 1"}</Tex> (the side opposite the <Tex>{"30^\\circ"}</Tex> angle) and <Tex>{"b = -x^2 + 6x - 5"}</Tex> (the side next to it), <Tex>{"A = 30^\\circ"}</Tex>.</p><p style={{ margin: 0 }}>Three conditions: (1) <Tex>{"a > 0"}</Tex> and <Tex>{"b > 0"}</Tex>, (2) <Tex>{"a < b"}</Tex>, (3) <Tex>{"a > b \\sin 30^\\circ = b/2"}</Tex>.</p></InfoBox></div>); }
 
 function SolveStepContent({ revealed, setRevealed }) {
+  // Helper: small triangle diagram for each condition
+  const makeMiniDiagram = (aLen, bLen, label, statusCol, statusText) => {
+    const pW = 260, pH = 160;
+    const angleRad = Math.PI / 6;
+    const maxS = Math.max(aLen, bLen, 2);
+    const sc = (pW - 80) / (maxS * 1.4);
+    const Ax = 30, Ay = pH - 28;
+    const Bx = Ax + bLen * sc, By = Ay;
+    const rdx = Math.cos(angleRad), rdy = -Math.sin(angleRad);
+    const rayEndX = Ax + maxS * sc * 1.4 * rdx, rayEndY = Ay + maxS * sc * 1.4 * rdy;
+    // Arc from B with radius a
+    const arcPts = [];
+    for (let i = 0; i <= 50; i++) { const ang = (i / 50) * Math.PI; arcPts.push(`${Bx + aLen * sc * Math.cos(ang)},${By - aLen * sc * Math.sin(ang)}`); }
+    // Intersections
+    const ex = Ax - Bx, ey = Ay - By;
+    const qb2 = 2 * (ex * rdx + ey * rdy), qc2 = ex * ex + ey * ey - (aLen * sc) ** 2;
+    const disc = qb2 * qb2 - 4 * qc2;
+    let pts = [];
+    if (disc >= 0) {
+      const t1 = (-qb2 + Math.sqrt(Math.max(0, disc))) / 2;
+      const t2 = (-qb2 - Math.sqrt(Math.max(0, disc))) / 2;
+      if (t1 > 3) pts.push({ x: Ax + t1 * rdx, y: Ay + t1 * rdy });
+      if (t2 > 3 && Math.abs(t1 - t2) > 1) pts.push({ x: Ax + t2 * rdx, y: Ay + t2 * rdy });
+    }
+    // Height from B to ray
+    const tF = (Bx - Ax) * rdx + (By - Ay) * rdy;
+    const Fx = Ax + tF * rdx, Fy = Ay + tF * rdy;
+    return (
+      <svg viewBox={`0 0 ${pW} ${pH}`} width={pW} style={{ display: "block", width: "100%" }}>
+        <defs><clipPath id={"mc" + label}><rect x={0} y={0} width={pW} height={pH} /></clipPath></defs>
+        <g clipPath={"url(#mc" + label + ")"}>
+          <line x1={Ax} y1={Ay} x2={Bx} y2={By} stroke={C.ps} strokeWidth={1.5} />
+          <line x1={Ax} y1={Ay} x2={rayEndX} y2={rayEndY} stroke={C.muted} strokeWidth={1} strokeDasharray="3,2" />
+          <polyline points={arcPts.join(" ")} fill="none" stroke={C.calc} strokeWidth={1.5} strokeDasharray="3,2" />
+          <line x1={Bx} y1={By} x2={Fx} y2={Fy} stroke={C.assum} strokeWidth={1} strokeDasharray="2,2" />
+          {pts.map((p, i) => <polygon key={i} points={`${Ax},${Ay} ${Bx},${By} ${p.x},${p.y}`} fill={statusCol + "10"} stroke={statusCol} strokeWidth={1.5} strokeDasharray={i > 0 ? "4,3" : "none"} />)}
+        </g>
+        {pts.map((p, i) => <circle key={i} cx={p.x} cy={p.y} r={3} fill={statusCol} stroke={C.white} strokeWidth={1} />)}
+        <circle cx={Ax} cy={Ay} r={3} fill={C.white} stroke={C.muted} strokeWidth={1} />
+        <circle cx={Bx} cy={By} r={3} fill={C.ps} stroke={C.white} strokeWidth={1} />
+        {(() => { const r = 16; const ap = []; for (let i = 0; i <= 8; i++) { const t = -(i / 8) * angleRad; ap.push(`${Ax + r * Math.cos(t)},${Ay + r * Math.sin(t)}`); } return <polyline points={ap.join(" ")} fill="none" stroke={C.calc} strokeWidth={1} />; })()}
+        <foreignObject x={pW / 2 - 70} y={0} width={140} height={22}><div style={{ fontSize: 11, color: statusCol, textAlign: "center", fontWeight: 700, background: "rgba(15,17,23,0.85)", borderRadius: 3, padding: "1px 4px", width: "fit-content", margin: "0 auto" }}><Tex>{statusText}</Tex></div></foreignObject>
+        <foreignObject x={Ax + 18} y={Ay - 20} width={36} height={18}><div style={{ fontSize: 11, color: C.calc, textAlign: "center" }}><Tex>{"30^\\circ"}</Tex></div></foreignObject>
+        <foreignObject x={(Ax + Bx) / 2 - 10} y={Ay + 4} width={24} height={18}><div style={{ fontSize: 11, color: C.ps, textAlign: "center" }}><Tex>{"b"}</Tex></div></foreignObject>
+        <foreignObject x={Bx - 4} y={By - aLen * sc - 14} width={24} height={18}><div style={{ fontSize: 11, color: C.calc, textAlign: "center" }}><Tex>{"a"}</Tex></div></foreignObject>
+        <foreignObject x={(Bx + Fx) / 2 + 2} y={(By + Fy) / 2 - 12} width={24} height={18}><div style={{ fontSize: 11, color: C.assum, textAlign: "center" }}><Tex>{"h"}</Tex></div></foreignObject>
+      </svg>
+    );
+  };
+
+  const diagCond2 = makeMiniDiagram(4.5, 4, "c2", C.ps, "a \\ge b \\text{: 1 triangle}");
+  const diagCond3 = makeMiniDiagram(1.5, 4, "c3", C.fail, "a \\le h \\text{: 0 triangles}");
+  const diagSuccess = makeMiniDiagram(2.5, 3.75, "ok", C.ok, "h < a < b \\text{: 2 triangles}");
+
   const solveSteps = [
     { label: "APPROACH", color: C.ps, text: <span>Find where all three conditions are simultaneously satisfied: both sides positive, <Tex>{"a < b"}</Tex>, and <Tex>{"a > b \\sin 30^\\circ"}</Tex>.</span>, math: (<div><Tex>{"b \\sin A < a < b"}</Tex></div>) },
     { label: "CONDITION 1: SIDES POSITIVE", color: C.calc, text: <span>Both side lengths must be strictly positive.</span>, math: (<><div><Tex>{"a = x - 1 > 0 \\;\\Rightarrow\\; x > 1"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"b = -x^2 + 6x - 5 > 0"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"x^2 - 6x + 5 < 0 \\;\\Rightarrow\\; (x-1)(x-5) < 0"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"\\Rightarrow\\; 1 < x < 5"}</Tex></div></>) },
-    { label: "CONDITION 2: a < b", color: C.calc, text: <span>The side opposite the <Tex>{"30^\\circ"}</Tex> angle must be shorter than the other given side, otherwise the arc centred at B with radius <Tex>{"a"}</Tex> can only cross the ray from A once (or not at all), giving at most one triangle.</span>, math: (<><div><Tex>{"x - 1 < -x^2 + 6x - 5"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"x^2 - 5x + 4 < 0"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"(x - 1)(x - 4) < 0 \\;\\Rightarrow\\; 1 < x < 4"}</Tex></div></>) },
-    { label: "CONDITION 3: a > b sin 30\u00B0", color: C.calc, text: <span>The opposite side must be longer than the "height" <Tex>{"b \\sin A"}</Tex>, otherwise no triangle exists.</span>, math: (<><div><Tex>{"x - 1 > (-x^2 + 6x - 5) \\times \\tfrac{1}{2}"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"2(x - 1) > -x^2 + 6x - 5"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"2x - 2 > -x^2 + 6x - 5"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"x^2 - 4x + 3 > 0"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"(x - 1)(x - 3) > 0 \\;\\Rightarrow\\; x < 1 \\text{ or } x > 3"}</Tex></div></>) },
-    { label: "INTERSECT ALL CONDITIONS", color: C.calc, text: <span>Combine: <Tex>{"1 < x < 5"}</Tex> (positivity), <Tex>{"1 < x < 4"}</Tex> (<Tex>{"a"}</Tex> {"<"} <Tex>{"b"}</Tex>), and <Tex>{"x > 3"}</Tex> (above height).</span>, math: (<><div><Tex>{"(1 < x < 5) \\;\\cap\\; (1 < x < 4) \\;\\cap\\; (x > 3)"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"= 3 < x < 4"}</Tex></div></>) },
+    { label: "CONDITION 2: a < b", color: C.calc, text: <span>If <Tex>{"a \\ge b"}</Tex>, the arc from B (radius <Tex>{"a"}</Tex>) is large enough to cross the ray from A only once, giving just one triangle.</span>, math: (<><div><Tex>{"x - 1 < -x^2 + 6x - 5"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"x^2 - 5x + 4 < 0"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"(x - 1)(x - 4) < 0 \\;\\Rightarrow\\; 1 < x < 4"}</Tex></div></>), diagram: diagCond2 },
+    { label: "CONDITION 3: a > b sin 30°", color: C.calc, text: <span>If <Tex>{"a \\le b \\sin 30^\\circ"}</Tex>, the arc from B is too small to reach the ray from A at all, so no triangle can be formed.</span>, math: (<><div><Tex>{"x - 1 > (-x^2 + 6x - 5) \\times \\tfrac{1}{2}"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"2(x - 1) > -x^2 + 6x - 5"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"2x - 2 > -x^2 + 6x - 5"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"x^2 - 4x + 3 > 0"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"(x - 1)(x - 3) > 0 \\;\\Rightarrow\\; x < 1 \\text{ or } x > 3"}</Tex></div></>), diagram: diagCond3 },
+    { label: "INTERSECT ALL CONDITIONS", color: C.calc, text: <span>When all three hold, the arc crosses the ray twice, giving two distinct triangles.</span>, math: (<><div><Tex>{"(1 < x < 5) \\;\\cap\\; (1 < x < 4) \\;\\cap\\; (x > 3)"}</Tex></div><div style={{ marginTop: 4 }}><Tex>{"= 3 < x < 4"}</Tex></div></>), diagram: diagSuccess },
     { label: "CONCLUSION", color: C.ok, text: <span>Two non-congruent triangles exist when <Tex>{"3 < x < 4"}</Tex>.</span>, math: (<div><Tex>{"\\color{#55efc4}{3 < x < 4}"}</Tex></div>), conclusion: <span>The answer is D: <Tex>{"3 < x < 4"}</Tex>.</span> },
   ];
   return (<div><QuestionSummary /><div style={{ background: C.card, border: `1px solid ${C.border}`, borderRadius: 14, padding: "18px 20px", marginBottom: 14 }}>{solveSteps.map((s, i) => { if (i > revealed) return null; return (<div key={i} style={{ marginBottom: 18 }}><div style={{ display: "flex", gap: 10, alignItems: "flex-start" }}><div style={{ width: 28, height: 28, borderRadius: "50%", flexShrink: 0, background: s.color + "22", border: `2px solid ${s.color}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: s.color }}>{i + 1}</div><div style={{ flex: 1 }}><div style={{ fontSize: 12, fontWeight: 700, color: s.color, marginBottom: 4, textTransform: "uppercase", letterSpacing: 0.5 }}>{s.label}</div><p style={{ margin: "0 0 6px", fontSize: 14, color: C.muted, lineHeight: 1.6 }}>{s.text}</p><div style={{ display: "flex", gap: 10, flexWrap: "wrap", alignItems: "flex-start" }}><MathBox style={{ flex: "1 1 220px", alignSelf: "flex-start" }}>{s.math}</MathBox>{s.diagram && <div style={{ flex: "0 0 270px", alignSelf: "flex-start", background: "#1e2030", border: `1px solid ${C.border}`, borderRadius: 10, overflow: "hidden" }}>{s.diagram}</div>}</div>{i === solveSteps.length - 1 && s.conclusion && (<div style={{ marginTop: 8, padding: "8px 12px", borderRadius: 8, background: C.conclBg, border: `1px solid ${C.ok}44`, fontSize: 14, color: C.ok, fontWeight: 600 }}>{s.conclusion}</div>)}</div></div>{i < revealed && i < solveSteps.length - 1 && <div style={{ marginLeft: 13, width: 2, height: 10, background: C.border }} />}</div>); })}{revealed < solveSteps.length - 1 && (<button onClick={() => setRevealed(p => p + 1)} style={{ marginTop: 2, padding: "10px 20px", borderRadius: 10, border: "none", background: `linear-gradient(135deg,${C.accent},${C.accentLight})`, color: C.white, fontSize: 14, fontWeight: 600, cursor: "pointer", marginLeft: 38 }}>Reveal next step {"\u2192"}</button>)}</div></div>);

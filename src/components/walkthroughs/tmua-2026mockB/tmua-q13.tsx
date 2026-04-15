@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q13</span>
         Point P lies on the circle <Tex>{"(x-2)^2 + (y+1)^2 = 9"}</Tex>. Point Q lies on the circle <Tex>{"(x+3)^2 + (y-3)^2 = 4"}</Tex>. What is the maximum possible length of PQ?
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","5"],["B","5+\\sqrt{41}"],["C","\\sqrt{41}+3"],["D","5+2\\sqrt{41}"],["E","10"],["F","\\sqrt{41}"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
@@ -106,10 +106,10 @@ function SolveStepContent({ revealed, setRevealed }) {
         <circle cx={sx(c2x)} cy={sy(c2y)} r={3} fill={C.calc} stroke={C.white} strokeWidth={1} />
         <circle cx={sx(p1x)} cy={sy(p1y)} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} />
         <circle cx={sx(p2x)} cy={sy(p2y)} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} />
-        <text x={sx(c1x) + 5} y={sy(c1y) + 12} fill={C.ps} fontSize={11} fontFamily={mathFont}>(2,{"\u2212"}1)</text>
-        <text x={sx(c2x) - 4} y={sy(c2y) - 6} textAnchor="end" fill={C.calc} fontSize={11} fontFamily={mathFont}>({"\u2212"}3,3)</text>
-        <text x={sx(p1x) + 4} y={sy(p1y) + 12} fill={C.ok} fontSize={11} fontFamily={mathFont}>P</text>
-        <text x={sx(p2x) - 4} y={sy(p2y) - 6} textAnchor="end" fill={C.ok} fontSize={11} fontFamily={mathFont}>Q</text>
+        <foreignObject x={sx(c1x) + 5} y={sy(c1y) + 12 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ps, textAlign: "left", lineHeight: 1 }}><Tex>{"(2,-1)"}</Tex></div></foreignObject>
+        <foreignObject x={sx(c2x) - 4 - 48} y={sy(c2y) - 6 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.calc, textAlign: "right", lineHeight: 1 }}><Tex>{"(-3,3)"}</Tex></div></foreignObject>
+        <foreignObject x={sx(p1x) + 4} y={sy(p1y) + 12 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "left", lineHeight: 1 }}><Tex>{"P"}</Tex></div></foreignObject>
+        <foreignObject x={sx(p2x) - 4 - 50} y={sy(p2y) - 6 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1 }}><Tex>{"Q"}</Tex></div></foreignObject>
       </svg>
     );
   })();

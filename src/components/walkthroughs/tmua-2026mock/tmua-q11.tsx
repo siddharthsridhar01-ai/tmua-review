@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q11</span>
         Evaluate <Tex>{"\\displaystyle\\sum_{n=1}^{99} \\log_{10}\\!\\left(\\tfrac{n+1}{n}\\right)"}</Tex>
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","-2"],["B","-1"],["C","0"],["D","1"],["E","2"],["F","\\log_{10}99"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
@@ -142,11 +142,11 @@ function VerifyStepContent() {
         <line x1={pad.l} y1={sy(2)} x2={pW - pad.r} y2={sy(2)} stroke={C.ok} strokeWidth={1} strokeDasharray="6,3" />
         <path d={pathD} fill="none" stroke={col} strokeWidth={2.5} />
         <circle cx={sx(dotPt.n)} cy={sy(dotPt.s)} r={6} fill={col} stroke={C.white} strokeWidth={1.5} />
-        <text x={sx(dotPt.n)} y={sy(dotPt.s) - 12} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">({nVal}, {fmt(dotPt.s)})</text>
-        <text x={pW - pad.r - 4} y={sy(2) + 14} textAnchor="end" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">target = 2</text>
-        <text x={sx(50)} y={pad.t + 12} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">Partial sum S(N)</text>
-        {[10, 20, 50, 99].map(x => <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
-        {[0, 1, 2].map(y => <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+        <foreignObject x={sx(dotPt.n) - 30} y={sy(dotPt.s) - 12 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>({nVal}, {fmt(dotPt.s)})</div></foreignObject>
+        <foreignObject x={pW - pad.r - 4 - 50} y={sy(2) + 14 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1 }}><Tex>{"target = 2"}</Tex></div></foreignObject>
+        <foreignObject x={sx(50) - 24} y={pad.t + 12 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{"Partial sum S(N)"}</Tex></div></foreignObject>
+        {[10, 20, 50, 99].map(x => <foreignObject x={sx(x) - 22} y={pH - pad.b + 14 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(x)}</Tex></div></foreignObject>)}
+        {[0, 1, 2].map(y => <foreignObject x={pad.l - 8 - 48} y={sy(y) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{String(y)}</Tex></div></foreignObject>)}
       </svg>
     );
   })();

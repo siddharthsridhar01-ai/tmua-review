@@ -33,7 +33,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q5</span>
         The terms <Tex>{"x_n"}</Tex> of a sequence follow the rule <Tex>{"x_{n+1} = \\dfrac{x_n + p}{x_n + q}"}</Tex> where <Tex>{"p"}</Tex> and <Tex>{"q"}</Tex> are real numbers. Given that <Tex>{"x_1 = 2"}</Tex>, <Tex>{"x_2 = 4"}</Tex>, and <Tex>{"x_3 = 3"}</Tex>, find the value of <Tex>{"x_5"}</Tex>.
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","-5"],["B","-\\tfrac{5}{3}"],["C","\\tfrac{11}{5}"],["D","\\tfrac{29}{9}"],["E","\\tfrac{17}{3}"],["F","13"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>

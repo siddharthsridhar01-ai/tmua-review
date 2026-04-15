@@ -33,7 +33,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q7</span>
         Find the finite area enclosed between <Tex>{"y = 0"}</Tex> and the curve <Tex>{"y = x^2 - 6|x| + 5."}</Tex>
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","\\tfrac{32}{3}"],["B","16"],["C","\\tfrac{56}{3}"],["D","\\tfrac{64}{3}"],["E","24"],["F","32"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
@@ -81,20 +81,20 @@ function ModCurveGraph({ compact, showBothPockets }) {
       {[1, 5, -1, -5].map(x => <circle key={x} cx={sx(x)} cy={sy(0)} r={4} fill={C.ok} stroke={C.white} strokeWidth={1} />)}
       {/* Labels */}
       {!compact && <>
-        <text x={sx(1)} y={sy(0) + 14} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">1</text>
-        <text x={sx(5)} y={sy(0) + 14} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">5</text>
-        <text x={sx(-1)} y={sy(0) + 14} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">{"\u22121"}</text>
-        <text x={sx(-5)} y={sy(0) + 14} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">{"\u22125"}</text>
-        <text x={sx(0) + 6} y={pad.t + 12} textAnchor="start" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">y = x{"\u00B2"} {"\u2212"} 6|x| + 5</text>
+        <foreignObject x={sx(1) - 24} y={sy(0) + 14 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1 }}><Tex>{"1"}</Tex></div></foreignObject>
+        <foreignObject x={sx(5) - 24} y={sy(0) + 14 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1 }}><Tex>{"5"}</Tex></div></foreignObject>
+        <foreignObject x={sx(-1) - 30} y={sy(0) + 14 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>{"\u22121"}</div></foreignObject>
+        <foreignObject x={sx(-5) - 30} y={sy(0) + 14 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>{"\u22125"}</div></foreignObject>
+        <foreignObject x={sx(0) + 6} y={pad.t + 12 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1 }}><Tex>{"y = x^2 - 6|x| + 5"}</Tex></div></foreignObject>
       </>}
       {compact && <>
-        <text x={sx(1)} y={sy(0) + 13} textAnchor="middle" fill={C.ok} fontSize={11} fontFamily={mathFont}>1</text>
-        <text x={sx(5)} y={sy(0) + 13} textAnchor="middle" fill={C.ok} fontSize={11} fontFamily={mathFont}>5</text>
-        <text x={sx(-1)} y={sy(0) + 13} textAnchor="middle" fill={C.ok} fontSize={11} fontFamily={mathFont}>{"\u22121"}</text>
-        <text x={sx(-5)} y={sy(0) + 13} textAnchor="middle" fill={C.ok} fontSize={11} fontFamily={mathFont}>{"\u22125"}</text>
+        <foreignObject x={sx(1) - 24} y={sy(0) + 13 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1 }}><Tex>{"1"}</Tex></div></foreignObject>
+        <foreignObject x={sx(5) - 24} y={sy(0) + 13 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1 }}><Tex>{"5"}</Tex></div></foreignObject>
+        <foreignObject x={sx(-1) - 30} y={sy(0) + 13 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 400, fontStyle: "normal" }}>{"\u22121"}</div></foreignObject>
+        <foreignObject x={sx(-5) - 30} y={sy(0) + 13 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 400, fontStyle: "normal" }}>{"\u22125"}</div></foreignObject>
       </>}
-      {[-4, -2, 2, 4, 6].map(x => <text key={`lx${x}`} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
-      {[-4, -2, 2, 4, 6].map(y => y >= yMin && y <= yMax && <text key={`ly${y}`} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+      {[-4, -2, 2, 4, 6].map(x => <foreignObject x={sx(x) - 22} y={pH - pad.b + 14 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(x)}</Tex></div></foreignObject>)}
+      {[-4, -2, 2, 4, 6].map(y => y >= yMin && y <= yMax && <foreignObject x={pad.l - 8 - 48} y={sy(y) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{String(y)}</Tex></div></foreignObject>)}
     </svg>
   );
 }

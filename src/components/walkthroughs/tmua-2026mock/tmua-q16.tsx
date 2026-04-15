@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q16</span>
         The solutions to <Tex>{"8x^4 - 10x^2 + 3 = 0"}</Tex> are <Tex>{"\\pm\\cos\\alpha"}</Tex> and <Tex>{"\\pm\\cos\\beta"}</Tex>. Which one of the following equations has solutions <Tex>{"\\pm\\sin\\alpha"}</Tex> and <Tex>{"\\pm\\sin\\beta"}</Tex>?
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","8x^4-6x^2+1=0"],["B","8x^4+6x^2-1=0"],["C","8x^4-10x^2+3=0"],["D","3x^4-10x^2+8=0"],["E","3x^4-8x^2+3=0"],["F","3x^4+8x^2-3=0"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>

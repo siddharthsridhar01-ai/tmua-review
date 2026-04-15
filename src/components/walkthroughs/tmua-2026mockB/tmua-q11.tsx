@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q11</span>
         It is given that <Tex>{"f(x) = x^2 - 6x"}</Tex>. The curves <Tex>{"y = f(kx)"}</Tex> and <Tex>{"y = f(x - c)"}</Tex> have the same minimum point, where <Tex>{"k > 0"}</Tex> and <Tex>{"c > 0"}</Tex>. Which is a correct expression for <Tex>{"k"}</Tex> in terms of <Tex>{"c"}</Tex>?
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","\\frac{3}{3+c}"],["B","\\frac{3+c}{3}"],["C","\\frac{3}{c-3}"],["D","\\frac{c}{3}"],["E","\\frac{6}{6+c}"],["F","\\frac{6+c}{6}"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>

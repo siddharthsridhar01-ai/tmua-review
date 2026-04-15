@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q20</span>
         Find the area enclosed by the curve <Tex>{"\\log_{10}(x^2 + y^2) = 1 + \\log_{10}(2y - 2x)."}</Tex>
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","50\\pi"],["B","100\\pi"],["C","200\\pi"],["D","400\\pi"],["E","10\\sqrt{2}\\,\\pi"],["F","20\\sqrt{2}\\,\\pi"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
@@ -90,8 +90,8 @@ function SolveStepContent({ revealed, setRevealed }) {
         <line x1={sx(0)} y1={pad.t} x2={sx(0)} y2={pH - pad.b} stroke={C.muted} strokeWidth={0.7} />
         <circle cx={sx(cx)} cy={sy(cy)} r={r / (xMax - xMin) * gW} fill={C.ok + "15"} stroke={C.ok} strokeWidth={2} />
         <circle cx={sx(cx)} cy={sy(cy)} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} />
-        <text x={sx(cx)} y={sy(cy) + 14} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbc)">({"\u2212"}10, 10)</text>
-        <text x={sx(cx + r / 2)} y={sy(cy) - 4} textAnchor="start" fill={C.assum} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbc)">r = 10{"\u221A"}2</text>
+        <foreignObject x={sx(cx) - 22} y={sy(cy) + 14 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1 }}><Tex>{"(-10, 10)"}</Tex></div></foreignObject>
+        <foreignObject x={sx(cx + r / 2)} y={sy(cy) - 4 - 12} width={80} height={18}><div style={{ fontSize: 11, color: C.assum, textAlign: "left", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>r = 10{"\u221A"}2</div></foreignObject>
       </svg>
     );
   })();
@@ -150,23 +150,23 @@ function VerifyStepContent() {
         <line x1={sx(0)} y1={pad.t} x2={sx(0)} y2={pH - pad.b} stroke={C.muted} strokeWidth={0.7} />
         {/* y = x tangent line */}
         <line x1={sx(yMin)} y1={sy(yMin)} x2={sx(yMax)} y2={sy(yMax)} stroke={C.muted + "44"} strokeWidth={1} strokeDasharray="6,4" />
-        <text x={sx(yMax - 2)} y={sy(yMax - 2) + 14} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">y = x</text>
+        <foreignObject x={sx(yMax - 2) - 50} y={sy(yMax - 2) + 14 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{"y = x"}</Tex></div></foreignObject>
         {/* Circle */}
         <circle cx={sx(cx)} cy={sy(cy)} r={rPx} fill={C.ok + "12"} stroke={C.ok} strokeWidth={2.5} />
         {/* Centre dot */}
         <circle cx={sx(cx)} cy={sy(cy)} r={4} fill={C.ok} stroke={C.white} strokeWidth={1.5} />
-        <text x={sx(cx) + 8} y={sy(cy) + 4} textAnchor="start" fill={C.ok} fontSize={12} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">({"\u2212"}10, 10)</text>
+        <foreignObject x={sx(cx) + 8} y={sy(cy) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "left", lineHeight: 1 }}><Tex>{"(-10, 10)"}</Tex></div></foreignObject>
         {/* Radius line */}
         <line x1={sx(cx)} y1={sy(cy)} x2={sx(cx + r)} y2={sy(cy)} stroke={C.assum} strokeWidth={1.5} strokeDasharray="4,3" />
-        <text x={sx(cx + r / 2)} y={sy(cy) - 8} textAnchor="middle" fill={C.assum} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">r = 10{"\u221A"}2 {"\u2248"} 14.1</text>
+        <foreignObject x={sx(cx + r / 2) - 30} y={sy(cy) - 8 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.assum, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>r = 10{"\u221A"}2 {"\u2248"} 14.1</div></foreignObject>
         {/* Area label inside */}
-        <text x={sx(cx)} y={sy(cy) - 22} textAnchor="middle" fill={C.ok} fontSize={14} fontWeight={700} fontFamily={mathFont} filter="url(#lb)">Area = 200{"\u03C0"}</text>
+        <foreignObject x={sx(cx) - 22} y={sy(cy) - 22 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1 }}><Tex>{"Area = 200\pi "}</Tex></div></foreignObject>
         {/* Tangent point */}
         <circle cx={sx(0)} cy={sy(0)} r={3.5} fill={C.muted} stroke={C.white} strokeWidth={1} />
-        <text x={sx(0) + 6} y={sy(0) - 6} textAnchor="start" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">tangent to y = x</text>
+        <foreignObject x={sx(0) + 6} y={sy(0) - 6 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1 }}><Tex>{"tangent to y = x"}</Tex></div></foreignObject>
         {/* Axis labels */}
-        {[-20, -10, 10, 20].filter(x => x >= xMin && x <= xMax).map(x => <text key={`x${x}`} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
-        {[10, 20].filter(y => y >= yMin && y <= yMax).map(y => <text key={`y${y}`} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+        {[-20, -10, 10, 20].filter(x => x >= xMin && x <= xMax).map(x => <foreignObject x={sx(x) - 22} y={pH - pad.b + 14 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(x)}</Tex></div></foreignObject>)}
+        {[10, 20].filter(y => y >= yMin && y <= yMax).map(y => <foreignObject x={pad.l - 8 - 48} y={sy(y) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{String(y)}</Tex></div></foreignObject>)}
       </svg>
     );
   })();

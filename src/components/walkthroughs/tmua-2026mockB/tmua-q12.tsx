@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q12</span>
         A family of quadratic curves is given by <Tex>{"y_k = (x - k)^2 + 2k^2 - 4k + 5"}</Tex> where <Tex>{"k"}</Tex> is any real number. All these curves are sketched, and the point with the lowest y-coordinate among all the curves is <Tex>{"(a, b)"}</Tex>. Find the value of <Tex>{"a + b"}</Tex>.
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","-1"],["B","0"],["C","1"],["D","3"],["E","4"],["F","7"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>

@@ -50,7 +50,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q19</span>
         The solution to the differential equation <Tex>{"\\tfrac{dy}{dx} = |3-x| - |x-1|"}</Tex> for all <Tex>{"x"}</Tex> is <Tex>{"y = f(x) + c"}</Tex>, where <Tex>{"c"}</Tex> is a constant. Find the value of <Tex>{"f(0) + f(2) + f(4)."}</Tex>
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","1"],["B","2"],["C","3"],["D","4"],["E","5"],["F","6"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
@@ -110,7 +110,7 @@ function SolveStepContent({ revealed, setRevealed }) {
         <line x1={sx(1)} y1={pad.t} x2={sx(1)} y2={pH - pad.b} stroke={C.border} strokeWidth={0.5} strokeDasharray="3,3" />
         <line x1={sx(3)} y1={pad.t} x2={sx(3)} y2={pH - pad.b} stroke={C.border} strokeWidth={0.5} strokeDasharray="3,3" />
         {drawFn(sx, sy, pW, pH, pad)}
-        {[0, 1, 2, 3, 4].map(x => <text key={x} x={sx(x)} y={pH - pad.b + 13} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
+        {[0, 1, 2, 3, 4].map(x => <foreignObject x={sx(x) - 22} y={pH - pad.b + 13 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(x)}</Tex></div></foreignObject>)}
       </svg>
     );
   };
@@ -124,9 +124,9 @@ function SolveStepContent({ revealed, setRevealed }) {
       <path d={segPath(g, -0.5, 1)} fill="none" stroke={c1} strokeWidth={2} />
       <path d={segPath(g, 1, 3)} fill="none" stroke={c2} strokeWidth={2} />
       <path d={segPath(g, 3, 5)} fill="none" stroke={c3} strokeWidth={2} />
-      <text x={sx(0.2)} y={sy(2) - 6} textAnchor="start" fill={c1} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbs)">2</text>
-      <text x={sx(2)} y={sy(g(2)) - 6} textAnchor="middle" fill={c2} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbs)">4{"\u2212"}2x</text>
-      <text x={sx(4)} y={sy(-2) - 6} textAnchor="middle" fill={c3} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbs)">{"\u2212"}2</text>
+      <foreignObject x={sx(0.2)} y={sy(2) - 6 - 12} width={50} height={16}><div style={{ fontSize: 11, color: c1, textAlign: "left", lineHeight: 1 }}><Tex>{"2"}</Tex></div></foreignObject>
+      <foreignObject x={sx(2) - 22} y={sy(g(2)) - 6 - 12} width={44} height={16}><div style={{ fontSize: 11, color: c2, textAlign: "center", lineHeight: 1 }}><Tex>{"4-2x"}</Tex></div></foreignObject>
+      <foreignObject x={sx(4) - 22} y={sy(-2) - 6 - 12} width={44} height={16}><div style={{ fontSize: 11, color: c3, textAlign: "center", lineHeight: 1 }}><Tex>{"-2"}</Tex></div></foreignObject>
     </>);
   }, { xMin: -0.5, xMax: 5, yMin: -3, yMax: 3 });
 
@@ -139,9 +139,9 @@ function SolveStepContent({ revealed, setRevealed }) {
       <circle cx={sx(0)} cy={sy(f(0))} r={3.5} fill={C.ok} stroke={C.white} strokeWidth={0.8} />
       <circle cx={sx(2)} cy={sy(f(2))} r={3.5} fill={C.ok} stroke={C.white} strokeWidth={0.8} />
       <circle cx={sx(4)} cy={sy(f(4))} r={3.5} fill={C.ok} stroke={C.white} strokeWidth={0.8} />
-      <text x={sx(2)} y={sy(f(2)) - 8} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbs)">(2, 3)</text>
-      <text x={sx(0) + 8} y={sy(0) + 14} textAnchor="start" fill={C.ok} fontSize={11} fontFamily={mathFont} filter="url(#lbs)">(0, 0)</text>
-      <text x={sx(4) - 4} y={sy(0) + 14} textAnchor="end" fill={C.ok} fontSize={11} fontFamily={mathFont} filter="url(#lbs)">(4, 0)</text>
+      <foreignObject x={sx(2) - 24} y={sy(f(2)) - 8 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1 }}><Tex>{"(2, 3)"}</Tex></div></foreignObject>
+      <foreignObject x={sx(0) + 8} y={sy(0) + 14 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "left", lineHeight: 1 }}><Tex>{"(0, 0)"}</Tex></div></foreignObject>
+      <foreignObject x={sx(4) - 4 - 50} y={sy(0) + 14 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1 }}><Tex>{"(4, 0)"}</Tex></div></foreignObject>
     </>);
   }, { xMin: -0.5, xMax: 5, yMin: -1, yMax: 4 });
 
@@ -216,8 +216,8 @@ function VerifyStepContent() {
         {/* Breakpoint lines with labels */}
         <line x1={sx(1)} y1={pad.t} x2={sx(1)} y2={pH - pad.b} stroke={C.text + "44"} strokeWidth={1} strokeDasharray="4,4" />
         <line x1={sx(3)} y1={pad.t} x2={sx(3)} y2={pH - pad.b} stroke={C.text + "44"} strokeWidth={1} strokeDasharray="4,4" />
-        <text x={sx(1)} y={pad.t + 12} textAnchor="middle" fill={C.text + "88"} fontSize={11} fontFamily={mathFont} filter="url(#lb)">x = 1</text>
-        <text x={sx(3)} y={pad.t + 12} textAnchor="middle" fill={C.text + "88"} fontSize={11} fontFamily={mathFont} filter="url(#lb)">x = 3</text>
+        <foreignObject x={sx(1) - 24} y={pad.t + 12 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.text + "88", textAlign: "center", lineHeight: 1 }}><Tex>{"x = 1"}</Tex></div></foreignObject>
+        <foreignObject x={sx(3) - 24} y={pad.t + 12 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.text + "88", textAlign: "center", lineHeight: 1 }}><Tex>{"x = 3"}</Tex></div></foreignObject>
         {/* dy/dx - dashed yellow, three segments */}
         <path d={segPath(g, xMin, 1)} fill="none" stroke={C.assum} strokeWidth={1.8} strokeDasharray="5,3" />
         <path d={segPath(g, 1, 3)} fill="none" stroke={C.assum} strokeWidth={1.8} strokeDasharray="5,3" />
@@ -227,25 +227,25 @@ function VerifyStepContent() {
         <path d={segPath(f, 1, 3)} fill="none" stroke={c2} strokeWidth={2.5} />
         <path d={segPath(f, 3, xMax)} fill="none" stroke={c3} strokeWidth={2.5} />
         {/* Region formula labels - positioned in middle of each segment, below curve */}
-        <text x={sx(0.5)} y={sy(1) + 2} textAnchor="middle" fill={c1} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">f = 2x</text>
-        <text x={sx(2)} y={sy(2)} textAnchor="middle" fill={c2} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">f = 4x{"\u2212"}x{"\u00B2"}{"\u2212"}1</text>
-        <text x={sx(3.5)} y={sy(1) + 2} textAnchor="middle" fill={c3} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">f = 8{"\u2212"}2x</text>
+        <foreignObject x={sx(0.5) - 24} y={sy(1) + 2 - 12} width={48} height={16}><div style={{ fontSize: 11, color: c1, textAlign: "center", lineHeight: 1 }}><Tex>{"f = 2x"}</Tex></div></foreignObject>
+        <foreignObject x={sx(2) - 22} y={sy(2) - 12} width={44} height={16}><div style={{ fontSize: 11, color: c2, textAlign: "center", lineHeight: 1 }}><Tex>{"f = 4x-x^2-1"}</Tex></div></foreignObject>
+        <foreignObject x={sx(3.5) - 22} y={sy(1) + 2 - 12} width={44} height={16}><div style={{ fontSize: 11, color: c3, textAlign: "center", lineHeight: 1 }}><Tex>{"f = 8-2x"}</Tex></div></foreignObject>
         {/* Green evaluation dots */}
         {[0, 2, 4].map(x => <circle key={x} cx={sx(x)} cy={sy(f(x))} r={5} fill={C.ok} stroke={C.white} strokeWidth={1.5} />)}
         {/* Evaluation labels - offset to sides to avoid formula labels */}
-        <text x={sx(0) - 4} y={sy(f(0)) - 10} textAnchor="end" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">f(0) = 0</text>
-        <text x={sx(2)} y={sy(f(2)) - 10} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">f(2) = 3</text>
-        <text x={sx(4) + 4} y={sy(f(4)) - 10} textAnchor="start" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">f(4) = 0</text>
+        <foreignObject x={sx(0) - 4 - 50} y={sy(f(0)) - 10 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1 }}><Tex>{"f(0) = 0"}</Tex></div></foreignObject>
+        <foreignObject x={sx(2) - 24} y={sy(f(2)) - 10 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1 }}><Tex>{"f(2) = 3"}</Tex></div></foreignObject>
+        <foreignObject x={sx(4) + 4} y={sy(f(4)) - 10 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "left", lineHeight: 1 }}><Tex>{"f(4) = 0"}</Tex></div></foreignObject>
         {/* Moving dot on f(x) */}
         <circle cx={sx(xVal)} cy={sy(fVal)} r={6} fill={col} stroke={C.white} strokeWidth={1.5} />
-        <text x={sx(xVal)} y={sy(fVal) - 14} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">({fmt(xVal)}, {fmt(fVal)})</text>
+        <foreignObject x={sx(xVal) - 30} y={sy(fVal) - 14 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>({fmt(xVal)}, {fmt(fVal)})</div></foreignObject>
         {/* Moving dot on dy/dx */}
         <circle cx={sx(xVal)} cy={sy(gVal)} r={4} fill={C.assum} stroke={C.white} strokeWidth={1} />
         {/* dy/dx label */}
-        <text x={pW - pad.r - 4} y={sy(-2) + 14} textAnchor="end" fill={C.assum} fontSize={11} fontFamily={mathFont} filter="url(#lb)">dy/dx</text>
+        <foreignObject x={pW - pad.r - 4 - 50} y={sy(-2) + 14 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.assum, textAlign: "right", lineHeight: 1 }}><Tex>{"dy/dx"}</Tex></div></foreignObject>
         {/* Axis labels */}
-        {[0, 1, 2, 3, 4].map(x => <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
-        {[-2, -1, 1, 2, 3].map(y => <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+        {[0, 1, 2, 3, 4].map(x => <foreignObject x={sx(x) - 22} y={pH - pad.b + 14 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(x)}</Tex></div></foreignObject>)}
+        {[-2, -1, 1, 2, 3].map(y => <foreignObject x={pad.l - 8 - 48} y={sy(y) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{String(y)}</Tex></div></foreignObject>)}
       </svg>
     );
   })();

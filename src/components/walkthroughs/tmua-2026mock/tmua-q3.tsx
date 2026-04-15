@@ -33,7 +33,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q3</span>
         An arithmetic progression and a convergent geometric progression each have first term <Tex>{"3"}</Tex>. The sum of their second terms is <Tex>{"5"}</Tex>. The sum of their third terms is <Tex>{"\\tfrac{13}{3}"}</Tex>. What is the sum to infinity of the geometric progression?
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","4"],["B","6"],["C","8"],["D","9"],["E","12"],["F","18"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>

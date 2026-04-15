@@ -31,7 +31,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q10</span>
         The trapezium rule with <Tex>{"2"}</Tex> strips is used to estimate <Tex>{"\\displaystyle\\int_0^4 \\!\\sqrt{16 - x^2}\\,dx"}</Tex>. What is the positive difference between the estimate and the exact value?
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","4(\\pi-1-\\sqrt{3})"],["B","4\\pi-4-4\\sqrt{3}"],["C","4\\pi-4"],["D","2(\\pi-1-\\sqrt{3})"],["E","4\\pi-2\\sqrt{3}"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
@@ -104,10 +104,10 @@ function SolveStepContent({ revealed, setRevealed }) {
         <polyline points={arcPts.slice(0, 41).join(" ")} fill="none" stroke={C.ps} strokeWidth={1.5} />
         <polygon points={trapPts} fill={C.calc + "22"} stroke={C.calc} strokeWidth={1} strokeDasharray="4,2" />
         {[[0, 4], [2, Math.sqrt(12)], [4, 0]].map(([x, y], i) => <circle key={i} cx={sx(x)} cy={sy(y)} r={3} fill={C.calc} stroke={C.white} strokeWidth={1} />)}
-        <text x={sx(0) - 3} y={sy(4) - 4} textAnchor="end" fill={C.calc} fontSize={11} fontFamily={mathFont}>4</text>
-        <text x={sx(2)} y={sy(Math.sqrt(12)) - 5} textAnchor="middle" fill={C.calc} fontSize={11} fontFamily={mathFont}>2{"\u221A"}3</text>
-        <text x={sx(4) + 3} y={sy(0) + 12} textAnchor="start" fill={C.muted} fontSize={11} fontFamily={mathFont}>4</text>
-        <text x={sx(2)} y={sy(0) + 12} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>2</text>
+        <foreignObject x={sx(0) - 3 - 50} y={sy(4) - 4 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.calc, textAlign: "right", lineHeight: 1 }}><Tex>{"4"}</Tex></div></foreignObject>
+        <foreignObject x={sx(2) - 30} y={sy(Math.sqrt(12)) - 5 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.calc, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 400, fontStyle: "normal" }}>2{"\u221A"}3</div></foreignObject>
+        <foreignObject x={sx(4) + 3} y={sy(0) + 12 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1 }}><Tex>{"4"}</Tex></div></foreignObject>
+        <foreignObject x={sx(2) - 24} y={sy(0) + 12 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{"2"}</Tex></div></foreignObject>
       </svg>
     );
   })();

@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q12</span>
         The minimum value of the function <Tex>{"x^4 - 2kx^2"}</Tex> is <Tex>{"-4"}</Tex>, where <Tex>{"k > 0"}</Tex>. Find the minimum value of the function <Tex>{"x^2 - 2kx + 5."}</Tex>
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","-3"],["B","-1"],["C","0"],["D","1"],["E","3"],["F","5"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
@@ -94,9 +94,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         <line x1={sx(0)} y1={pad.t} x2={sx(0)} y2={pH - pad.b} stroke={C.muted} strokeWidth={0.7} />
         <path d={segs.join("")} fill="none" stroke={color} strokeWidth={2} />
         {(dots || []).map((d, i) => <circle key={i} cx={sx(d[0])} cy={sy(d[1])} r={3.5} fill={d[2] || color} stroke={C.white} strokeWidth={1} />)}
-        {(labels || []).map((lb, i) => <text key={i} x={sx(lb[0])} y={sy(lb[1]) + (lb[4] || -10)} textAnchor={lb[3] || "middle"} fill={lb[2] || C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbc)">{lb[5]}</text>)}
-        {title && <text x={pW / 2} y={pad.t - 6} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lbc)">{title}</text>}
-        {[Math.round(xMin), Math.round(xMax)].map(x => x !== 0 && <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
+        {(labels || []).map((lb, i) => <foreignObject x={sx(lb[0])} y={sy(lb[1]) + (lb[4] || -10) - 12} width={80} height={18}><div style={{ fontSize: 11, color: lb[2] || C.white, textAlign: "left", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>{lb[5]}</div></foreignObject>)}
+        {title && <foreignObject x={pW / 2 - 22} y={pad.t - 6 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(title)}</Tex></div></foreignObject>}
+        {[Math.round(xMin), Math.round(xMax)].map(x => x !== 0 && <foreignObject x={sx(x) - 22} y={pH - pad.b + 14 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(x)}</Tex></div></foreignObject>)}
       </svg>
     );
   };
@@ -200,13 +200,13 @@ function VerifyStepContent() {
         </>}
         {qMinX >= xMin && qMinX <= xMax && quadMin >= yMin && <>
           <circle cx={sx(qMinX)} cy={sy(quadMin)} r={6} fill={col} stroke={C.white} strokeWidth={1.5} />
-          <text x={sx(qMinX)} y={sy(quadMin) - 12} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">({fmt(qMinX)}, {fmt(quadMin)})</text>
+          <foreignObject x={sx(qMinX) - 30} y={sy(quadMin) - 12 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>({fmt(qMinX)}, {fmt(quadMin)})</div></foreignObject>
         </>}
-        <text x={pW - pad.r - 4} y={sy(-4) - 6} textAnchor="end" fill={C.assum} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">target min = {"\u22124"}</text>
-        <text x={sx(-2.5)} y={sy(quartic(-2.5)) - 8} textAnchor="middle" fill={C.assum} fontSize={11} fontFamily={mathFont} filter="url(#lb)">x{"\u2074"} {"\u2212"} 2kx{"\u00B2"}</text>
-        <text x={sx(4)} y={sy(quadratic(4)) - 8} textAnchor="middle" fill={col} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">x{"\u00B2"} {"\u2212"} 2kx + 5</text>
-        {[-3, -2, -1, 1, 2, 3, 4, 5].map(x => x >= xMin && x <= xMax && <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
-        {[-4, 4, 8].map(y => y >= yMin && y <= yMax && <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+        <foreignObject x={pW - pad.r - 4 - 60} y={sy(-4) - 6 - 12} width={62} height={18}><div style={{ fontSize: 11, color: C.assum, textAlign: "right", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>target min = {"\u22124"}</div></foreignObject>
+        <foreignObject x={sx(-2.5) - 30} y={sy(quartic(-2.5)) - 8 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.assum, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 400, fontStyle: "normal" }}>x{"\u2074"} {"\u2212"} 2kx{"\u00B2"}</div></foreignObject>
+        <foreignObject x={sx(4) - 22} y={sy(quadratic(4)) - 8 - 12} width={44} height={16}><div style={{ fontSize: 11, color: col, textAlign: "center", lineHeight: 1 }}><Tex>{"x^2 - 2kx + 5"}</Tex></div></foreignObject>
+        {[-3, -2, -1, 1, 2, 3, 4, 5].map(x => x >= xMin && x <= xMax && <foreignObject x={sx(x) - 22} y={pH - pad.b + 14 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(x)}</Tex></div></foreignObject>)}
+        {[-4, 4, 8].map(y => y >= yMin && y <= yMax && <foreignObject x={pad.l - 8 - 48} y={sy(y) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{String(y)}</Tex></div></foreignObject>)}
       </svg>
     );
   })();

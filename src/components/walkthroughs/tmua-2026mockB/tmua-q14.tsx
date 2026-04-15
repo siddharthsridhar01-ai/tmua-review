@@ -32,7 +32,7 @@ function QuestionSummary() {
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q14</span>
         A circle has centre O and radius <Tex>{"5"}</Tex>. P, Q and R are points on the circumference with <Tex>{"\\angle POQ = \\frac{\\pi}{3}"}</Tex>. What is the greatest possible area of triangle PRQ?
       </p>
-      <div style={{ display: "flex", justifyContent: "center", gap: 6, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
+      <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
         {[["A","\\frac{25(2+\\sqrt{3})}{4}"],["B","\\frac{25\\sqrt{3}}{2}"],["C","25+\\frac{25\\sqrt{3}}{4}"],["D","\\frac{75}{4}"],["E","25"],["F","25\\sqrt{3}"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
@@ -107,9 +107,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         {/* h: perpendicular from R to PQ */}
         <line x1={rx} y1={ry} x2={footx} y2={footy} stroke={C.calc} strokeWidth={1.5} strokeDasharray="4,2" />
         <circle cx={cx} cy={cy} r={3} fill={C.white} stroke={C.muted} strokeWidth={1} />
-        {[[px,py,"P",-14,-4],[qx,qy,"Q",6,-4],[rx,ry,"R",6,4]].map(([x,y,l,ox,oy],i) => <><circle key={"d"+i} cx={x} cy={y} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} /><text key={"t"+i} x={x+ox} y={y+oy} fill={C.ok} fontSize={11} fontFamily={mathFont}>{l}</text></>)}
-        <text x={cx + 5} y={cy - 5} fill={C.white} fontSize={11} fontFamily={mathFont}>O</text>
-        <text x={rx + 5} y={(ry + footy) / 2} fill={C.calc} fontSize={11} fontFamily={mathFont}>h</text>
+        {[[px,py,"P",-14,-4],[qx,qy,"Q",6,-4],[rx,ry,"R",6,4]].map(([x,y,l,ox,oy],i) => <><circle key={"d"+i} cx={x} cy={y} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} /><foreignObject x={x+ox} y={y+oy - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "left", lineHeight: 1 }}><Tex>{String(l)}</Tex></div></foreignObject></>)}
+        <foreignObject x={cx + 5} y={cy - 5 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.white, textAlign: "left", lineHeight: 1 }}><Tex>{"O"}</Tex></div></foreignObject>
+        <foreignObject x={rx + 5} y={(ry + footy) / 2 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.calc, textAlign: "left", lineHeight: 1 }}><Tex>{"h"}</Tex></div></foreignObject>
       </svg>
     );
   })();
