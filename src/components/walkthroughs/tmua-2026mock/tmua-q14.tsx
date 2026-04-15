@@ -97,9 +97,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         <path d={segs.join("")} fill="none" stroke={col} strokeWidth={2} />
         {fNeg1 >= yMin && fNeg1 <= yMax && <circle cx={sx(-1)} cy={sy(fNeg1)} r={3.5} fill={Math.abs(fNeg1) < 0.01 ? C.ok : col} stroke={C.white} strokeWidth={1} />}
         {f1 >= yMin && f1 <= yMax && <circle cx={sx(1)} cy={sy(f1)} r={3.5} fill={Math.abs(f1) < 0.01 ? C.ok : col} stroke={C.white} strokeWidth={1} />}
-        {fNeg1 >= yMin && fNeg1 <= yMax && <text x={sx(-1)} y={sy(fNeg1) - 8} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbc)">({"\u2212"}1, {fmt(fNeg1)})</text>}
-        {f1 >= yMin && f1 <= yMax && <text x={sx(1)} y={sy(f1) + 16} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbc)">(1, {fmt(f1)})</text>}
-        <text x={pW / 2} y={pad.t - 6} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lbc)">{label}</text>
+        {fNeg1 >= yMin && fNeg1 <= yMax && <foreignObject x={sx(-1) - 44} y={sy(fNeg1) - 8 - 13} width={88} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>({"\u2212"}1, {fmt(fNeg1)})</div></foreignObject>}
+        {f1 >= yMin && f1 <= yMax && <foreignObject x={sx(1) - 36} y={sy(f1) + 16 - 13} width={72} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>(1, {fmt(f1)})</div></foreignObject>}
+        <foreignObject x={pW / 2 - 16} y={pad.t - 6 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>{label}</div></foreignObject>
       </svg>
     );
   };
@@ -183,11 +183,11 @@ function VerifyStepContent() {
         <path d={segs.join("")} fill="none" stroke={col} strokeWidth={2.5} />
         {fNeg1 >= yMin && fNeg1 <= yMax && <circle cx={sx(-1)} cy={sy(fNeg1)} r={6} fill={Math.abs(fNeg1) < 0.2 ? C.ok : C.assum} stroke={C.white} strokeWidth={1.5} />}
         {f1 >= yMin && f1 <= yMax && <circle cx={sx(1)} cy={sy(f1)} r={6} fill={Math.abs(f1) < 0.2 ? C.ok : C.assum} stroke={C.white} strokeWidth={1.5} />}
-        {fNeg1 >= yMin && fNeg1 <= yMax && <text x={sx(-1)} y={sy(fNeg1) - 12} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">({"\u2212"}1, {fmt(fNeg1)})</text>}
-        {f1 >= yMin && f1 <= yMax && <text x={sx(1)} y={sy(f1) + 18} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">(1, {fmt(f1)})</text>}
-        <text x={pW / 2} y={pad.t + 12} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">f(x) = x{"\u00B3"} {"\u2212"} 3x + k</text>
-        {[-2, -1, 1, 2].map(x => <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
-        {[-4, -2, 2, 4].map(y => y >= yMin && y <= yMax && <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+        {fNeg1 >= yMin && fNeg1 <= yMax && <foreignObject x={sx(-1) - 44} y={sy(fNeg1) - 12 - 13} width={88} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>({"\u2212"}1, {fmt(fNeg1)})</div></foreignObject>}
+        {f1 >= yMin && f1 <= yMax && <foreignObject x={sx(1) - 36} y={sy(f1) + 18 - 13} width={72} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>(1, {fmt(f1)})</div></foreignObject>}
+        <foreignObject x={pW / 2 - 80} y={pad.t + 12 - 13} width={160} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>f(x) = x{"\u00B3"} {"\u2212"} 3x + k</div></foreignObject>
+        {[-2, -1, 1, 2].map(x => <foreignObject key={x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
+        {[-4, -2, 2, 4].map(y => y >= yMin && y <= yMax && <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
       </svg>
     );
   })();

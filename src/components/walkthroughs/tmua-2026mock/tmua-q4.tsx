@@ -75,18 +75,18 @@ function ParabolaGraph({ compact, dotU, dotCol }) {
       {/* Vertex marker */}
       <line x1={su(3)} y1={sy(1) - 4} x2={su(3)} y2={sy(0)} stroke={C.ok + "44"} strokeWidth={1} strokeDasharray="4,3" />
       <circle cx={su(3)} cy={sy(1)} r={4} fill="none" stroke={C.ok} strokeWidth={1.5} strokeDasharray="3,2" />
-      {compact && <text x={su(3)} y={sy(1) + 14} textAnchor="middle" fill={C.ok} fontSize={11} fontFamily={mathFont}>(3, 1)</text>}
+      {compact && <foreignObject x={su(3) - 32} y={sy(1) + 14 - 13} width={64} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>(3, 1)</div></foreignObject>}
       {/* Moving dot with coordinates */}
       {dotVisible && <>
         <circle cx={su(dotU)} cy={sy(dotY)} r={6} fill={dotCol || C.ps} stroke={C.white} strokeWidth={1.5} />
-        {!compact && <text x={su(dotU)} y={sy(dotY) - 12} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#labelBg)">({fmt(dotU)}, {fmt(dotY)})</text>}
+        {!compact && <foreignObject x={su(dotU) - 40} y={sy(dotY) - 12 - 13} width={80} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>({fmt(dotU)}, {fmt(dotY)})</div></foreignObject>}
       </>}
       {/* Labels with auto-hugging backgrounds */}
-      {!compact && <text x={su(3)} y={sy(1) + 15} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#labelBg)">u = 3, min = 1</text>}
-      <text x={pW - pad.r} y={sy(0) - 6} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>u</text>
-      {!compact && <text x={su(0) + 6} y={pad.t + 10} textAnchor="start" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#labelBg)">(u{"\u2212"}3){"\u00B2"} + 1</text>}
-      {[0, 2, 4, 6].map(u => <text key={u} x={su(u)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{u}</text>)}
-      {[2, 4, 6, 8, 10, 12].map(y => y >= yMin && y <= yMax && <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+      {!compact && <foreignObject x={su(3) - 64} y={sy(1) + 15 - 13} width={128} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>u = 3, min = 1</div></foreignObject>}
+      <foreignObject x={pW - pad.r - 30} y={sy(0) - 6 - 13} width={30} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>u</div></foreignObject>
+      {!compact && <foreignObject x={su(0) + 6} y={pad.t + 10 - 13} width={112} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>(u{"\u2212"}3){"\u00B2"} + 1</div></foreignObject>}
+      {[0, 2, 4, 6].map(u => <foreignObject key={u} x={su(u) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{u}</div></foreignObject>)}
+      {[2, 4, 6, 8, 10, 12].map(y => y >= yMin && y <= yMax && <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
     </svg>
   );
 }

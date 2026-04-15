@@ -94,9 +94,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         <line x1={sx(0)} y1={pad.t} x2={sx(0)} y2={pH - pad.b} stroke={C.muted} strokeWidth={0.7} />
         <path d={segs.join("")} fill="none" stroke={color} strokeWidth={2} />
         {(dots || []).map((d, i) => <circle key={i} cx={sx(d[0])} cy={sy(d[1])} r={3.5} fill={d[2] || color} stroke={C.white} strokeWidth={1} />)}
-        {(labels || []).map((lb, i) => <text key={i} x={sx(lb[0])} y={sy(lb[1]) + (lb[4] || -10)} textAnchor={lb[3] || "middle"} fill={lb[2] || C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbc)">{lb[5]}</text>)}
-        {title && <text x={pW / 2} y={pad.t - 6} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lbc)">{title}</text>}
-        {[Math.round(xMin), Math.round(xMax)].map(x => x !== 0 && <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
+        {(labels || []).map((lb, i) => <foreignObject key={i} x={sx(lb[0])} y={sy(lb[1]) + (lb[4] || -10) - 13} width={32} height={20}><div style={{ fontSize: 11, color: lb[2] || C.white, textAlign: "left", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>{lb[5]}</div></foreignObject>)}
+        {title && <foreignObject x={pW / 2 - 16} y={pad.t - 6 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>{title}</div></foreignObject>}
+        {[Math.round(xMin), Math.round(xMax)].map(x => x !== 0 && <foreignObject key={x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
       </svg>
     );
   };
@@ -200,13 +200,13 @@ function VerifyStepContent() {
         </>}
         {qMinX >= xMin && qMinX <= xMax && quadMin >= yMin && <>
           <circle cx={sx(qMinX)} cy={sy(quadMin)} r={6} fill={col} stroke={C.white} strokeWidth={1.5} />
-          <text x={sx(qMinX)} y={sy(quadMin) - 12} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">({fmt(qMinX)}, {fmt(quadMin)})</text>
+          <foreignObject x={sx(qMinX) - 40} y={sy(quadMin) - 12 - 13} width={80} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>({fmt(qMinX)}, {fmt(quadMin)})</div></foreignObject>
         </>}
-        <text x={pW - pad.r - 4} y={sy(-4) - 6} textAnchor="end" fill={C.assum} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">target min = {"\u22124"}</text>
-        <text x={sx(-2.5)} y={sy(quartic(-2.5)) - 8} textAnchor="middle" fill={C.assum} fontSize={11} fontFamily={mathFont} filter="url(#lb)">x{"\u2074"} {"\u2212"} 2kx{"\u00B2"}</text>
-        <text x={sx(4)} y={sy(quadratic(4)) - 8} textAnchor="middle" fill={col} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">x{"\u00B2"} {"\u2212"} 2kx + 5</text>
-        {[-3, -2, -1, 1, 2, 3, 4, 5].map(x => x >= xMin && x <= xMax && <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
-        {[-4, 4, 8].map(y => y >= yMin && y <= yMax && <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+        <foreignObject x={pW - pad.r - 4 - 136} y={sy(-4) - 6 - 13} width={136} height={20}><div style={{ fontSize: 11, color: C.assum, textAlign: "right", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}>target min = {"\u22124"}</div></foreignObject>
+        <foreignObject x={sx(-2.5) - 56} y={sy(quartic(-2.5)) - 8 - 13} width={112} height={20}><div style={{ fontSize: 11, color: C.assum, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>x{"\u2074"} {"\u2212"} 2kx{"\u00B2"}</div></foreignObject>
+        <foreignObject x={sx(4) - 64} y={sy(quadratic(4)) - 8 - 13} width={128} height={20}><div style={{ fontSize: 11, color: col, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>x{"\u00B2"} {"\u2212"} 2kx + 5</div></foreignObject>
+        {[-3, -2, -1, 1, 2, 3, 4, 5].map(x => x >= xMin && x <= xMax && <foreignObject key={x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
+        {[-4, 4, 8].map(y => y >= yMin && y <= yMax && <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
       </svg>
     );
   })();

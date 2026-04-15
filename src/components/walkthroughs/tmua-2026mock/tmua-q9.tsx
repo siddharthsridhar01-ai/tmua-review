@@ -147,12 +147,12 @@ function VerifyStepContent() {
         <path d={"M" + ptsMinus.join("L")} fill="none" stroke={C.ps} strokeWidth={2.5} />
         <circle cx={sx(xVal)} cy={sy(fPlus)} r={4} fill={C.muted} stroke={C.white} strokeWidth={1} />
         <circle cx={sx(xVal)} cy={sy(fMinus)} r={6} fill={col} stroke={C.white} strokeWidth={1.5} />
-        <text x={sx(xVal)} y={sy(fMinus) - 12} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">({fmt(xVal / Math.PI)}{"\u03C0"}, {fmt(fMinus)})</text>
-        <text x={pW - pad.r - 4} y={sy(-3) + 14} textAnchor="end" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">min = {"\u22123"}</text>
-        <text x={sx(0.3)} y={sy(fP(0.3)) - 8} textAnchor="start" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">f+ = (3cos x + {"\u221A"}(5cos{"\u00B2"}x + 4))/2</text>
-        <text x={sx(0.3)} y={sy(fM(0.3)) + 16} textAnchor="start" fill={C.ps} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">f{"\u2212"} = (3cos x {"\u2212"} {"\u221A"}(5cos{"\u00B2"}x + 4))/2</text>
-        {[0, 1, 2].map(n => <text key={n} x={sx(n * Math.PI)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{n === 0 ? "0" : n === 1 ? "\u03C0" : "2\u03C0"}</text>)}
-        {[-3, -2, -1, 1, 2, 3].map(y => y >= yMin && y <= yMax && <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+        <foreignObject x={sx(xVal) - 48} y={sy(fMinus) - 12 - 13} width={96} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>({fmt(xVal / Math.PI)}{"\u03C0"}, {fmt(fMinus)})</div></foreignObject>
+        <foreignObject x={pW - pad.r - 4 - 80} y={sy(-3) + 14 - 13} width={80} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}>min = {"\u22123"}</div></foreignObject>
+        <foreignObject x={sx(0.3)} y={sy(fP(0.3)) - 8 - 13} width={160} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>f+ = (3cos x + {"\u221A"}(5cos{"\u00B2"}x + 4))/2</div></foreignObject>
+        <foreignObject x={sx(0.3)} y={sy(fM(0.3)) + 16 - 13} width={160} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "left", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>f{"\u2212"} = (3cos x {"\u2212"} {"\u221A"}(5cos{"\u00B2"}x + 4))/2</div></foreignObject>
+        {[0, 1, 2].map(n => <foreignObject key={n} x={sx(n * Math.PI) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{n === 0 ? "0" : n === 1 ? "\u03C0" : "2\u03C0"}</div></foreignObject>)}
+        {[-3, -2, -1, 1, 2, 3].map(y => y >= yMin && y <= yMax && <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
       </svg>
     );
   })();

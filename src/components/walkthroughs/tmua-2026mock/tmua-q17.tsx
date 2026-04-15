@@ -57,8 +57,8 @@ function ReadStep() {
         {/* Coordinate axes */}
         <line x1={20} y1={cy} x2={pW - 20} y2={cy} stroke={C.muted + "55"} strokeWidth={0.7} />
         <line x1={cx} y1={20} x2={cx} y2={pH - 20} stroke={C.muted + "55"} strokeWidth={0.7} />
-        <text x={pW - 16} y={cy - 6} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>x</text>
-        <text x={cx + 6} y={24} textAnchor="start" fill={C.muted} fontSize={11} fontFamily={mathFont}>y</text>
+        <foreignObject x={pW - 16 - 30} y={cy - 6 - 13} width={30} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>x</div></foreignObject>
+        <foreignObject x={cx + 6} y={24 - 13} width={30} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal" }}>y</div></foreignObject>
         {/* Shaded band 2: S3 to S4 */}
         <rect x={s4.x} y={s4.y} width={s4.w} height={s4.h} fill={C.muted + "18"} stroke="none" />
         <rect x={s3.x} y={s3.y} width={s3.w} height={s3.h} fill={C.bg} stroke="none" />
@@ -71,10 +71,10 @@ function ReadStep() {
         <rect x={s3.x} y={s3.y} width={s3.w} height={s3.h} fill="none" stroke={C.text} strokeWidth={1} />
         <rect x={s4.x} y={s4.y} width={s4.w} height={s4.h} fill="none" stroke={C.text} strokeWidth={1.2} />
         {/* Labels — TMUA style, placed just outside each square */}
-        <text x={s1.x + s1.w + 4} y={s1.y + 12} textAnchor="start" fill={C.text} fontSize={13} fontFamily={mathFont} fontStyle="italic">S{"\u2081"}</text>
-        <text x={s2.x + s2.w + 4} y={s2.y + 12} textAnchor="start" fill={C.text} fontSize={13} fontFamily={mathFont} fontStyle="italic">S{"\u2082"}</text>
-        <text x={s3.x + s3.w + 4} y={s3.y + 12} textAnchor="start" fill={C.text} fontSize={13} fontFamily={mathFont} fontStyle="italic">S{"\u2083"}</text>
-        <text x={s4.x + s4.w + 4} y={s4.y + 12} textAnchor="start" fill={C.text} fontSize={13} fontFamily={mathFont} fontStyle="italic">S{"\u2084"}</text>
+        <foreignObject x={s1.x + s1.w + 4} y={s1.y + 12 - 13} width={40} height={20}><div style={{ fontSize: 13, color: C.text, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "italic" }}>S{"\u2081"}</div></foreignObject>
+        <foreignObject x={s2.x + s2.w + 4} y={s2.y + 12 - 13} width={40} height={20}><div style={{ fontSize: 13, color: C.text, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "italic" }}>S{"\u2082"}</div></foreignObject>
+        <foreignObject x={s3.x + s3.w + 4} y={s3.y + 12 - 13} width={40} height={20}><div style={{ fontSize: 13, color: C.text, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "italic" }}>S{"\u2083"}</div></foreignObject>
+        <foreignObject x={s4.x + s4.w + 4} y={s4.y + 12 - 13} width={40} height={20}><div style={{ fontSize: 13, color: C.text, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "italic" }}>S{"\u2084"}</div></foreignObject>
       </svg>
     );
   })();
@@ -204,33 +204,33 @@ function VerifyStepContent() {
         {/* Axes */}
         <line x1={outerSq.x - 8} y1={cy} x2={outerSq.x + outerSq.w + 8} y2={cy} stroke={C.border} strokeWidth={0.7} />
         <line x1={cx} y1={outerSq.y - 8} x2={cx} y2={outerSq.y + outerSq.h + 8} stroke={C.border} strokeWidth={0.7} />
-        <text x={outerSq.x + outerSq.w + 12} y={cy + 4} textAnchor="start" fill={C.muted} fontSize={11} fontFamily={mathFont}>x</text>
-        <text x={cx + 6} y={outerSq.y - 10} textAnchor="start" fill={C.muted} fontSize={11} fontFamily={mathFont}>y</text>
+        <foreignObject x={outerSq.x + outerSq.w + 12} y={cy + 4 - 13} width={30} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal" }}>x</div></foreignObject>
+        <foreignObject x={cx + 6} y={outerSq.y - 10 - 13} width={30} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal" }}>y</div></foreignObject>
         {rects}
         {outlines}
         {/* S labels for outermost pair */}
-        <text x={outerSq.x + outerSq.w - 2} y={outerSq.y - 4} textAnchor="end" fill={col} fontSize={12} fontWeight={700} fontFamily={mathFont} filter="url(#lb17)">S{outerN}</text>
-        <text x={innerSq.x + innerSq.w - 2} y={innerSq.y - 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb17)">S{innerN}</text>
+        <foreignObject x={outerSq.x + outerSq.w - 2 - 40} y={outerSq.y - 4 - 13} width={40} height={20}><div style={{ fontSize: 12, color: col, textAlign: "right", lineHeight: 1, fontWeight: 700, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}>S{outerN}</div></foreignObject>
+        <foreignObject x={innerSq.x + innerSq.w - 2 - 40} y={innerSq.y - 4 - 13} width={40} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}>S{innerN}</div></foreignObject>
         {/* Vertex dots and coordinate labels for outer square */}
         {vtx(outerSq.x, outerSq.y, col)}
         {vtx(outerSq.x + outerSq.w, outerSq.y, col)}
         {vtx(outerSq.x + outerSq.w, outerSq.y + outerSq.h, col)}
         {vtx(outerSq.x, outerSq.y + outerSq.h, col)}
-        <text x={outerSq.x + outerSq.w + 4} y={outerSq.y - 4} textAnchor="start" fill={col} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb17)">({outerN}, {outerN})</text>
-        <text x={outerSq.x - 4} y={outerSq.y + outerSq.h + 14} textAnchor="end" fill={col} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb17)">({"\u2212"}{outerN}, {"\u2212"}{outerN})</text>
+        <foreignObject x={outerSq.x + outerSq.w + 4} y={outerSq.y - 4 - 13} width={80} height={20}><div style={{ fontSize: 11, color: col, textAlign: "left", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>({outerN}, {outerN})</div></foreignObject>
+        <foreignObject x={outerSq.x - 4 - 112} y={outerSq.y + outerSq.h + 14 - 13} width={112} height={20}><div style={{ fontSize: 11, color: col, textAlign: "right", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}>({"\u2212"}{outerN}, {"\u2212"}{outerN})</div></foreignObject>
         {/* Vertex dots for inner square */}
         {vtx(innerSq.x, innerSq.y, C.muted)}
         {vtx(innerSq.x + innerSq.w, innerSq.y, C.muted)}
         {vtx(innerSq.x + innerSq.w, innerSq.y + innerSq.h, C.muted)}
         {vtx(innerSq.x, innerSq.y + innerSq.h, C.muted)}
-        <text x={innerSq.x + innerSq.w + 4} y={innerSq.y + innerSq.h + 14} textAnchor="start" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb17)">({innerN}, {"\u2212"}{innerN})</text>
+        <foreignObject x={innerSq.x + innerSq.w + 4} y={innerSq.y + innerSq.h + 14 - 13} width={96} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>({innerN}, {"\u2212"}{innerN})</div></foreignObject>
         {/* "+N more pairs inside" if applicable */}
         {numPairs > showPairs && (
-          <text x={cx} y={cy + 4} textAnchor="middle" fill={C.muted} fontSize={12} fontFamily={mathFont} filter="url(#lb17)">+{numPairs - showPairs} more pair{numPairs - showPairs > 1 ? "s" : ""} inside</text>
+          <foreignObject x={cx - 80} y={cy + 4 - 13} width={160} height={20}><div style={{ fontSize: 12, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>+{numPairs - showPairs} more pair{numPairs - showPairs > 1 ? "s" : ""} inside</div></foreignObject>
         )}
-        <text x={cx} y={pH - 4} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>
+        <foreignObject x={cx - 80} y={pH - 4 - 13} width={160} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>
           {numPairs} pair{numPairs > 1 ? "s" : ""} = {numPairs * 2} squares
-        </text>
+        </div></foreignObject>
       </svg>
     );
   })();

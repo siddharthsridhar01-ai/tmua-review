@@ -142,11 +142,11 @@ function VerifyStepContent() {
         <line x1={pad.l} y1={sy(2)} x2={pW - pad.r} y2={sy(2)} stroke={C.ok} strokeWidth={1} strokeDasharray="6,3" />
         <path d={pathD} fill="none" stroke={col} strokeWidth={2.5} />
         <circle cx={sx(dotPt.n)} cy={sy(dotPt.s)} r={6} fill={col} stroke={C.white} strokeWidth={1.5} />
-        <text x={sx(dotPt.n)} y={sy(dotPt.s) - 12} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">({nVal}, {fmt(dotPt.s)})</text>
-        <text x={pW - pad.r - 4} y={sy(2) + 14} textAnchor="end" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">target = 2</text>
-        <text x={sx(50)} y={pad.t + 12} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">Partial sum S(N)</text>
-        {[10, 20, 50, 99].map(x => <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
-        {[0, 1, 2].map(y => <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
+        <foreignObject x={sx(dotPt.n) - 40} y={sy(dotPt.s) - 12 - 13} width={80} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>({nVal}, {fmt(dotPt.s)})</div></foreignObject>
+        <foreignObject x={pW - pad.r - 4 - 96} y={sy(2) + 14 - 13} width={96} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}>target = 2</div></foreignObject>
+        <foreignObject x={sx(50) - 72} y={pad.t + 12 - 13} width={144} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>Partial sum S(N)</div></foreignObject>
+        {[10, 20, 50, 99].map(x => <foreignObject key={x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
+        {[0, 1, 2].map(y => <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
       </svg>
     );
   })();
