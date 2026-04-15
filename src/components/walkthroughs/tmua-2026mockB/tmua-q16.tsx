@@ -52,9 +52,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         <line x1={sx(0)} y1={sy(1)} x2={sx(8)} y2={sy(5)} stroke={C.muted} strokeWidth={1} />
         <circle cx={sx(0)} cy={sy(1)} r={3} fill={C.white} stroke={C.muted} strokeWidth={1} />
         <circle cx={sx(8)} cy={sy(5)} r={3} fill={C.white} stroke={C.muted} strokeWidth={1} />
-        <foreignObject x={sx(0) - 4 - 50} y={sy(1) - 6 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.white, textAlign: "right", lineHeight: 1 }}><Tex>{"A"}</Tex></div></foreignObject>
-        <foreignObject x={sx(8) + 4} y={sy(5) - 6 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.white, textAlign: "left", lineHeight: 1 }}><Tex>{"B"}</Tex></div></foreignObject>
-        {ks.map(({ k, col, lbl }) => (<g key={k}><line x1={sx(0)} y1={sy(1)} x2={sx(2)} y2={sy(k)} stroke={col} strokeWidth={1} opacity={0.5} /><line x1={sx(8)} y1={sy(5)} x2={sx(2)} y2={sy(k)} stroke={col} strokeWidth={1} opacity={0.5} /><circle cx={sx(2)} cy={sy(k)} r={3} fill={col} stroke={C.white} strokeWidth={1} /><foreignObject x={sx(2) + 6} y={sy(k) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: col, textAlign: "left", lineHeight: 1 }}><Tex>{String(lbl)}</Tex></div></foreignObject></g>))}
+        <text x={sx(0) - 4} y={sy(1) - 6} textAnchor="end" fill={C.white} fontSize={11} fontFamily={mathFont}>A</text>
+        <text x={sx(8) + 4} y={sy(5) - 6} fill={C.white} fontSize={11} fontFamily={mathFont}>B</text>
+        {ks.map(({ k, col, lbl }) => (<g key={k}><line x1={sx(0)} y1={sy(1)} x2={sx(2)} y2={sy(k)} stroke={col} strokeWidth={1} opacity={0.5} /><line x1={sx(8)} y1={sy(5)} x2={sx(2)} y2={sy(k)} stroke={col} strokeWidth={1} opacity={0.5} /><circle cx={sx(2)} cy={sy(k)} r={3} fill={col} stroke={C.white} strokeWidth={1} /><text x={sx(2) + 6} y={sy(k) + 4} fill={col} fontSize={11} fontFamily={mathFont}>{lbl}</text></g>))}
       </svg>
     );
   })();

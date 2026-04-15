@@ -191,13 +191,13 @@ function VerifyStepContent() {
         <path d={"M" + pts.join("L")} fill="none" stroke={C.ps} strokeWidth={2.5} />
         {/* Moving dot with coordinates */}
         <circle cx={sx(xVal)} cy={sy(fVal)} r={6} fill={col} stroke={C.white} strokeWidth={1.5} />
-        <foreignObject x={sx(xVal) - 30} y={sy(fVal) - 12 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>({fmt(xVal / Math.PI)}{"\u03C0"}, {fmt(fVal)})</div></foreignObject>
+        <text x={sx(xVal)} y={sy(fVal) - 12} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg)">({fmt(xVal / Math.PI)}{"\u03C0"}, {fmt(fVal)})</text>
         {/* Labels */}
-        <foreignObject x={pW - pad.r - 4 - 50} y={sy(1) - 6 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1 }}><Tex>{"max = 1"}</Tex></div></foreignObject>
-        <foreignObject x={pW - pad.r - 4 - 50} y={sy(1/3) + 14 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.assum, textAlign: "right", lineHeight: 1 }}><Tex>{"min = 1/3"}</Tex></div></foreignObject>
+        <text x={pW - pad.r - 4} y={sy(1) - 6} textAnchor="end" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg)">max = 1</text>
+        <text x={pW - pad.r - 4} y={sy(1/3) + 14} textAnchor="end" fill={C.assum} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg)">min = 1/3</text>
         {/* Axis labels */}
-        {[0, 1, 2].map(n => <foreignObject x={sx(n * Math.PI) - 30} y={pH - pad.b + 14 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 400, fontStyle: "normal" }}>{n === 0 ? "0" : n === 1 ? "\u03C0" : "2\u03C0"}</div></foreignObject>)}
-        {[0.5, 1].map(y => <foreignObject x={pad.l - 8 - 48} y={sy(y) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{String(y)}</Tex></div></foreignObject>)}
+        {[0, 1, 2].map(n => <text key={n} x={sx(n * Math.PI)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{n === 0 ? "0" : n === 1 ? "\u03C0" : "2\u03C0"}</text>)}
+        {[0.5, 1].map(y => <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
       </svg>
     );
   })();

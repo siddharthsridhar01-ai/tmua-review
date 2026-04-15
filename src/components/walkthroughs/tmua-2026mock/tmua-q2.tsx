@@ -70,21 +70,21 @@ function CubicGraph({ showArea, compact, upperLim, areaCol, hitTP }) {
       <path d={"M" + pts.join("L")} fill="none" stroke={C.ps} strokeWidth={2.5} />
       <circle cx={sx(1)} cy={sy(fn(1))} r={compact ? 3.5 : 5} fill={hitTP ? C.ok : C.ps} stroke={C.white} strokeWidth={1.5} />
       <circle cx={sx(2)} cy={sy(fn(2))} r={compact ? 3.5 : 5} fill={hitTP ? C.ok : C.ps} stroke={C.white} strokeWidth={1.5} />
-      {compact && <foreignObject x={sx(1) - 30} y={sy(fn(1)) - 8 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.ps, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 400, fontStyle: "normal" }}>(1, {fmt(fn(1))})</div></foreignObject>}
-      {compact && <foreignObject x={sx(2) - 30} y={sy(fn(2)) + 14 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.ps, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 400, fontStyle: "normal" }}>(2, {fmt(fn(2))})</div></foreignObject>}
-      {!compact && <foreignObject x={sx(1) - 30} y={sy(fn(1)) - 10 - 12} width={60} height={18}><div style={{ fontSize: 11, color: hitTP ? C.ok : C.ps, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>{"\u03B1"} = 1</div></foreignObject>}
-      {!compact && <foreignObject x={sx(2) - 30} y={sy(fn(2)) + 18 - 12} width={60} height={18}><div style={{ fontSize: 11, color: hitTP ? C.ok : C.ps, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>{"\u03B2"} = 2</div></foreignObject>}
+      {compact && <text x={sx(1)} y={sy(fn(1)) - 8} textAnchor="middle" fill={C.ps} fontSize={11} fontFamily={mathFont}>(1, {fmt(fn(1))})</text>}
+      {compact && <text x={sx(2)} y={sy(fn(2)) + 14} textAnchor="middle" fill={C.ps} fontSize={11} fontFamily={mathFont}>(2, {fmt(fn(2))})</text>}
+      {!compact && <text x={sx(1)} y={sy(fn(1)) - 10} textAnchor="middle" fill={hitTP ? C.ok : C.ps} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg)">{"\u03B1"} = 1</text>}
+      {!compact && <text x={sx(2)} y={sy(fn(2)) + 18} textAnchor="middle" fill={hitTP ? C.ok : C.ps} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg)">{"\u03B2"} = 2</text>}
       {/* Moving dot at upper limit with coordinates */}
       {upperLim != null && !compact && ul > 1 && (() => {
         const dy = fn(ul);
         const dotVisible = dy >= yMin && dy <= yMax;
         return dotVisible && <>
           <circle cx={sx(ul)} cy={sy(dy)} r={5} fill={areaCol || C.ok} stroke={C.white} strokeWidth={1.5} />
-          <foreignObject x={sx(ul) - 30} y={sy(dy) - 10 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 600, fontStyle: "normal" }}>({fmt(ul)}, {fmt(dy)})</div></foreignObject>
+          <text x={sx(ul)} y={sy(dy) - 10} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg)">({fmt(ul)}, {fmt(dy)})</text>
         </>;
       })()}
-      {[0, 1, 2].map(x => <foreignObject x={sx(x) - 22} y={pH - pad.b + 14 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(x)}</Tex></div></foreignObject>)}
-      {[-2, 2].map(y => y >= yMin && y <= yMax && <foreignObject x={pad.l - 8 - 48} y={sy(y) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{String(y)}</Tex></div></foreignObject>)}
+      {[0, 1, 2].map(x => <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
+      {[-2, 2].map(y => y >= yMin && y <= yMax && <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
     </svg>
   );
 }

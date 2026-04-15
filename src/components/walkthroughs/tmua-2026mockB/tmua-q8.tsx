@@ -66,17 +66,17 @@ function SolveStepContent({ revealed, setRevealed }) {
         <polygon points={`${P1x},${P1y} ${Q1x},${Q1y} ${R1x},${R1y}`} fill={C.ps + "15"} stroke={C.ps} strokeWidth={1.5} />
         <path d={arc(P1x, P1y, 0, 30, 10)} fill="none" stroke={C.calc} strokeWidth={1} />
         <polyline points={`${Q1x-sqr},${Q1y} ${Q1x-sqr},${Q1y-sqr} ${Q1x},${Q1y-sqr}`} fill="none" stroke={C.calc} strokeWidth={1} />
-        <foreignObject x={P1x} y={P1y+12 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.text, textAlign: "left", lineHeight: 1 }}><Tex>{"P"}</Tex></div></foreignObject>
-        <foreignObject x={Q1x+2} y={Q1y+12 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.text, textAlign: "left", lineHeight: 1 }}><Tex>{"Q"}</Tex></div></foreignObject>
-        <foreignObject x={R1x+3} y={R1y-2 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.text, textAlign: "left", lineHeight: 1 }}><Tex>{"R"}</Tex></div></foreignObject>
-        <foreignObject x={(P1x+Q1x)/2 - 24} y={P1y+12 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.ps, textAlign: "center", lineHeight: 1 }}><Tex>{"S"}</Tex></div></foreignObject>
+        <text x={P1x} y={P1y+12} fill={C.text} fontSize={9} fontFamily={mathFont} fontStyle="italic">P</text>
+        <text x={Q1x+2} y={Q1y+12} fill={C.text} fontSize={9} fontFamily={mathFont} fontStyle="italic">Q</text>
+        <text x={R1x+3} y={R1y-2} fill={C.text} fontSize={9} fontFamily={mathFont} fontStyle="italic">R</text>
+        <text x={(P1x+Q1x)/2} y={P1y+12} textAnchor="middle" fill={C.ps} fontSize={9} fontWeight={700} fontFamily={mathFont}>S</text>
         <polygon points={`${P2x},${P2y} ${Q2x},${Q2y} ${R2x},${R2y}`} fill={C.assum + "15"} stroke={C.assum} strokeWidth={1.5} />
         <path d={arc(P2x, P2y, 0, 30, 10)} fill="none" stroke={C.calc} strokeWidth={1} />
         <path d={arc(Q2x, Q2y, 150, 180, 10)} fill="none" stroke={C.calc} strokeWidth={1} />
-        <foreignObject x={P2x} y={P2y+12 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.text, textAlign: "left", lineHeight: 1 }}><Tex>{"P"}</Tex></div></foreignObject>
-        <foreignObject x={Q2x+2} y={Q2y+12 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.text, textAlign: "left", lineHeight: 1 }}><Tex>{"Q"}</Tex></div></foreignObject>
-        <foreignObject x={R2x-2 - 50} y={R2y-4 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.text, textAlign: "right", lineHeight: 1 }}><Tex>{"R"}</Tex></div></foreignObject>
-        <foreignObject x={(P2x+Q2x)/2 - 24} y={P2y+12 - 12} width={48} height={16}><div style={{ fontSize: 11, color: C.assum, textAlign: "center", lineHeight: 1 }}><Tex>{"T"}</Tex></div></foreignObject>
+        <text x={P2x} y={P2y+12} fill={C.text} fontSize={9} fontFamily={mathFont} fontStyle="italic">P</text>
+        <text x={Q2x+2} y={Q2y+12} fill={C.text} fontSize={9} fontFamily={mathFont} fontStyle="italic">Q</text>
+        <text x={R2x-2} y={R2y-4} textAnchor="end" fill={C.text} fontSize={9} fontFamily={mathFont} fontStyle="italic">R</text>
+        <text x={(P2x+Q2x)/2} y={P2y+12} textAnchor="middle" fill={C.assum} fontSize={9} fontWeight={700} fontFamily={mathFont}>T</text>
       </svg>
     );
   })();

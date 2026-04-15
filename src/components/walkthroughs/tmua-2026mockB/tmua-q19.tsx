@@ -48,9 +48,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         <rect x={cx - 2 * s} y={cy - 2 * s} width={4 * s} height={4 * s} fill={C.calc + "15"} stroke={C.calc} strokeWidth={1.5} />
         <polyline points={makeCirc(1, 60)} fill={C.fail + "22"} stroke={C.fail} strokeWidth={1.5} />
         <circle cx={cx} cy={cy} r={2} fill={C.white} stroke={C.muted} strokeWidth={1} />
-        <foreignObject x={cx + 4} y={cy - 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.white, textAlign: "left", lineHeight: 1 }}><Tex>{"O"}</Tex></div></foreignObject>
-        <foreignObject x={cx + 4 * s + 4} y={cy + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ps, textAlign: "left", lineHeight: 1 }}><Tex>{"C1"}</Tex></div></foreignObject>
-        <foreignObject x={cx + 1 * s + 4} y={cy - 1 * s - 2 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.fail, textAlign: "left", lineHeight: 1 }}><Tex>{"d=1"}</Tex></div></foreignObject>
+        <text x={cx + 4} y={cy - 4} fill={C.white} fontSize={11} fontFamily={mathFont}>O</text>
+        <text x={cx + 4 * s + 4} y={cy + 4} fill={C.ps} fontSize={11} fontFamily={mathFont}>C1</text>
+        <text x={cx + 1 * s + 4} y={cy - 1 * s - 2} fill={C.fail} fontSize={11} fontFamily={mathFont}>d=1</text>
       </svg>
     );
   })();

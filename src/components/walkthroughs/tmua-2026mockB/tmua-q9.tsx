@@ -70,7 +70,7 @@ function SolveStepContent({ revealed, setRevealed }) {
         <polygon points={pts} fill={C.ok + "22"} stroke={C.ok} strokeWidth={1.5} />
         <circle cx={sx(1)} cy={sy(-2)} r={3} fill={C.calc} stroke={C.white} strokeWidth={1} />
         {[[4,-2,"(4,\u22122)"],[1,1,"(1,1)"],[-2,-2,"(\u22122,\u22122)"],[1,-5,"(1,\u22125)"]].map(([x,y,l],i) => <text key={i} x={sx(x)+(x>1?4:x<1?-4:4)} y={sy(y)+(y>-2?-4:y<-2?12:0)} textAnchor={x>1?"start":x<1?"end":"start"} fill={C.ok} fontSize={8} fontFamily={mathFont}>{l}</text>)}
-        <foreignObject x={sx(1) - 22} y={sy(-2)+12 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.calc, textAlign: "center", lineHeight: 1 }}><Tex>{"(1,-2)"}</Tex></div></foreignObject>
+        <text x={sx(1)} y={sy(-2)+12} textAnchor="middle" fill={C.calc} fontSize={8} fontFamily={mathFont}>(1,{"\u2212"}2)</text>
       </svg>
     );
   })();

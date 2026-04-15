@@ -98,9 +98,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         {showRect && h > 0 && <>
           <circle cx={sx(aVal)} cy={sy(yT)} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} />
           <circle cx={sx(aVal)} cy={sy(yB)} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} />
-          <foreignObject x={(sx(-aVal) + sx(aVal)) / 2 - 30} y={(sy(yT) + sy(yB)) / 2 + 4 - 12} width={60} height={18}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 700, fontStyle: "normal" }}>A = {Math.round(2 * aVal * h)}</div></foreignObject>
+          <text x={(sx(-aVal) + sx(aVal)) / 2} y={(sy(yT) + sy(yB)) / 2 + 4} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={700} fontFamily={mathFont}>A = {Math.round(2 * aVal * h)}</text>
         </>}
-        {label && <foreignObject x={pW / 2 - 22} y={pad.t - 6 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(label)}</Tex></div></foreignObject>}
+        {label && <text x={pW / 2} y={pad.t - 6} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lbs)">{label}</text>}
       </svg>
     );
   };
@@ -189,11 +189,11 @@ function VerifyStepContent() {
         <path d={curvePath(top)} fill="none" stroke={C.ps} strokeWidth={2} />
         <circle cx={sx(sqr3)} cy={sy(top(sqr3))} r={3.5} fill={C.muted} stroke={C.white} strokeWidth={1} />
         <circle cx={sx(-sqr3)} cy={sy(top(-sqr3))} r={3.5} fill={C.muted} stroke={C.white} strokeWidth={1} />
-        <foreignObject x={sx(1.8)} y={sy(bottom(1.8)) + 14 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.assum, textAlign: "left", lineHeight: 1 }}><Tex>{"y = x^2 - 1"}</Tex></div></foreignObject>
-        <foreignObject x={sx(1.5)} y={sy(top(1.5)) - 8 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ps, textAlign: "left", lineHeight: 1 }}><Tex>{"y = 5 - x^2"}</Tex></div></foreignObject>
-        {height > 0 && <foreignObject x={(rectX1 + rectX2) / 2 - 30} y={(rectY1 + rectY2) / 2 + 4 - 12} width={60} height={18}><div style={{ fontSize: 13, color: col, textAlign: "center", lineHeight: 1, fontFamily: mathFont, fontWeight: 700, fontStyle: "normal" }}>A = {fmt(area)}</div></foreignObject>}
-        {[-2, -1, 1, 2].map(x => <foreignObject x={sx(x) - 22} y={pH - pad.b + 14 - 12} width={44} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1 }}><Tex>{String(x)}</Tex></div></foreignObject>)}
-        {[0, 2, 4].map(y => <foreignObject x={pad.l - 8 - 48} y={sy(y) + 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{String(y)}</Tex></div></foreignObject>)}
+        <text x={sx(1.8)} y={sy(bottom(1.8)) + 14} textAnchor="start" fill={C.assum} fontSize={11} fontFamily={mathFont} filter="url(#lb)">y = x{"\u00B2"} {"\u2212"} 1</text>
+        <text x={sx(1.5)} y={sy(top(1.5)) - 8} textAnchor="start" fill={C.ps} fontSize={11} fontFamily={mathFont} filter="url(#lb)">y = 5 {"\u2212"} x{"\u00B2"}</text>
+        {height > 0 && <text x={(rectX1 + rectX2) / 2} y={(rectY1 + rectY2) / 2 + 4} textAnchor="middle" fill={col} fontSize={13} fontWeight={700} fontFamily={mathFont}>A = {fmt(area)}</text>}
+        {[-2, -1, 1, 2].map(x => <text key={x} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
+        {[0, 2, 4].map(y => <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
       </svg>
     );
   })();

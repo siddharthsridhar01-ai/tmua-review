@@ -63,9 +63,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         <circle cx={sx(3)} cy={sy(2)} r={4} fill={C.calc} stroke={C.white} strokeWidth={1} />
         <circle cx={sx(1)} cy={sy(2)} r={3} fill={C.ps} stroke={C.white} strokeWidth={1} />
         <circle cx={sx(3)} cy={sy(4)} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} />
-        <foreignObject x={sx(3) + 5} y={sy(2) + 12 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.calc, textAlign: "left", lineHeight: 1 }}><Tex>{"(3,2)"}</Tex></div></foreignObject>
-        <foreignObject x={sx(0.2)} y={sy(5) - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ps, textAlign: "left", lineHeight: 1 }}><Tex>{"original"}</Tex></div></foreignObject>
-        <foreignObject x={sx(5)} y={sy(5.5) - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "left", lineHeight: 1 }}><Tex>{"rotated"}</Tex></div></foreignObject>
+        <text x={sx(3) + 5} y={sy(2) + 12} fill={C.calc} fontSize={11} fontFamily={mathFont}>(3,2)</text>
+        <text x={sx(0.2)} y={sy(5)} fill={C.ps} fontSize={11} fontFamily={mathFont}>original</text>
+        <text x={sx(5)} y={sy(5.5)} fill={C.ok} fontSize={11} fontFamily={mathFont}>rotated</text>
       </svg>
     );
   })();

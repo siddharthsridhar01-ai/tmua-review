@@ -60,9 +60,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         <circle cx={sx(2)} cy={sy(6)} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} />
         <circle cx={sx(-0.5)} cy={sy(-0.25)} r={3} fill={C.fail} stroke={C.white} strokeWidth={1} />
         <circle cx={sx(-2)} cy={sy(2)} r={3} fill={C.muted} stroke={C.white} strokeWidth={1} />
-        <foreignObject x={sx(2) + 4} y={sy(6) - 4 - 12} width={50} height={16}><div style={{ fontSize: 11, color: C.ok, textAlign: "left", lineHeight: 1 }}><Tex>{"6"}</Tex></div></foreignObject>
-        <foreignObject x={sx(-0.5) + 6} y={sy(-0.25) + 12 - 12} width={80} height={18}><div style={{ fontSize: 11, color: C.fail, textAlign: "left", lineHeight: 1, fontFamily: mathFont, fontWeight: 400, fontStyle: "normal" }}>{"-\u00BC"}</div></foreignObject>
-        <foreignObject x={sx(-2) - 4 - 50} y={sy(2) - 4 - 12} width={52} height={16}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1 }}><Tex>{"2"}</Tex></div></foreignObject>
+        <text x={sx(2) + 4} y={sy(6) - 4} fill={C.ok} fontSize={11} fontFamily={mathFont}>6</text>
+        <text x={sx(-0.5) + 6} y={sy(-0.25) + 12} fill={C.fail} fontSize={11} fontFamily={mathFont}>{"-\u00BC"}</text>
+        <text x={sx(-2) - 4} y={sy(2) - 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>2</text>
       </svg>
     );
   })();
