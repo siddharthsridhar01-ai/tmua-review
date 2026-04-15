@@ -67,15 +67,15 @@ function SinSqGraph({ compact }) {
       <line x1={pad.l} y1={sy(2)} x2={pW - pad.r} y2={sy(2)} stroke={C.fail} strokeWidth={1.5} strokeDasharray="6,3" />
       <circle cx={sx(Math.PI / 2)} cy={sy(1)} r={compact ? 3.5 : 5} fill={C.ok} stroke={C.white} strokeWidth={1.5} />
       <circle cx={sx(3 * Math.PI / 2)} cy={sy(1)} r={compact ? 3.5 : 5} fill={C.ok} stroke={C.white} strokeWidth={1.5} />
-      {compact && <foreignObject x={sx(Math.PI / 2) - 24} y={sy(1) + 13 - 13} width={48} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{"\\pi /2"}</Tex></div></foreignObject>}
-      {compact && <foreignObject x={sx(3 * Math.PI / 2) - 28} y={sy(1) + 13 - 13} width={56} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{"3\\pi /2"}</Tex></div></foreignObject>}
-      {!compact && <foreignObject x={pW - pad.r - 4 - 56} y={sy(1) - 6 - 13} width={56} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}><Tex>{"u = 1"}</Tex></div></foreignObject>}
-      {!compact && <foreignObject x={pW - pad.r - 4 - 160} y={sy(2) - 6 - 13} width={160} height={20}><div style={{ fontSize: 11, color: C.fail, textAlign: "right", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}><Tex>{"u = 2 \\text{ (impossible)}"}</Tex></div></foreignObject>}
-      {!compact && <foreignObject x={sx(Math.PI / 2) - 24} y={sy(1) + 16 - 13} width={48} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"\\pi /2"}</Tex></div></foreignObject>}
-      {!compact && <foreignObject x={sx(3 * Math.PI / 2) - 28} y={sy(1) + 16 - 13} width={56} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"3\\pi /2"}</Tex></div></foreignObject>}
-      <foreignObject x={sx(Math.PI) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{"\\pi "}</Tex></div></foreignObject>
-      <foreignObject x={sx(2 * Math.PI) - 20} y={pH - pad.b + 14 - 13} width={40} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{"2\\pi "}</Tex></div></foreignObject>
-      {[1, 2].map(y => <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}><Tex>{"y"}</Tex></div></foreignObject>)}
+      {compact && <text x={sx(Math.PI / 2)} y={sy(1) + 13} textAnchor="middle" fill={C.ok} fontSize={11} fontFamily={mathFont}>{"\u03C0"}/2</text>}
+      {compact && <text x={sx(3 * Math.PI / 2)} y={sy(1) + 13} textAnchor="middle" fill={C.ok} fontSize={11} fontFamily={mathFont}>3{"\u03C0"}/2</text>}
+      {!compact && <text x={pW - pad.r - 4} y={sy(1) - 6} textAnchor="end" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg)">u = 1</text>}
+      {!compact && <text x={pW - pad.r - 4} y={sy(2) - 6} textAnchor="end" fill={C.fail} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg)">u = 2 (impossible)</text>}
+      {!compact && <text x={sx(Math.PI / 2)} y={sy(1) + 16} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg)">{"\u03C0"}/2</text>}
+      {!compact && <text x={sx(3 * Math.PI / 2)} y={sy(1) + 16} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg)">3{"\u03C0"}/2</text>}
+      <text x={sx(Math.PI)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{"\u03C0"}</text>
+      <text x={sx(2 * Math.PI)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>2{"\u03C0"}</text>
+      {[1, 2].map(y => <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
     </svg>
   );
 }
@@ -247,15 +247,15 @@ function VerifyStepContent() {
         <circle cx={sx(sol2)} cy={sy(1)} r={4} fill="none" stroke={C.ok} strokeWidth={1.5} strokeDasharray="3,2" />
         {/* Moving dot with coordinates */}
         <circle cx={sx(xVal)} cy={sy(sinSqVal)} r={6} fill={dotCol} stroke={C.white} strokeWidth={1.5} />
-        <foreignObject x={sx(xVal) - 48} y={sy(sinSqVal) - 12 - 13} width={96} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{`(${(xVal / Math.PI).toFixed(2)}{"\\u03C0"}, ${fmt(sinSqVal)})`}</Tex></div></foreignObject>
+        <text x={sx(xVal)} y={sy(sinSqVal) - 12} textAnchor="middle" fill={C.white} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg2)">({(xVal / Math.PI).toFixed(2)}{"\u03C0"}, {fmt(sinSqVal)})</text>
         {/* Labels */}
-        <foreignObject x={pW - pad.r - 4 - 56} y={sy(1) - 6 - 13} width={56} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}><Tex>{"u = 1"}</Tex></div></foreignObject>
-        <foreignObject x={pW - pad.r - 4 - 56} y={sy(2) - 6 - 13} width={56} height={20}><div style={{ fontSize: 11, color: C.fail, textAlign: "right", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}><Tex>{"u = 2"}</Tex></div></foreignObject>
-        <foreignObject x={sx(sol1) - 24} y={sy(1) + 16 - 13} width={48} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"\\pi /2"}</Tex></div></foreignObject>
-        <foreignObject x={sx(sol2) - 28} y={sy(1) + 16 - 13} width={56} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"3\\pi /2"}</Tex></div></foreignObject>
-        <foreignObject x={sx(Math.PI) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{"\\pi "}</Tex></div></foreignObject>
-        <foreignObject x={sx(2 * Math.PI) - 20} y={pH - pad.b + 14 - 13} width={40} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{"2\\pi "}</Tex></div></foreignObject>
-        {[1, 2].map(y => <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}><Tex>{"y"}</Tex></div></foreignObject>)}
+        <text x={pW - pad.r - 4} y={sy(1) - 6} textAnchor="end" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg2)">u = 1</text>
+        <text x={pW - pad.r - 4} y={sy(2) - 6} textAnchor="end" fill={C.fail} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg2)">u = 2</text>
+        <text x={sx(sol1)} y={sy(1) + 16} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg2)">{"\u03C0"}/2</text>
+        <text x={sx(sol2)} y={sy(1) + 16} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lblBg2)">3{"\u03C0"}/2</text>
+        <text x={sx(Math.PI)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{"\u03C0"}</text>
+        <text x={sx(2 * Math.PI)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>2{"\u03C0"}</text>
+        {[1, 2].map(y => <text key={y} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
       </svg>
     );
   })();

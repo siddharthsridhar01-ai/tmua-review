@@ -90,8 +90,8 @@ function SolveStepContent({ revealed, setRevealed }) {
         <line x1={sx(0)} y1={pad.t} x2={sx(0)} y2={pH - pad.b} stroke={C.muted} strokeWidth={0.7} />
         <circle cx={sx(cx)} cy={sy(cy)} r={r / (xMax - xMin) * gW} fill={C.ok + "15"} stroke={C.ok} strokeWidth={2} />
         <circle cx={sx(cx)} cy={sy(cy)} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} />
-        <foreignObject x={sx(cx) - 48} y={sy(cy) + 14 - 13} width={96} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"(-10, 10)"}</Tex></div></foreignObject>
-        <foreignObject x={sx(cx + r / 2)} y={sy(cy) - 4 - 13} width={88} height={20}><div style={{ fontSize: 11, color: C.assum, textAlign: "left", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}><Tex>{"r = 10\\sqrt2"}</Tex></div></foreignObject>
+        <text x={sx(cx)} y={sy(cy) + 14} textAnchor="middle" fill={C.ok} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbc)">({"\u2212"}10, 10)</text>
+        <text x={sx(cx + r / 2)} y={sy(cy) - 4} textAnchor="start" fill={C.assum} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lbc)">r = 10{"\u221A"}2</text>
       </svg>
     );
   })();
@@ -150,23 +150,23 @@ function VerifyStepContent() {
         <line x1={sx(0)} y1={pad.t} x2={sx(0)} y2={pH - pad.b} stroke={C.muted} strokeWidth={0.7} />
         {/* y = x tangent line */}
         <line x1={sx(yMin)} y1={sy(yMin)} x2={sx(yMax)} y2={sy(yMax)} stroke={C.muted + "44"} strokeWidth={1} strokeDasharray="6,4" />
-        <foreignObject x={sx(yMax - 2) - 56} y={sy(yMax - 2) + 14 - 13} width={56} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}><Tex>{"y = x"}</Tex></div></foreignObject>
+        <text x={sx(yMax - 2)} y={sy(yMax - 2) + 14} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">y = x</text>
         {/* Circle */}
         <circle cx={sx(cx)} cy={sy(cy)} r={rPx} fill={C.ok + "12"} stroke={C.ok} strokeWidth={2.5} />
         {/* Centre dot */}
         <circle cx={sx(cx)} cy={sy(cy)} r={4} fill={C.ok} stroke={C.white} strokeWidth={1.5} />
-        <foreignObject x={sx(cx) + 8} y={sy(cy) + 4 - 13} width={96} height={20}><div style={{ fontSize: 12, color: C.ok, textAlign: "left", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}><Tex>{"(-10, 10)"}</Tex></div></foreignObject>
+        <text x={sx(cx) + 8} y={sy(cy) + 4} textAnchor="start" fill={C.ok} fontSize={12} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">({"\u2212"}10, 10)</text>
         {/* Radius line */}
         <line x1={sx(cx)} y1={sy(cy)} x2={sx(cx + r)} y2={sy(cy)} stroke={C.assum} strokeWidth={1.5} strokeDasharray="4,3" />
-        <foreignObject x={sx(cx + r / 2) - 76} y={sy(cy) - 8 - 13} width={152} height={20}><div style={{ fontSize: 11, color: C.assum, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"r = 10\\sqrt2 \\approx  14.1"}</Tex></div></foreignObject>
+        <text x={sx(cx + r / 2)} y={sy(cy) - 8} textAnchor="middle" fill={C.assum} fontSize={11} fontWeight={600} fontFamily={mathFont} filter="url(#lb)">r = 10{"\u221A"}2 {"\u2248"} 14.1</text>
         {/* Area label inside */}
-        <foreignObject x={sx(cx) - 56} y={sy(cy) - 22 - 13} width={112} height={20}><div style={{ fontSize: 14, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 700, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"Area = 200\\pi "}</Tex></div></foreignObject>
+        <text x={sx(cx)} y={sy(cy) - 22} textAnchor="middle" fill={C.ok} fontSize={14} fontWeight={700} fontFamily={mathFont} filter="url(#lb)">Area = 200{"\u03C0"}</text>
         {/* Tangent point */}
         <circle cx={sx(0)} cy={sy(0)} r={3.5} fill={C.muted} stroke={C.white} strokeWidth={1} />
-        <foreignObject x={sx(0) + 6} y={sy(0) - 6 - 13} width={144} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}><Tex>{"\\text{tangent to } y = x"}</Tex></div></foreignObject>
+        <text x={sx(0) + 6} y={sy(0) - 6} textAnchor="start" fill={C.muted} fontSize={11} fontFamily={mathFont} filter="url(#lb)">tangent to y = x</text>
         {/* Axis labels */}
-        {[-20, -10, 10, 20].filter(x => x >= xMin && x <= xMax).map(x => <foreignObject key={`x${x}`} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{"x"}</Tex></div></foreignObject>)}
-        {[10, 20].filter(y => y >= yMin && y <= yMax).map(y => <foreignObject key={`y${y}`} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}><Tex>{"y"}</Tex></div></foreignObject>)}
+        {[-20, -10, 10, 20].filter(x => x >= xMin && x <= xMax).map(x => <text key={`x${x}`} x={sx(x)} y={pH - pad.b + 14} textAnchor="middle" fill={C.muted} fontSize={11} fontFamily={mathFont}>{x}</text>)}
+        {[10, 20].filter(y => y >= yMin && y <= yMax).map(y => <text key={`y${y}`} x={pad.l - 8} y={sy(y) + 4} textAnchor="end" fill={C.muted} fontSize={11} fontFamily={mathFont}>{y}</text>)}
       </svg>
     );
   })();
