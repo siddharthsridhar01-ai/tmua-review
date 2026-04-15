@@ -98,9 +98,9 @@ function SolveStepContent({ revealed, setRevealed }) {
         {showRect && h > 0 && <>
           <circle cx={sx(aVal)} cy={sy(yT)} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} />
           <circle cx={sx(aVal)} cy={sy(yB)} r={3} fill={C.ok} stroke={C.white} strokeWidth={1} />
-          <foreignObject x={(sx(-aVal) + sx(aVal)) / 2 - 32} y={(sy(yT) + sy(yB)) / 2 + 4 - 13} width={64} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 700, fontStyle: "normal", margin: "0 auto" }}>A = {Math.round(2 * aVal * h)}</div></foreignObject>
+          <foreignObject x={(sx(-aVal) + sx(aVal)) / 2 - 32} y={(sy(yT) + sy(yB)) / 2 + 4 - 13} width={64} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "center", lineHeight: 1, fontWeight: 700, fontStyle: "normal", margin: "0 auto" }}><Tex>{`A = ${Math.round(2 * aVal * h)}`}</Tex></div></foreignObject>
         </>}
-        {label && <foreignObject x={pW / 2 - 16} y={pad.t - 6 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>{label}</div></foreignObject>}
+        {label && <foreignObject x={pW / 2 - 16} y={pad.t - 6 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{label}</Tex></div></foreignObject>}
       </svg>
     );
   };
@@ -189,11 +189,11 @@ function VerifyStepContent() {
         <path d={curvePath(top)} fill="none" stroke={C.ps} strokeWidth={2} />
         <circle cx={sx(sqr3)} cy={sy(top(sqr3))} r={3.5} fill={C.muted} stroke={C.white} strokeWidth={1} />
         <circle cx={sx(-sqr3)} cy={sy(top(-sqr3))} r={3.5} fill={C.muted} stroke={C.white} strokeWidth={1} />
-        <foreignObject x={sx(1.8)} y={sy(bottom(1.8)) + 14 - 13} width={112} height={20}><div style={{ fontSize: 11, color: C.assum, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>y = x{"\u00B2"} {"\u2212"} 1</div></foreignObject>
-        <foreignObject x={sx(1.5)} y={sy(top(1.5)) - 8 - 13} width={112} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>y = 5 {"\u2212"} x{"\u00B2"}</div></foreignObject>
-        {height > 0 && <foreignObject x={(rectX1 + rectX2) / 2 - 32} y={(rectY1 + rectY2) / 2 + 4 - 13} width={64} height={20}><div style={{ fontSize: 13, color: col, textAlign: "center", lineHeight: 1, fontWeight: 700, fontStyle: "normal", margin: "0 auto" }}>A = {fmt(area)}</div></foreignObject>}
-        {[-2, -1, 1, 2].map(x => <foreignObject key={x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
-        {[0, 2, 4].map(y => <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
+        <foreignObject x={sx(1.8)} y={sy(bottom(1.8)) + 14 - 13} width={112} height={20}><div style={{ fontSize: 11, color: C.assum, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}><Tex>{"y = x^2 - 1"}</Tex></div></foreignObject>
+        <foreignObject x={sx(1.5)} y={sy(top(1.5)) - 8 - 13} width={112} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}><Tex>{"y = 5 - x^2"}</Tex></div></foreignObject>
+        {height > 0 && <foreignObject x={(rectX1 + rectX2) / 2 - 32} y={(rectY1 + rectY2) / 2 + 4 - 13} width={64} height={20}><div style={{ fontSize: 13, color: col, textAlign: "center", lineHeight: 1, fontWeight: 700, fontStyle: "normal", margin: "0 auto" }}><Tex>{`A = ${fmt(area)}`}</Tex></div></foreignObject>}
+        {[-2, -1, 1, 2].map(x => <foreignObject key={x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{"x"}</Tex></div></foreignObject>)}
+        {[0, 2, 4].map(y => <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}><Tex>{"y"}</Tex></div></foreignObject>)}
       </svg>
     );
   })();

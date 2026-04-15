@@ -157,27 +157,27 @@ function VerifyStepContent() {
         <line x1={pad.l} y1={sy(0)} x2={pW - pad.r} y2={sy(0)} stroke={C.muted} strokeWidth={1} />
         <line x1={sx(0)} y1={pad.t} x2={sx(0)} y2={pH - pad.b} stroke={C.muted} strokeWidth={1} />
         <path d={curvePath(base)} fill="none" stroke={C.muted} strokeWidth={1.5} strokeDasharray="5,4" />
-        <foreignObject x={sx(2)} y={sy(base(2)) - 8 - 13} width={72} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>y = x{"\u00B2"}</div></foreignObject>
+        <foreignObject x={sx(2)} y={sy(base(2)) - 8 - 13} width={72} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}><Tex>{"y = x^2"}</Tex></div></foreignObject>
         {checked.I && <>
           <path d={curvePath(f1)} fill="none" stroke={C.ok} strokeWidth={2.5} />
           <circle cx={sx(2)} cy={sy(2)} r={4} fill={C.ok} stroke={C.white} strokeWidth={1} />
-          <foreignObject x={sx(2) + 8} y={sy(2) + 4 - 13} width={64} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "left", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>(2, 2)</div></foreignObject>
-          <foreignObject x={sx(3.8) - 30} y={sy(f1(3.8)) - 8 - 13} width={30} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}>I</div></foreignObject>
+          <foreignObject x={sx(2) + 8} y={sy(2) + 4 - 13} width={64} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "left", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}><Tex>{"(2, 2)"}</Tex></div></foreignObject>
+          <foreignObject x={sx(3.8) - 30} y={sy(f1(3.8)) - 8 - 13} width={30} height={20}><div style={{ fontSize: 11, color: C.ok, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", marginLeft: "auto" }}><Tex>{"I"}</Tex></div></foreignObject>
         </>}
         {checked.II && <>
           <path d={curvePath(f2)} fill="none" stroke={C.ps} strokeWidth={2.5} />
           <circle cx={sx(-3)} cy={sy(0)} r={4} fill={C.ps} stroke={C.white} strokeWidth={1} />
-          <foreignObject x={sx(-3) - 40} y={sy(0) - 10 - 13} width={80} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>({"\u2212"}3, 0)</div></foreignObject>
-          <foreignObject x={sx(-4.5)} y={sy(f2(-4.5)) - 8 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>II</div></foreignObject>
+          <foreignObject x={sx(-3) - 40} y={sy(0) - 10 - 13} width={80} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"(-3, 0)"}</Tex></div></foreignObject>
+          <foreignObject x={sx(-4.5)} y={sy(f2(-4.5)) - 8 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}><Tex>{"II"}</Tex></div></foreignObject>
         </>}
         {checked.III && <>
           <path d={curvePath(f3)} fill="none" stroke={C.fail} strokeWidth={2.5} />
           <circle cx={sx(0.5)} cy={sy(0)} r={4} fill={C.fail} stroke={C.white} strokeWidth={1} />
-          <foreignObject x={sx(0.5) + 8} y={sy(0) + 4 - 13} width={80} height={20}><div style={{ fontSize: 11, color: C.fail, textAlign: "left", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>(0.5, 0)</div></foreignObject>
-          <foreignObject x={sx(1.3)} y={sy(f3(1.3)) - 8 - 13} width={40} height={20}><div style={{ fontSize: 11, color: C.fail, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}>III</div></foreignObject>
+          <foreignObject x={sx(0.5) + 8} y={sy(0) + 4 - 13} width={80} height={20}><div style={{ fontSize: 11, color: C.fail, textAlign: "left", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}><Tex>{"(0.5, 0)"}</Tex></div></foreignObject>
+          <foreignObject x={sx(1.3)} y={sy(f3(1.3)) - 8 - 13} width={40} height={20}><div style={{ fontSize: 11, color: C.fail, textAlign: "left", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content" }}><Tex>{"III"}</Tex></div></foreignObject>
         </>}
-        {[-4,-3,-2,-1,1,2,3,4].map(x => <foreignObject key={x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
-        {[4, 8].map(y => <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
+        {[-4,-3,-2,-1,1,2,3,4].map(x => <foreignObject key={x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{"x"}</Tex></div></foreignObject>)}
+        {[4, 8].map(y => <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}><Tex>{"y"}</Tex></div></foreignObject>)}
       </svg>
     );
   })();

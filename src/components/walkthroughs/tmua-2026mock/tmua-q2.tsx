@@ -70,21 +70,21 @@ function CubicGraph({ showArea, compact, upperLim, areaCol, hitTP }) {
       <path d={"M" + pts.join("L")} fill="none" stroke={C.ps} strokeWidth={2.5} />
       <circle cx={sx(1)} cy={sy(fn(1))} r={compact ? 3.5 : 5} fill={hitTP ? C.ok : C.ps} stroke={C.white} strokeWidth={1.5} />
       <circle cx={sx(2)} cy={sy(fn(2))} r={compact ? 3.5 : 5} fill={hitTP ? C.ok : C.ps} stroke={C.white} strokeWidth={1.5} />
-      {compact && <foreignObject x={sx(1) - 36} y={sy(fn(1)) - 8 - 13} width={72} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>(1, {fmt(fn(1))})</div></foreignObject>}
-      {compact && <foreignObject x={sx(2) - 36} y={sy(fn(2)) + 14 - 13} width={72} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>(2, {fmt(fn(2))})</div></foreignObject>}
-      {!compact && <foreignObject x={sx(1) - 32} y={sy(fn(1)) - 10 - 13} width={64} height={20}><div style={{ fontSize: 11, color: hitTP ? C.ok : C.ps, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>{"\u03B1"} = 1</div></foreignObject>}
-      {!compact && <foreignObject x={sx(2) - 32} y={sy(fn(2)) + 18 - 13} width={64} height={20}><div style={{ fontSize: 11, color: hitTP ? C.ok : C.ps, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>{"\u03B2"} = 2</div></foreignObject>}
+      {compact && <foreignObject x={sx(1) - 36} y={sy(fn(1)) - 8 - 13} width={72} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{`(1, {fmt(fn(1))})`}</Tex></div></foreignObject>}
+      {compact && <foreignObject x={sx(2) - 36} y={sy(fn(2)) + 14 - 13} width={72} height={20}><div style={{ fontSize: 11, color: C.ps, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{`(2, {fmt(fn(2))})`}</Tex></div></foreignObject>}
+      {!compact && <foreignObject x={sx(1) - 32} y={sy(fn(1)) - 10 - 13} width={64} height={20}><div style={{ fontSize: 11, color: hitTP ? C.ok : C.ps, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"\\alpha  = 1"}</Tex></div></foreignObject>}
+      {!compact && <foreignObject x={sx(2) - 32} y={sy(fn(2)) + 18 - 13} width={64} height={20}><div style={{ fontSize: 11, color: hitTP ? C.ok : C.ps, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"\\beta  = 2"}</Tex></div></foreignObject>}
       {/* Moving dot at upper limit with coordinates */}
       {upperLim != null && !compact && ul > 1 && (() => {
         const dy = fn(ul);
         const dotVisible = dy >= yMin && dy <= yMax;
         return dotVisible && <>
           <circle cx={sx(ul)} cy={sy(dy)} r={5} fill={areaCol || C.ok} stroke={C.white} strokeWidth={1.5} />
-          <foreignObject x={sx(ul) - 40} y={sy(dy) - 10 - 13} width={80} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>({fmt(ul)}, {fmt(dy)})</div></foreignObject>
+          <foreignObject x={sx(ul) - 40} y={sy(dy) - 10 - 13} width={80} height={20}><div style={{ fontSize: 11, color: C.white, textAlign: "center", lineHeight: 1, fontWeight: 600, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{`(${fmt(ul)}, ${fmt(dy)})`}</Tex></div></foreignObject>
         </>;
       })()}
-      {[0, 1, 2].map(x => <foreignObject key={x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>{x}</div></foreignObject>)}
-      {[-2, 2].map(y => y >= yMin && y <= yMax && <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
+      {[0, 1, 2].map(x => <foreignObject key={x} x={sx(x) - 16} y={pH - pad.b + 14 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{"x"}</Tex></div></foreignObject>)}
+      {[-2, 2].map(y => y >= yMin && y <= yMax && <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}><Tex>{"y"}</Tex></div></foreignObject>)}
     </svg>
   );
 }

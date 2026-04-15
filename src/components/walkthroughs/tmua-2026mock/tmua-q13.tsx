@@ -137,12 +137,12 @@ function VerifyStepContent() {
           const barCol = active ? (isExact ? C.ok : C.ps) : C.border;
           return (<g key={i}>
             <rect x={sx(i)} y={sy(v)} width={barW} height={sy(0) - sy(v)} rx={4} fill={active ? barCol + "44" : "#1e2030"} stroke={barCol} strokeWidth={1.5} />
-            {active && <foreignObject x={sx(i) + barW / 2 - 16} y={sy(v) - 6 - 13} width={32} height={20}><div style={{ fontSize: 13, color: barCol, textAlign: "center", lineHeight: 1, fontWeight: 700, fontStyle: "normal", margin: "0 auto" }}>{v}</div></foreignObject>}
-            <foreignObject x={sx(i) + barW / 2 - 36} y={pH - pad.b + 14 - 13} width={72} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}>[{i},{i + 1}]</div></foreignObject>
+            {active && <foreignObject x={sx(i) + barW / 2 - 16} y={sy(v) - 6 - 13} width={32} height={20}><div style={{ fontSize: 13, color: barCol, textAlign: "center", lineHeight: 1, fontWeight: 700, fontStyle: "normal", margin: "0 auto" }}><Tex>{"v"}</Tex></div></foreignObject>}
+            <foreignObject x={sx(i) + barW / 2 - 36} y={pH - pad.b + 14 - 13} width={72} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", margin: "0 auto" }}><Tex>{`[${i}, ${i+1}]`}</Tex></div></foreignObject>
           </g>);
         })}
-        {[2, 4, 6, 8].map(y => <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}>{y}</div></foreignObject>)}
-        <foreignObject x={pW / 2 - 76} y={pad.t - 4 - 13} width={152} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}>Each bar = 2n + 1</div></foreignObject>
+        {[2, 4, 6, 8].map(y => <foreignObject key={y} x={pad.l - 8 - 32} y={sy(y) + 4 - 13} width={32} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "right", lineHeight: 1, fontWeight: 400, fontStyle: "normal", marginLeft: "auto" }}><Tex>{"y"}</Tex></div></foreignObject>)}
+        <foreignObject x={pW / 2 - 76} y={pad.t - 4 - 13} width={152} height={20}><div style={{ fontSize: 11, color: C.muted, textAlign: "center", lineHeight: 1, fontWeight: 400, fontStyle: "normal", background: "rgba(15,17,23,0.7)", borderRadius: 2, padding: "0 2px", width: "fit-content", margin: "0 auto" }}><Tex>{"\\text{Each bar} = 2n + 1"}</Tex></div></foreignObject>
       </svg>
     );
   })();
