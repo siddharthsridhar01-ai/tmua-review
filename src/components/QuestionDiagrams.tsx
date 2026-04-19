@@ -51,7 +51,7 @@ function Q17Diagram({ theme }: { theme?: "dark" | "light" }) {
 }
 
 const diagramRegistry: Record<string, Record<number, React.FC<{ theme?: "dark" | "light" }>>> = {
-  "tmua-2026mock": {
+  "tmua-2026mockA-p1": {
     17: Q17Diagram,
   },
 };
