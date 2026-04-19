@@ -37,6 +37,7 @@ export const topicColors: Record<string, string> = {
   "Logarithms": "#ffeaa7",
   "Differential Equations": "#c09875",
   "Number Theory": "#636e72",
+  "Logic & Reasoning": "#e84393",
 };
 
 export interface Question {

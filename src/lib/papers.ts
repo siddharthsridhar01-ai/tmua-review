@@ -212,4 +212,148 @@ export const papers: Record<string, { title: string; source: string; questions: 
         options: [{letter:"A",tex:"\\frac{9}{4}"},{letter:"B",tex:"4"},{letter:"C",tex:"\\frac{17}{4}"},{letter:"D",tex:"6"},{letter:"E",tex:"\\frac{25}{4}"},{letter:"F",tex:"8"}] },
     ],
   },
+  "tmua-2026mockP2": {
+    title: "TMUA 2026 Mock Paper 2",
+    source: "AceAdmissions Mock",
+    questions: [
+      { displayNum: 1, topic: "Calculus", correctAnswer: "D", hasWalkthrough: true,
+        text: "How many stationary points does the curve y = 2x\u2074 \u2212 3x\u00B2 + 1 have?",
+        richText: ["Determine the number of stationary points on the curve with equation", "br", {display:"y = 2x^4 - 3x^2 + 1"}],
+        options: [{letter:"A",tex:"0"},{letter:"B",tex:"1"},{letter:"C",tex:"2"},{letter:"D",tex:"3"},{letter:"E",tex:"4"},{letter:"F",tex:"5"}] },
+
+      { displayNum: 2, topic: "Calculus", correctAnswer: "E", hasWalkthrough: true,
+        text: "Evaluate the difference of two integrals involving (\u221Ax \u00B1 1/\u221Ax)\u00B2 from 1 to 9.",
+        richText: ["Evaluate", "br", {display:"\\int_1^9\\!\\left(\\sqrt{x}+\\tfrac{1}{\\sqrt{x}}\\right)^{\\!2}dx \\;-\\; \\int_1^9\\!\\left(\\sqrt{x}-\\tfrac{1}{\\sqrt{x}}\\right)^{\\!2}dx"}],
+        options: [{letter:"A",tex:"0"},{letter:"B",tex:"4"},{letter:"C",tex:"14"},{letter:"D",tex:"28"},{letter:"E",tex:"32"},{letter:"F",tex:"56"}] },
+
+      { displayNum: 3, topic: "Logic & Reasoning", correctAnswer: "G", hasWalkthrough: true,
+        text: "Which of n = 2, 3, 5 is a counterexample to 'n prime \u21D2 n\u00B2+4 not prime'?",
+        richText: ["Consider the following claim about the positive integer ", {tex:"n"}, ":", "br", {display:"n \\text{ prime} \\;\\Rightarrow\\; n^2 + 4 \\text{ not prime}"}, "Which of the following provide(s) a counterexample to this claim?", "br", {items:[{label:"I",tex:"n = 2"},{label:"II",tex:"n = 3"},{label:"III",tex:"n = 5"}]}],
+        options: [{letter:"A",tex:"\\text{none}"},{letter:"B",tex:"\\text{I only}"},{letter:"C",tex:"\\text{II only}"},{letter:"D",tex:"\\text{III only}"},{letter:"E",tex:"\\text{I and II}"},{letter:"F",tex:"\\text{I and III}"},{letter:"G",tex:"\\text{II and III}"},{letter:"H",tex:"\\text{I, II and III}"}] },
+
+      { displayNum: 4, topic: "Logic & Reasoning", correctAnswer: "F", hasWalkthrough: true,
+        text: "A proof that n\u00B3+n is divisible by 6 for every integer n. On which line does the first error occur?",
+        richText: ["The following is a proof that ", {tex:"n^3 + n"}, " is divisible by ", {tex:"6"}, " for every positive integer ", {tex:"n"}, ".", "br", {items:[
+          {label:"I",   tex:"n^3 + n = n(n^2 + 1)"},
+          {label:"II",  tex:"\\text{One of } n, n^2+1 \\text{ is even, so } n(n^2+1) \\text{ is even}"},
+          {label:"III", tex:"\\text{So } n^3+n \\text{ is divisible by } 2"},
+          {label:"IV",  tex:"\\text{Among } n-1, n, n+1 \\text{ one is divisible by } 3"},
+          {label:"V",   tex:"(n-1)n(n+1) = n^3 - n \\text{ is divisible by } 3"},
+          {label:"VI",  tex:"n^3 + n = (n^3 - n) + 2n, \\text{ so } n^3+n \\text{ is divisible by } 3"},
+          {label:"VII", tex:"\\therefore n^3+n \\text{ is divisible by } 6"}
+        ]}, "br", "Which of the following describes this proof?"],
+        options: [{letter:"A",tex:"\\text{It is completely correct.}"},{letter:"B",tex:"\\text{The first error is on line I.}"},{letter:"C",tex:"\\text{The first error is on line III.}"},{letter:"D",tex:"\\text{The first error is on line IV.}"},{letter:"E",tex:"\\text{The first error is on line V.}"},{letter:"F",tex:"\\text{The first error is on line VI.}"},{letter:"G",tex:"\\text{The first error is on line VII.}"},{letter:"H",tex:"\\text{There is an error on every line.}"}] },
+
+      { displayNum: 5, topic: "Logic & Reasoning", correctAnswer: "H", hasWalkthrough: true,
+        text: "Which statements are equivalent to 'for all real x, x\u00B2 + 1 > 0'?",
+        richText: ["Consider the statement", "br", {display:"\\text{For all real } x, \\; x^2 + 1 > 0."}, "Which of the following statements is/are equivalent to this?", "br", {items:[
+          {label:"I",   tex:"\\text{There is no real } x \\text{ with } x^2 + 1 \\le 0"},
+          {label:"II",  tex:"\\text{For all real } x, \\; x^2 \\ge 0"},
+          {label:"III", tex:"\\text{It is not the case that there exists a real } x \\text{ with } x^2 + 1 \\le 0"}
+        ]}],
+        options: [{letter:"A",tex:"\\text{none of them}"},{letter:"B",tex:"\\text{I only}"},{letter:"C",tex:"\\text{II only}"},{letter:"D",tex:"\\text{III only}"},{letter:"E",tex:"\\text{I and II only}"},{letter:"F",tex:"\\text{I and III only}"},{letter:"G",tex:"\\text{II and III only}"},{letter:"H",tex:"\\text{I, II and III}"}] },
+
+      { displayNum: 6, topic: "Logic & Reasoning", correctAnswer: "B", hasWalkthrough: true,
+        text: "Let x, y be real. P: xy > 0. Q: x > 0 and y > 0. Which describes P and Q?",
+        richText: ["Let ", {tex:"x"}, " and ", {tex:"y"}, " be real numbers. Consider the two statements:", "br", {items:[{label:"P",tex:"xy > 0"},{label:"Q",tex:"x > 0 \\text{ and } y > 0"}]}, "Which option best describes the relationship between P and Q?"],
+        options: [{letter:"A",tex:"\\text{P is sufficient but not necessary for Q}"},{letter:"B",tex:"\\text{P is necessary but not sufficient for Q}"},{letter:"C",tex:"\\text{P is necessary and sufficient for Q}"},{letter:"D",tex:"\\text{P is neither necessary nor sufficient for Q}"}] },
+
+      { displayNum: 7, topic: "Coordinate Geometry", correctAnswer: "E", hasWalkthrough: true,
+        text: "Line ax + by = c has negative gradient and positive y-intercept. Which is a necessary but not sufficient condition on a, b, c?",
+        richText: ["The line with equation ", {tex:"ax + by = c"}, " has negative gradient and positive y-intercept.", "br", "Which of the following is a necessary but not sufficient condition on ", {tex:"a, b, c"}, "?"],
+        options: [{letter:"A",tex:"a > 0"},{letter:"B",tex:"b > 0"},{letter:"C",tex:"c > 0"},{letter:"D",tex:"a \\text{ and } b \\text{ have the same sign}"},{letter:"E",tex:"a \\text{ and } c \\text{ have the same sign}"},{letter:"F",tex:"b \\text{ and } c \\text{ have the same sign}"}] },
+
+      { displayNum: 8, topic: "Sequences & Series", correctAnswer: "C", hasWalkthrough: true,
+        text: "Smallest n for which any selection of n terms from 2, 5, 8, \u2026, 50 must contain two summing to 52.",
+        richText: ["A selection, ", {tex:"S"}, ", of ", {tex:"n"}, " terms is taken from the arithmetic sequence", "br", {display:"2, 5, 8, 11, \\ldots, 50"}, "Consider the following statement:", "br", {items:[{label:"(*)",tex:"\\text{There are two distinct terms in } S \\text{ whose sum is } 52"}]}, "What is the smallest value of ", {tex:"n"}, " for which (*) is necessarily true?"],
+        options: [{letter:"A",tex:"8"},{letter:"B",tex:"9"},{letter:"C",tex:"10"},{letter:"D",tex:"11"},{letter:"E",tex:"12"},{letter:"F",tex:"13"},{letter:"G",tex:"17"}] },
+
+      { displayNum: 9, topic: "Logic & Reasoning", correctAnswer: "C", hasWalkthrough: true,
+        text: "Complete set of values of k for which 'for all real x, x \u2265 k \u21D2 x\u00B2 \u2265 k' is true.",
+        richText: ["Consider the following statement about a real number ", {tex:"k"}, ":", "br", {display:"\\text{For all real } x, \\quad x \\ge k \\;\\Rightarrow\\; x^2 \\ge k"}, "What is the complete set of values of ", {tex:"k"}, " for which this statement is true?"],
+        options: [{letter:"A",tex:"k \\le 0"},{letter:"B",tex:"k \\ge 1"},{letter:"C",tex:"k \\le 0 \\text{ or } k \\ge 1"},{letter:"D",tex:"0 < k < 1"},{letter:"E",tex:"\\text{all real } k"},{letter:"F",tex:"\\text{no real } k"}] },
+
+      { displayNum: 10, topic: "Logic & Reasoning", correctAnswer: "B", hasWalkthrough: true,
+        text: "Which statements I, II, III about positive integers m, n are true?",
+        richText: ["Which of the following statements about positive integers ", {tex:"m"}, " and ", {tex:"n"}, " is/are true?", "br", {items:[
+          {label:"I",   tex:"\\text{If } m \\text{ and } n \\text{ are both even, then } m + n \\text{ is even}"},
+          {label:"II",  tex:"\\text{If } m + n \\text{ is even, then } m \\text{ and } n \\text{ are both even}"},
+          {label:"III", tex:"\\text{If } mn \\text{ is odd, then } m \\text{ or } n \\text{ is odd}"}
+        ]}],
+        options: [{letter:"A",tex:"\\text{none of them}"},{letter:"B",tex:"\\text{I only}"},{letter:"C",tex:"\\text{II only}"},{letter:"D",tex:"\\text{III only}"},{letter:"E",tex:"\\text{I and II only}"},{letter:"F",tex:"\\text{I and III only}"},{letter:"G",tex:"\\text{II and III only}"},{letter:"H",tex:"\\text{I, II and III}"}] },
+
+      { displayNum: 11, topic: "Logic & Reasoning", correctAnswer: "A", hasWalkthrough: true,
+        text: "Proof that \u221A2 is irrational. Which line, if any, contains the first error?",
+        richText: ["The following is a proof that ", {tex:"\\sqrt{2}"}, " is irrational.", "br", {items:[
+          {label:"I",   tex:"\\text{Suppose for contradiction } \\sqrt{2} = \\tfrac{p}{q} \\text{ with integers } p, q"},
+          {label:"II",  tex:"\\text{and } p/q \\text{ in lowest terms (no common factor)}"},
+          {label:"III", tex:"\\text{Then } p^2 = 2q^2, \\text{ so } p^2 \\text{ is even, so } p \\text{ is even}"},
+          {label:"IV",  tex:"\\text{Write } p = 2k, \\text{ so } 4k^2 = 2q^2, \\text{ giving } q^2 = 2k^2"},
+          {label:"V",   tex:"\\text{So } q^2 \\text{ is even, hence } q \\text{ is even}"},
+          {label:"VI",  tex:"\\text{But } p, q \\text{ both even contradicts lowest terms, so } \\sqrt{2} \\text{ is irrational}"}
+        ]}, "br", "Which of the following describes the proof?"],
+        options: [{letter:"A",tex:"\\text{It is completely correct.}"},{letter:"B",tex:"\\text{The first error is on line I.}"},{letter:"C",tex:"\\text{The first error is on line II.}"},{letter:"D",tex:"\\text{The first error is on line III.}"},{letter:"E",tex:"\\text{The first error is on line IV.}"},{letter:"F",tex:"\\text{The first error is on line V.}"},{letter:"G",tex:"\\text{The first error is on line VI.}"},{letter:"H",tex:"\\text{There is an error on every line.}"}] },
+
+      { displayNum: 12, topic: "Calculus", correctAnswer: "A", hasWalkthrough: true,
+        text: "Order P = \u222B\u2080\u00B9 x dx, Q = \u222B\u2080\u00B9 \u221Ax dx, R = \u222B\u2080\u00B9 \u221B x dx.",
+        richText: ["Define", "br", {display:"P = \\int_0^1 x\\,dx, \\quad Q = \\int_0^1 \\sqrt{x}\\,dx, \\quad R = \\int_0^1 \\sqrt[3]{x}\\,dx"}, "Which of the following is correct?"],
+        options: [{letter:"A",tex:"P < Q < R"},{letter:"B",tex:"P < R < Q"},{letter:"C",tex:"Q < P < R"},{letter:"D",tex:"Q < R < P"},{letter:"E",tex:"R < P < Q"},{letter:"F",tex:"R < Q < P"}] },
+
+      { displayNum: 13, topic: "Algebra", correctAnswer: "D", hasWalkthrough: true,
+        text: "How many values of k make x\u00B2 \u2212 2kx + (k+2) = 0 have exactly one real solution?",
+        richText: ["For how many values of ", {tex:"k"}, " does the equation", "br", {display:"x^2 - 2kx + (k + 2) = 0"}, "have exactly one real solution?"],
+        options: [{letter:"A",tex:"\\text{no values}"},{letter:"B",tex:"\\text{exactly one}"},{letter:"C",tex:"\\text{exactly two}"},{letter:"D",tex:"\\text{exactly three}"},{letter:"E",tex:"\\text{exactly four}"},{letter:"F",tex:"\\text{infinitely many}"}] },
+
+      { displayNum: 14, topic: "Algebra", correctAnswer: "C", hasWalkthrough: true,
+        text: "(p\u00B2 \u2212 3)x = p + \u221A3 has a unique solution in x. Find the complete set of values of p.",
+        richText: ["Find the complete set of real values of ", {tex:"p"}, " for which the equation", "br", {display:"(p^2 - 3)x = p + \\sqrt{3}"}, "has a unique solution in ", {tex:"x"}, "."],
+        options: [{letter:"A",tex:"p \\ne \\sqrt{3}"},{letter:"B",tex:"p \\ne -\\sqrt{3}"},{letter:"C",tex:"p \\ne \\sqrt{3} \\text{ and } p \\ne -\\sqrt{3}"},{letter:"D",tex:"p = \\sqrt{3}"},{letter:"E",tex:"p = -\\sqrt{3}"},{letter:"F",tex:"\\text{all real } p"}] },
+
+      { displayNum: 15, topic: "Probability", correctAnswer: "D", hasWalkthrough: true,
+        text: "Two fair dice. Probability sum is a prime number?",
+        richText: ["Two fair six-sided dice are rolled.", "br", "What is the probability that the sum of the numbers shown is a prime number?"],
+        options: [{letter:"A",tex:"\\tfrac{1}{3}"},{letter:"B",tex:"\\tfrac{2}{5}"},{letter:"C",tex:"\\tfrac{1}{2}"},{letter:"D",tex:"\\tfrac{5}{12}"},{letter:"E",tex:"\\tfrac{7}{12}"},{letter:"F",tex:"\\tfrac{15}{36}"},{letter:"G",tex:"\\tfrac{1}{4}"}] },
+
+      { displayNum: 16, topic: "Number Theory", correctAnswer: "B", hasWalkthrough: true,
+        text: "Which of I, II, III are true for all positive integers a, b?",
+        richText: ["Let ", {tex:"a"}, " and ", {tex:"b"}, " be positive integers.", "br", "Which of the following statements is/are true for all ", {tex:"a, b"}, "?", "br", {items:[
+          {label:"I",   tex:"\\text{If } 5 \\text{ is a factor of } ab, \\text{ then } 5 \\text{ is a factor of } a \\text{ or } 5 \\text{ is a factor of } b"},
+          {label:"II",  tex:"\\operatorname{hcf}(a, b) \\cdot \\operatorname{lcm}(a, b) = ab"},
+          {label:"III", tex:"\\text{If } \\operatorname{hcf}(a, b) = 1, \\text{ then } \\operatorname{hcf}(a + b, ab) = 1"}
+        ]}],
+        options: [{letter:"A",tex:"\\text{none of them}"},{letter:"B",tex:"\\text{I only}"},{letter:"C",tex:"\\text{II only}"},{letter:"D",tex:"\\text{III only}"},{letter:"E",tex:"\\text{I and II only}"},{letter:"F",tex:"\\text{I and III only}"},{letter:"G",tex:"\\text{II and III only}"},{letter:"H",tex:"\\text{I, II and III}"}] },
+
+      { displayNum: 17, topic: "Logic & Reasoning", correctAnswer: "B", hasWalkthrough: true,
+        text: "A claimed proof about the cubic x\u00B3 \u2212 3x\u00B2 + c. Which best describes the argument?",
+        richText: ["Consider the following argument, which claims to prove:", "br", {display:"\\text{For all real } c \\text{ with } 0 < c < 4, \\; x^3 - 3x^2 + c = 0 \\text{ has three distinct real roots.}"}, {items:[
+          {label:"I",   tex:"f(x) = x^3 - 3x^2 + c \\text{ has } f'(x) = 3x^2 - 6x = 3x(x - 2)"},
+          {label:"II",  tex:"f \\text{ has critical points at } x = 0 \\text{ and } x = 2"},
+          {label:"III", tex:"f(0) = c, \\; f(2) = c - 4"},
+          {label:"IV",  tex:"\\text{If } f \\text{ has three distinct real roots, then the critical values have opposite signs}"},
+          {label:"V",   tex:"f(0) \\cdot f(2) = c(c - 4) < 0 \\text{ when } 0 < c < 4"},
+          {label:"VI",  tex:"\\therefore \\text{ the cubic has three distinct real roots.}"}
+        ]}, "br", "Which of the following best describes this argument?"],
+        options: [{letter:"A",tex:"\\text{correct}"},{letter:"B",tex:"\\text{converse}"},{letter:"C",tex:"\\text{error in line I}"},{letter:"D",tex:"\\text{error in line II}"},{letter:"E",tex:"\\text{error in line III}"},{letter:"F",tex:"\\text{error in line V}"}] },
+
+      { displayNum: 18, topic: "Algebra", correctAnswer: "D", hasWalkthrough: true,
+        text: "Complete set of (b, c) for which x\u2074 + bx\u00B2 + c has no real roots?",
+        richText: ["Find the complete set of pairs ", {tex:"(b, c)"}, " of real numbers for which the equation", "br", {display:"x^4 + bx^2 + c = 0"}, "has no real solutions."],
+        options: [{letter:"A",tex:"b^2 > 4c"},{letter:"B",tex:"b^2 < 4c"},{letter:"C",tex:"c > 0 \\text{ and } b > 2\\sqrt{c}"},{letter:"D",tex:"c > 0 \\text{ and } b > -2\\sqrt{c}"},{letter:"E",tex:"c > 0 \\text{ and } b < -2\\sqrt{c}"},{letter:"F",tex:"c > 0 \\text{ and } b < 0"}] },
+
+      { displayNum: 19, topic: "Calculus", correctAnswer: "E", hasWalkthrough: true,
+        text: "f(x)=x\u00B2+1, g(x) = f(x)\u00B7f'(x). Three statements about root counts. Which are true?",
+        richText: ["Let ", {tex:"f(x) = x^2 + 1"}, " and ", {tex:"g(x) = f(x) \\cdot f'(x)"}, ".", "br", "Let ", {tex:"M"}, " be the number of real roots of ", {tex:"f"}, " and ", {tex:"N"}, " be the number of real roots of ", {tex:"g"}, ".", "br", "Which of the following statements is/are true?", "br", {items:[
+          {label:"I",   tex:"N \\ge M"},
+          {label:"II",  tex:"\\text{Every root of } f \\text{ is a root of } g"},
+          {label:"III", tex:"M > N \\text{ is possible for some choice of } f"}
+        ]}],
+        options: [{letter:"A",tex:"\\text{none of them}"},{letter:"B",tex:"\\text{I only}"},{letter:"C",tex:"\\text{II only}"},{letter:"D",tex:"\\text{III only}"},{letter:"E",tex:"\\text{I and II only}"},{letter:"F",tex:"\\text{I and III only}"},{letter:"G",tex:"\\text{II and III only}"},{letter:"H",tex:"\\text{I, II and III}"}] },
+
+      { displayNum: 20, topic: "Calculus", correctAnswer: "B", hasWalkthrough: true,
+        text: "Sequence h_{n+1}(x) = sin(h_n(x)) with h_1(x) = sin x. Max values m_1, m_2, m_3, m_4. Which is true?",
+        richText: ["A sequence of functions is defined by", "br", {display:"h_1(x) = \\sin x"}, "and", "br", {display:"h_{n+1}(x) = \\sin(h_n(x)) \\text{ for } n \\ge 1."}, "These functions have maximum values ", {tex:"m_1, m_2, m_3"}, " and ", {tex:"m_4"}, " respectively.", "br", "Which one of the following statements is true?"],
+        options: [{letter:"A",tex:"m_1 = m_2 = m_3 = m_4 = 1"},{letter:"B",tex:"m_1 = 1 \\text{ and } 0 < m_4 < m_3 < m_2 < 1"},{letter:"C",tex:"m_1 = m_3 = 1 \\text{ and } m_2 = m_4 < 1"},{letter:"D",tex:"m_1 > m_2 > m_3 > m_4 \\text{ and all equal } 0"},{letter:"E",tex:"m_1 > m_2 = m_3 = m_4"}] },
+    ],
+  },
+
 };
