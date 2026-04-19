@@ -7,7 +7,7 @@ const mathFont = "'Cambria Math','Latin Modern Math','STIX Two Math',Georgia,ser
 const bodyFont = "'Trebuchet MS','Gill Sans',Calibri,sans-serif";
 const titleFont = "'Palatino Linotype','Book Antiqua',Palatino,Georgia,serif";
 const stepsMeta = [{ id: 0, label: "Read", title: "Read the Question" },{ id: 1, label: "Setup", title: "Identify the Approach" },{ id: 2, label: "Solve", title: "Solve Step by Step" },{ id: 3, label: "Verify (Optional)", title: "Verify Interactively (Optional)" },{ id: 4, label: "Answer", title: "Select the Answer" }];
-const META = { questionNumber: 2, paper: "Set A Paper 1", year: "2026 Mock", topicTag: "Calculus / Turning Points / Integration" };
+const META = { questionNumber: 2, set: "A", paperNumber: "Paper 1", topicTag: "Calculus / Turning Points / Integration" };
 
 const fmt = (v, dp = 2) => { const r = Math.round(v * 100) / 100; return Number.isInteger(r) ? String(r) : parseFloat(r.toFixed(dp)).toString(); };
 
@@ -26,15 +26,30 @@ let katexLoadPromise = null;
 function loadKaTeX() { if (window.katex) return Promise.resolve(); if (katexLoadPromise) return katexLoadPromise; katexLoadPromise = new Promise((resolve) => { if (!document.getElementById("katex-css")) { const link = document.createElement("link"); link.id = "katex-css"; link.rel = "stylesheet"; link.href = KATEX_CSS; document.head.appendChild(link); if (!document.getElementById("katex-fix")) { const fix = document.createElement("style"); fix.id = "katex-fix"; fix.textContent = ".katex { font-size: 1.05em; }"; document.head.appendChild(fix); } } const script = document.createElement("script"); script.src = KATEX_JS; script.onload = resolve; document.head.appendChild(script); }); return katexLoadPromise; }
 function Tex({ children, display }) { const ref = useRef(null); const [ready, setReady] = useState(!!window.katex); useEffect(() => { if (!ready) loadKaTeX().then(() => setReady(true)); }, []); useEffect(() => { if (ready && ref.current && window.katex) { try { window.katex.render(String(children), ref.current, { displayMode: !!display, throwOnError: false }); } catch {} } }, [ready, children, display]); if (!ready) return <span style={{ fontFamily: mathFont }}>{children}</span>; return <span ref={ref} />; }
 
+const SECTIONS_Q2 = [
+  { type: "prose", text: (<>The curve</>) },
+  { type: "mathbox", tex: "y = 2x^3 - 9x^2 + 12x - 3" },
+  { type: "prose", text: (<>has turning points at <Tex>{"x = \\alpha"}</Tex> and <Tex>{"x = \\beta"}</Tex>, where <Tex>{"\\beta > \\alpha"}</Tex>.</>) },
+  { type: "prose", text: (<>Find <Tex>{"\\displaystyle\\int_\\alpha^\\beta (2x^3 - 9x^2 + 12x - 3)\\,dx"}</Tex>.</>) },
+];
+const OPTIONS_Q2 = [["A", "-\\tfrac{3}{2}"], ["B", "-\\tfrac{1}{2}"], ["C", "0"], ["D", "\\tfrac{1}{2}"], ["E", "\\tfrac{3}{2}"], ["F", "3"]];
+
 function QuestionSummary() {
+  const sections = SECTIONS_Q2;
+  const options = OPTIONS_Q2;
   return (
     <div style={{ background: "#1e2030", border: `1px solid ${C.border}`, borderRadius: 10, padding: "10px 16px", marginBottom: 12, textAlign: "center" }}>
-      <p style={{ margin: "0 0 4px", fontSize: 13, color: C.muted, lineHeight: 1.6 }}>
+      <div style={{ fontSize: 13, color: C.muted, lineHeight: 1.6 }}>
         <span style={{ fontWeight: 700, color: C.muted, letterSpacing: 0.5, marginRight: 6 }}>Q2</span>
-        The curve <Tex>{"y = 2x^3 - 9x^2 + 12x - 3"}</Tex> has turning points at <Tex>{"x = \\alpha"}</Tex> and <Tex>{"x = \\beta"}</Tex>, where <Tex>{"\\beta > \\alpha"}</Tex>. Find <Tex>{"\\int_\\alpha^\\beta (2x^3 - 9x^2 + 12x - 3)\\,dx."}</Tex>
-      </p>
+        {sections.map((s, i) => {
+          if (s.type === "prose") return <span key={i}>{s.text} </span>;
+          if (s.type === "mathbox") return <div key={i} style={{ display: "block", margin: "6px auto", color: C.text, fontSize: 14, fontWeight: 700, textAlign: "center" }}><Tex display>{s.tex}</Tex></div>;
+          if (s.type === "custom") return <div key={i} style={{ margin: "6px 0" }}>{s.jsx}</div>;
+          return null;
+        })}
+      </div>
       <div style={{ display: "flex", justifyContent: "center", gap: 16, fontSize: 13, fontWeight: 600, color: C.text, flexWrap: "wrap", marginTop: 4 }}>
-        {[["A","-\\tfrac{3}{2}"],["B","-\\tfrac{1}{2}"],["C","0"],["D","\\tfrac{1}{2}"],["E","\\tfrac{3}{2}"],["F","3"]].map(([l,v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
+        {options.map(([l, v]) => <span key={l}>{l}: <Tex>{v}</Tex></span>)}
       </div>
     </div>
   );
@@ -253,7 +268,7 @@ export default function App() {
   return (
     <div style={{ minHeight: "100vh", background: C.bg, fontFamily: bodyFont, letterSpacing: 0.2, padding: "20px 14px" }}>
       <div style={{ maxWidth: 800, margin: "0 auto" }}>
-        <div style={{ marginBottom: 20 }}><div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}><span style={{ background: `linear-gradient(135deg,${C.accent},${C.accentLight})`, borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: C.white, letterSpacing: 1 }}>TMUA</span><span style={{ fontSize: 12, color: C.muted }}>{META.paper}</span><span style={{ fontSize: 12, color: C.muted }}>{"\u00B7"}</span><span style={{ fontSize: 12, color: C.ps }}>{META.topicTag}</span></div><h1 style={{ fontSize: 22, fontWeight: 700, color: C.white, margin: "0 0 3px", fontFamily: titleFont, fontStyle: "italic", letterSpacing: 0.5 }}>Interactive Walkthrough</h1><p style={{ fontSize: 12, color: C.muted, margin: 0 }}>TMUA {META.year} {"\u00B7"} {META.paper} {"\u00B7"} Question {META.questionNumber}</p></div>
+        <div style={{ marginBottom: 20 }}><div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}><span style={{ background: `linear-gradient(135deg,${C.accent},${C.accentLight})`, borderRadius: 8, padding: "4px 10px", fontSize: 12, fontWeight: 700, color: C.white, letterSpacing: 1 }}>TMUA</span><span style={{ fontSize: 12, color: C.muted }}>AceAdmissions Mock {"\u00B7"} Set {META.set}</span><span style={{ fontSize: 12, color: C.muted }}>{"\u00B7"}</span><span style={{ fontSize: 12, color: C.ps }}>{META.topicTag}</span></div><h1 style={{ fontSize: 22, fontWeight: 700, color: C.white, margin: "0 0 3px", fontFamily: titleFont, fontStyle: "italic", letterSpacing: 0.5 }}>Interactive Walkthrough</h1><p style={{ fontSize: 12, color: C.muted, margin: 0 }}>{META.paperNumber} {"\u00B7"} Question {META.questionNumber}</p></div>
         <div style={{ display: "flex", gap: 3, marginBottom: 20 }}>{stepsMeta.map(s => (<button key={s.id} onClick={() => setStep(s.id)} style={{ flex: 1, minWidth: 0, background: step === s.id ? C.accent : step > s.id ? "rgba(108,92,231,0.15)" : "#1e2030", border: `1px solid ${step === s.id ? C.accent : step > s.id ? C.accent + "44" : C.border}`, borderRadius: 9, padding: "8px 3px", cursor: "pointer", transition: "all 0.3s", display: "flex", flexDirection: "column", alignItems: "center", gap: 3 }}><span style={{ fontSize: 13, fontWeight: 700, color: step === s.id ? C.white : step > s.id ? C.accentLight : C.muted }}>{s.id + 1}</span><span style={{ fontSize: 11, fontWeight: step === s.id ? 700 : 500, color: step === s.id ? C.white : step > s.id ? C.accentLight : C.muted, whiteSpace: "nowrap" }}>{s.label}</span></button>))}</div>
         <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}><span style={{ background: C.accent, borderRadius: 6, width: 26, height: 26, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: C.white }}>{step + 1}</span><h2 style={{ fontSize: 16, fontWeight: 700, color: C.white, margin: 0 }}>{stepsMeta[step].title}</h2></div>
         {step === 0 && <ReadStep />}

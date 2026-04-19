@@ -742,7 +742,10 @@ export default function ExamPage({ params }: { params: Promise<{ paperId: string
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <span style={{ fontSize: 15, fontWeight: 700, color: t.text }}>Question {currentQ + 1}</span>
-                <span style={{ fontSize: 11, color: t.muted }}>({source} Q{q.displayNum})</span>
+                <span style={{ fontSize: 11, color: t.muted }}>({(() => {
+                  const m = paperId.match(/mock([AB])-p(\d)/);
+                  return m ? `Set ${m[1]} Paper ${m[2]}` : source;
+                })()} Q{q.displayNum})</span>
               </div>
               <button onClick={toggleFlag} style={{
                 padding: "5px 12px", borderRadius: 8,

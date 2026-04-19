@@ -274,7 +274,10 @@ export default function ReviewPage({ params }: { params: Promise<{ paperId: stri
                     <span style={{ fontSize: 12, color: tc, fontWeight: 600 }}>{currentQ.topic}</span>
                   </div>
 
-                  <p style={{ fontSize: 12, color: C.muted, margin: "0 0 16px" }}>{source} · Question {currentQ.displayNum}</p>
+                  <p style={{ fontSize: 12, color: C.muted, margin: "0 0 16px" }}>{(() => {
+                    const m = paperId.match(/mock([AB])-p(\d)/);
+                    return m ? `Set ${m[1]} Paper ${m[2]} · Question ${currentQ.displayNum}` : `${source} · Question ${currentQ.displayNum}`;
+                  })()}</p>
 
                   <div style={{
                     background: C.bg, border: `1px solid ${C.border}`, borderRadius: 12,
