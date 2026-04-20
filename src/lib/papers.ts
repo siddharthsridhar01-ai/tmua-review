@@ -128,40 +128,28 @@ export const papers: Record<string, { title: string; source: string; questions: 
 
       { displayNum: 4, topic: "Logic & Reasoning", correctAnswer: "F", hasWalkthrough: true,
         text: "A proof that n\u00B3+n is divisible by 6 for every integer n. On which line does the first error occur?",
-        richText: ["The following is a proof that ", {tex:"n^3 + n"}, " is divisible by ", {tex:"6"}, " for every positive integer ", {tex:"n"}, ".", "br", {items:[
-          {label:"I",   tex:"n^3 + n = n(n^2 + 1)"},
-          {label:"II",  tex:"\\text{One of } n, n^2+1 \\text{ is even, so } n(n^2+1) \\text{ is even}"},
-          {label:"III", tex:"\\text{So } n^3+n \\text{ is divisible by } 2"},
-          {label:"IV",  tex:"\\text{Among } n-1, n, n+1 \\text{ one is divisible by } 3"},
-          {label:"V",   tex:"(n-1)n(n+1) = n^3 - n \\text{ is divisible by } 3"},
-          {label:"VI",  tex:"n^3 + n = (n^3 - n) + 2n, \\text{ so } n^3+n \\text{ is divisible by } 3"},
-          {label:"VII", tex:"\\therefore n^3+n \\text{ is divisible by } 6"}
-        ]}, "br", "Which of the following describes this proof?"],
-        options: [{letter:"A",tex:"\\text{It is completely correct.}"},{letter:"B",tex:"\\text{The first error is on line I.}"},{letter:"C",tex:"\\text{The first error is on line III.}"},{letter:"D",tex:"\\text{The first error is on line IV.}"},{letter:"E",tex:"\\text{The first error is on line V.}"},{letter:"F",tex:"\\text{The first error is on line VI.}"},{letter:"G",tex:"\\text{The first error is on line VII.}"},{letter:"H",tex:"\\text{There is an error on every line.}"}] },
+        richText: ["A student attempts to prove the following claim:", "br", {display:"\\text{For all positive integers } n, \\;\\; n^3 + n \\text{ is divisible by } 6."}, "br", "Here is the student's attempt:", "br", {items:[{label:"I",tex:"n^3 + n = n(n^2 + 1)"},{label:"II",tex:"n \text{ and } n^2+1 \text{ have opposite parities, so product is even.}"},{label:"III",tex:"\text{Therefore } n^3+n \text{ is divisible by 2.}"},{label:"IV",tex:"\text{Among any 3 consecutive integers, one is divisible by 3.}"},{label:"V",tex:"\text{So } (n-1)n(n+1) = n^3 - n \text{ is divisible by 3.}"},{label:"VI",tex:"n^3 + n = (n^3 - n) + 2n \text{, so divisible by 3.}"},{label:"VII",tex:"\text{Divisible by 2 and 3, so divisible by 6.}"}]}, "br", "Which of the following best describes this attempt?"],
+        options: [{letter:"A",tex:"\\text{It is completely correct.}"},{letter:"B",tex:"\\text{The first error is on line I.}"},{letter:"C",tex:"\\text{The first error is on line III.}"},{letter:"D",tex:"\\text{The first error is on line IV.}"},{letter:"E",tex:"\\text{The first error is on line V.}"},{letter:"F",tex:"\\text{The first error is on line VI.}"},{letter:"G",tex:"\\text{The first error is on line VII.}"}] },
 
       { displayNum: 5, topic: "Logic & Reasoning", correctAnswer: "H", hasWalkthrough: true,
         text: "Which statements are equivalent to 'for all real x, x\u00B2 + 1 > 0'?",
-        richText: ["Consider the statement", "br", {display:"\\text{For all real } x, \\; x^2 + 1 > 0."}, "Which of the following statements is/are equivalent to this?", "br", {items:[
-          {label:"I",   tex:"\\text{There is no real } x \\text{ with } x^2 + 1 \\le 0"},
-          {label:"II",  tex:"\\text{For all real } x, \\; x^2 \\ge 0"},
-          {label:"III", tex:"\\text{It is not the case that there exists a real } x \\text{ with } x^2 + 1 \\le 0"}
-        ]}],
+        richText: ["The line with equation ", {tex:"y = mx + (3 - 2m)"}, " passes through the point ", {tex:"(2, 3)"}, ". Consider the following statements about this line:", "br", {items:[{label:"I",tex:"\text{If } m > 0 \text{ then the y-intercept is less than 3.}"},{label:"II",tex:"\text{If the y-intercept is less than 3 then } m > 0 \text{.}"},{label:"III",tex:"\text{If the y-intercept is at least 3 then } m \\le 0 \text{.}"}]}, "br", "Which of the statements are true?"],
         options: [{letter:"A",tex:"\\text{none of them}"},{letter:"B",tex:"\\text{I only}"},{letter:"C",tex:"\\text{II only}"},{letter:"D",tex:"\\text{III only}"},{letter:"E",tex:"\\text{I and II only}"},{letter:"F",tex:"\\text{I and III only}"},{letter:"G",tex:"\\text{II and III only}"},{letter:"H",tex:"\\text{I, II and III}"}] },
 
       { displayNum: 6, topic: "Logic & Reasoning", correctAnswer: "B", hasWalkthrough: true,
         text: "Let x, y be real. P: xy > 0. Q: x > 0 and y > 0. Which describes P and Q?",
-        richText: ["Let ", {tex:"x"}, " and ", {tex:"y"}, " be real numbers. Consider the two statements:", "br", {items:[{label:"P",tex:"xy > 0"},{label:"Q",tex:"x > 0 \\text{ and } y > 0"}]}, "Which option best describes the relationship between P and Q?"],
-        options: [{letter:"A",tex:"\\text{P is sufficient but not necessary for Q}"},{letter:"B",tex:"\\text{P is necessary but not sufficient for Q}"},{letter:"C",tex:"\\text{P is necessary and sufficient for Q}"},{letter:"D",tex:"\\text{P is neither necessary nor sufficient for Q}"}] },
+        richText: ["Let ", {tex:"x"}, " and ", {tex:"y"}, " be real numbers. Consider the two statements:", "br", {items:[{label:"P",tex:"xy > 0"},{label:"Q",tex:"x > 0 \\text{ and } y > 0"}]}, "br", "Which option best describes the relationship between P and Q?"],
+        options: [{letter:"A",tex:"\\text{P is necessary and sufficient for Q}"},{letter:"B",tex:"\\text{P is necessary but not sufficient for Q}"},{letter:"C",tex:"\\text{P is sufficient but not necessary for Q}"},{letter:"D",tex:"\\text{P is not necessary and not sufficient for Q}"}] },
 
       { displayNum: 7, topic: "Coordinate Geometry", correctAnswer: "E", hasWalkthrough: true,
         text: "Line ax + by = c has negative gradient and positive y-intercept. Which is a necessary but not sufficient condition on a, b, c?",
         richText: ["The line with equation ", {tex:"ax + by = c"}, " has negative gradient and positive y-intercept.", "br", "Which of the following is a necessary but not sufficient condition on ", {tex:"a, b, c"}, "?"],
-        options: [{letter:"A",tex:"a > 0"},{letter:"B",tex:"b > 0"},{letter:"C",tex:"c > 0"},{letter:"D",tex:"a \\text{ and } b \\text{ have the same sign}"},{letter:"E",tex:"a \\text{ and } c \\text{ have the same sign}"},{letter:"F",tex:"b \\text{ and } c \\text{ have the same sign}"}] },
+        options: [{letter:"A",tex:"\\tfrac{c}{b} > 0 \\text{ and } \\tfrac{a}{b} < 0"},{letter:"B",tex:"\\tfrac{c}{b} < 0 \\text{ and } \\tfrac{a}{b} > 0"},{letter:"C",tex:"a > b > c"},{letter:"D",tex:"a < b < c"},{letter:"E",tex:"a \\text{ and } c \\text{ have the same sign}"},{letter:"F",tex:"a \\text{ and } c \\text{ have opposite signs}"}] },
 
       { displayNum: 8, topic: "Sequences & Series", correctAnswer: "C", hasWalkthrough: true,
         text: "Smallest n for which any selection of n terms from 2, 5, 8, \u2026, 50 must contain two summing to 52.",
-        richText: ["A selection, ", {tex:"S"}, ", of ", {tex:"n"}, " terms is taken from the arithmetic sequence", "br", {display:"2, 5, 8, 11, \\ldots, 50"}, "Consider the following statement:", "br", {items:[{label:"(*)",tex:"\\text{There are two distinct terms in } S \\text{ whose sum is } 52"}]}, "What is the smallest value of ", {tex:"n"}, " for which (*) is necessarily true?"],
-        options: [{letter:"A",tex:"8"},{letter:"B",tex:"9"},{letter:"C",tex:"10"},{letter:"D",tex:"11"},{letter:"E",tex:"12"},{letter:"F",tex:"13"},{letter:"G",tex:"17"}] },
+        richText: ["A selection, ", {tex:"S"}, ", of ", {tex:"n"}, " terms is taken from the arithmetic sequence", "br", {display:"2, \\; 5, \\; 8, \\; 11, \\; \\ldots, \\; 50"}, "br", "Consider the following statement:", "br", {items:[{label:"(*)",tex:"\text{There are two distinct terms in } S \text{ whose sum is } 52 \text{.}"}]}, "br", "What is the smallest value of ", {tex:"n"}, " for which (*) is necessarily true?"],
+        options: [{letter:"A",tex:"8"},{letter:"B",tex:"9"},{letter:"C",tex:"10"},{letter:"D",tex:"11"},{letter:"E",tex:"12"},{letter:"F",tex:"13"}] },
 
       { displayNum: 9, topic: "Logic & Reasoning", correctAnswer: "C", hasWalkthrough: true,
         text: "Complete set of values of k for which 'for all real x, x \u2265 k \u21D2 x\u00B2 \u2265 k' is true.",
@@ -179,15 +167,8 @@ export const papers: Record<string, { title: string; source: string; questions: 
 
       { displayNum: 11, topic: "Logic & Reasoning", correctAnswer: "A", hasWalkthrough: true,
         text: "Proof that \u221A2 is irrational. Which line, if any, contains the first error?",
-        richText: ["The following is a proof that ", {tex:"\\sqrt{2}"}, " is irrational.", "br", {items:[
-          {label:"I",   tex:"\\text{Suppose for contradiction } \\sqrt{2} = \\tfrac{p}{q} \\text{ with integers } p, q"},
-          {label:"II",  tex:"\\text{and } p/q \\text{ in lowest terms (no common factor)}"},
-          {label:"III", tex:"\\text{Then } p^2 = 2q^2, \\text{ so } p^2 \\text{ is even, so } p \\text{ is even}"},
-          {label:"IV",  tex:"\\text{Write } p = 2k, \\text{ so } 4k^2 = 2q^2, \\text{ giving } q^2 = 2k^2"},
-          {label:"V",   tex:"\\text{So } q^2 \\text{ is even, hence } q \\text{ is even}"},
-          {label:"VI",  tex:"\\text{But } p, q \\text{ both even contradicts lowest terms, so } \\sqrt{2} \\text{ is irrational}"}
-        ]}, "br", "Which of the following describes the proof?"],
-        options: [{letter:"A",tex:"\\text{It is completely correct.}"},{letter:"B",tex:"\\text{The first error is on line I.}"},{letter:"C",tex:"\\text{The first error is on line II.}"},{letter:"D",tex:"\\text{The first error is on line III.}"},{letter:"E",tex:"\\text{The first error is on line IV.}"},{letter:"F",tex:"\\text{The first error is on line V.}"},{letter:"G",tex:"\\text{The first error is on line VI.}"},{letter:"H",tex:"\\text{There is an error on every line.}"}] },
+        richText: ["A student attempts to prove that for positive real numbers ", {tex:"a, b, c"}, ":", "br", {display:"a^2 + b^2 = c^2, \\;\\; a, b, c > 0 \\;\\Rightarrow\\; a + b > c"}, "br", "Here is the student's attempt:", "br", {items:[{label:"I",tex:"(a+b)^2 = a^2 + 2ab + b^2"},{label:"II",tex:"= c^2 + 2ab \text{ (using hypothesis } a^2 + b^2 = c^2 \text{)}"},{label:"III",tex:"\text{Since } a, b > 0 \text{, } 2ab > 0"},{label:"IV",tex:"\text{So } (a+b)^2 > c^2"},{label:"V",tex:"\text{Since } a+b > 0 \text{ and } c > 0 \text{, } a+b > c"}]}, "br", "Which of the following best describes this attempt?"],
+        options: [{letter:"A",tex:"\\text{It is completely correct.}"},{letter:"B",tex:"\\text{The student has proved the converse.}"},{letter:"C",tex:"\\text{The first error is on line II.}"},{letter:"D",tex:"\\text{The first error is on line III.}"},{letter:"E",tex:"\\text{The first error is on line IV.}"},{letter:"F",tex:"\\text{The first error is on line V.}"}] },
 
       { displayNum: 12, topic: "Calculus", correctAnswer: "A", hasWalkthrough: true,
         text: "Order P = \u222B\u2080\u00B9 x dx, Q = \u222B\u2080\u00B9 \u221Ax dx, R = \u222B\u2080\u00B9 \u221B x dx.",
@@ -196,18 +177,18 @@ export const papers: Record<string, { title: string; source: string; questions: 
 
       { displayNum: 13, topic: "Algebra", correctAnswer: "D", hasWalkthrough: true,
         text: "How many values of k make x\u00B2 \u2212 2kx + (k+2) = 0 have exactly one real solution?",
-        richText: ["For how many values of ", {tex:"k"}, " does the equation", "br", {display:"x^2 - 2kx + (k + 2) = 0"}, "have exactly one real solution?"],
-        options: [{letter:"A",tex:"\\text{no values}"},{letter:"B",tex:"\\text{exactly one}"},{letter:"C",tex:"\\text{exactly two}"},{letter:"D",tex:"\\text{exactly three}"},{letter:"E",tex:"\\text{exactly four}"},{letter:"F",tex:"\\text{infinitely many}"}] },
+        richText: ["In this question, ", {tex:"x"}, " is a real number. Consider the following statement about ", {tex:"x"}, ":", "br", {items:[{label:"(*)",tex:"\text{There exists a real number } y \text{ such that } xy = x + y + 1 \text{.}"}]}, "br", "For how many real values of ", {tex:"x"}, " is (*) true?"],
+        options: [{letter:"A",tex:"\\text{no values}"},{letter:"B",tex:"\\text{exactly one}"},{letter:"C",tex:"\\text{exactly two}"},{letter:"D",tex:"\\text{all except one}"},{letter:"E",tex:"\\text{all except two}"},{letter:"F",tex:"\\text{all values}"}] },
 
       { displayNum: 14, topic: "Algebra", correctAnswer: "C", hasWalkthrough: true,
         text: "(p\u00B2 \u2212 3)x = p + \u221A3 has a unique solution in x. Find the complete set of values of p.",
-        richText: ["Find the complete set of real values of ", {tex:"p"}, " for which the equation", "br", {display:"(p^2 - 3)x = p + \\sqrt{3}"}, "has a unique solution in ", {tex:"x"}, "."],
-        options: [{letter:"A",tex:"p \\ne \\sqrt{3}"},{letter:"B",tex:"p \\ne -\\sqrt{3}"},{letter:"C",tex:"p \\ne \\sqrt{3} \\text{ and } p \\ne -\\sqrt{3}"},{letter:"D",tex:"p = \\sqrt{3}"},{letter:"E",tex:"p = -\\sqrt{3}"},{letter:"F",tex:"\\text{all real } p"}] },
+        richText: ["Consider the following simultaneous equations, where ", {tex:"p"}, " is a real number:", "br", {display:"p^2 x + 3y = p + 4 \\qquad \\text{and} \\qquad x + y = 2"}, "br", "What is the complete range of values of ", {tex:"p"}, " for which these equations have a unique real solution ", {tex:"(x, y)"}, "?"],
+        options: [{letter:"A",tex:"p \\ne \\sqrt{3}"},{letter:"B",tex:"p \\ne -\\sqrt{3}"},{letter:"C",tex:"p \\ne \\sqrt{3} \\text{ and } p \\ne -\\sqrt{3}"},{letter:"D",tex:"p = \\sqrt{3} \\text{ or } p = -\\sqrt{3}"},{letter:"E",tex:"\\text{all real } p"},{letter:"F",tex:"\\text{no real } p"}] },
 
       { displayNum: 15, topic: "Probability", correctAnswer: "D", hasWalkthrough: true,
         text: "Two fair dice. Probability sum is a prime number?",
-        richText: ["Two fair six-sided dice are rolled.", "br", "What is the probability that the sum of the numbers shown is a prime number?"],
-        options: [{letter:"A",tex:"\\tfrac{1}{3}"},{letter:"B",tex:"\\tfrac{2}{5}"},{letter:"C",tex:"\\tfrac{1}{2}"},{letter:"D",tex:"\\tfrac{5}{12}"},{letter:"E",tex:"\\tfrac{7}{12}"},{letter:"F",tex:"\\tfrac{15}{36}"},{letter:"G",tex:"\\tfrac{1}{4}"}] },
+        richText: ["The base-2 number ", {tex:"0.101010\\ldots"}, " has the digits ", {tex:"10"}, " repeating indefinitely:", "br", {display:"0.101010\\ldots_{\\,2}"}, "br", "What is the value of this recurring base-2 number (as a fraction)?"],
+        options: [{letter:"A",tex:"\\tfrac{1}{3}"},{letter:"B",tex:"\\tfrac{2}{5}"},{letter:"C",tex:"\\tfrac{1}{2}"},{letter:"D",tex:"\\tfrac{2}{3}"},{letter:"E",tex:"\\tfrac{3}{4}"},{letter:"F",tex:"\\tfrac{4}{5}"}] },
 
       { displayNum: 16, topic: "Number Theory", correctAnswer: "B", hasWalkthrough: true,
         text: "Which of I, II, III are true for all positive integers a, b?",
@@ -220,15 +201,8 @@ export const papers: Record<string, { title: string; source: string; questions: 
 
       { displayNum: 17, topic: "Logic & Reasoning", correctAnswer: "B", hasWalkthrough: true,
         text: "A claimed proof about the cubic x\u00B3 \u2212 3x\u00B2 + c. Which best describes the argument?",
-        richText: ["Consider the following argument, which claims to prove:", "br", {display:"\\text{For all real } c \\text{ with } 0 < c < 4, \\; x^3 - 3x^2 + c = 0 \\text{ has three distinct real roots.}"}, {items:[
-          {label:"I",   tex:"f(x) = x^3 - 3x^2 + c \\text{ has } f'(x) = 3x^2 - 6x = 3x(x - 2)"},
-          {label:"II",  tex:"f \\text{ has critical points at } x = 0 \\text{ and } x = 2"},
-          {label:"III", tex:"f(0) = c, \\; f(2) = c - 4"},
-          {label:"IV",  tex:"\\text{If } f \\text{ has three distinct real roots, then the critical values have opposite signs}"},
-          {label:"V",   tex:"f(0) \\cdot f(2) = c(c - 4) < 0 \\text{ when } 0 < c < 4"},
-          {label:"VI",  tex:"\\therefore \\text{ the cubic has three distinct real roots.}"}
-        ]}, "br", "Which of the following best describes this argument?"],
-        options: [{letter:"A",tex:"\\text{correct}"},{letter:"B",tex:"\\text{converse}"},{letter:"C",tex:"\\text{error in line I}"},{letter:"D",tex:"\\text{error in line II}"},{letter:"E",tex:"\\text{error in line III}"},{letter:"F",tex:"\\text{error in line V}"}] },
+        richText: ["A student answered the following question:", "br", "\"Prove that the equation", "br", "Here is the student's solution:", "br", {items:[{label:"I",tex:"f(x) = x^3 - 3x^2 + c \text{. } f'(x) = 3x^2 - 6x = 3x(x - 2) \text{.}"},{label:"II",tex:"\text{Stationary points at } x = 0 \text{ (value } c \text{) and at } x = 2 \text{ (value } c - 4 \text{).}"},{label:"III",tex:"\text{If } 0 < c < 4 \text{, then } c > 0 \text{ and } c - 4 < 0 \text{, so the stationary values have opposite signs.}"},{label:"IV",tex:"\text{If the cubic has three distinct real roots, then the stationary values have opposite signs.}"},{label:"V",tex:"\text{Hence the condition gives three distinct roots.}"}]}, "br", "Which one of the following options best describes the student's solution?"],
+        options: [{letter:"A",tex:"\\text{correct}"},{letter:"B",tex:"\\text{converse}"},{letter:"C",tex:"\\text{error II}"},{letter:"D",tex:"\\text{error III}"},{letter:"E",tex:"\\text{error IV}"},{letter:"F",tex:"\\text{reverse order}"}] },
 
       { displayNum: 18, topic: "Algebra", correctAnswer: "D", hasWalkthrough: true,
         text: "Complete set of (b, c) for which x\u2074 + bx\u00B2 + c has no real roots?",
@@ -257,43 +231,43 @@ export const papers: Record<string, { title: string; source: string; questions: 
     questions: [
       { displayNum: 1, topic: "Algebra", correctAnswer: "D", hasWalkthrough: true,
         text: "Given that (2^p)(3^q) = 12^3 / 6^2, find the value of p + q.",
-        richText: ["Given that", "br", {display:"2^p \\cdot 3^q = \\frac{12^3}{6^2}"}, "find the value of ", {tex:"p + q"}, "."],
-        options: [{letter:"A",tex:"2"},{letter:"B",tex:"3"},{letter:"C",tex:"4"},{letter:"D",tex:"5"},{letter:"E",tex:"6"},{letter:"F",tex:"7"}] },
+        richText: ["Given that", "br", {display:"\\int_0^1 (px + q)\\,dx = 5 \\qquad \\text{and} \\qquad \\int_0^1 x(px + q)\\,dx = 3"}, "br", "find the value of ", {tex:"p + q"}, "."],
+        options: [{letter:"A",tex:"2"},{letter:"B",tex:"4"},{letter:"C",tex:"6"},{letter:"D",tex:"8"},{letter:"E",tex:"10"},{letter:"F",tex:"12"}] },
 
       { displayNum: 2, topic: "Algebra", correctAnswer: "A", hasWalkthrough: true,
         text: "The graphs of y = x\u00B2 + mx + 2 and y = x + m do not intersect. Find the range of m.",
-        richText: ["The graphs of", "br", {display:"y = x^2 + mx + 2 \\qquad \\text{and} \\qquad y = x + m"}, "where ", {tex:"m"}, " is a constant, do not intersect.", "br", "What is the complete range of values of ", {tex:"m"}, "?"],
-        options: [{letter:"A",tex:"-1 < m < 3"},{letter:"B",tex:"m < -1 \\text{ or } m > 3"},{letter:"C",tex:"-3 < m < 1"},{letter:"D",tex:"m < -3 \\text{ or } m > 1"},{letter:"E",tex:"-1 \\le m \\le 3"}] },
+        richText: ["The graphs of", "br", {display:"y = x^2 - 6x + 10 \\qquad \\text{and} \\qquad y = mx + 1"}, "br", "where ", {tex:"m"}, " is a constant, do not intersect.", "br", "What is the complete range of values of ", {tex:"m"}, "?"],
+        options: [{letter:"A",tex:"-12 < m < 0"},{letter:"B",tex:"m < -12 \\text{ or } m > 0"},{letter:"C",tex:"-6 < m < 6"},{letter:"D",tex:"0 < m < 12"},{letter:"E",tex:"m < 0 \\text{ or } m > 12"}] },
 
       { displayNum: 3, topic: "Algebra", correctAnswer: "A", hasWalkthrough: true,
         text: "Given statements about function f, find value of a.",
-        richText: ["Given the following statements about a function ", {tex:"f"}, ":", "br", "Find the value of ", {tex:"a"}, "."],
-        options: [{letter:"A",tex:"-2"},{letter:"B",tex:"-1"},{letter:"C",tex:"0"},{letter:"D",tex:"1"},{letter:"E",tex:"2"},{letter:"F",tex:"3"}] },
+        richText: ["Given the following statements about a function f:", "br", {display:"f''(x) = a \\text{ for all } x, \\quad f(0) = 2, \\quad f(1) = 3, \\quad \\int_0^1 f(x)\\,dx = 3"}, "br", "Find the value of ", {tex:"a"}, "."],
+        options: [{letter:"A",tex:"-6"},{letter:"B",tex:"-3"},{letter:"C",tex:"-2"},{letter:"D",tex:"2"},{letter:"E",tex:"3"},{letter:"F",tex:"6"}] },
 
       { displayNum: 4, topic: "Calculus", correctAnswer: "C", hasWalkthrough: true,
         text: "Evaluate the given integral.",
-        richText: ["Evaluate", "br", {display:"\\int_0^1 \\frac{x^3 + 3x}{x^2 + 1}\\,dx"}],
-        options: [{letter:"A",tex:"\\frac{1}{2}"},{letter:"B",tex:"1"},{letter:"C",tex:"\\frac{3}{2}"},{letter:"D",tex:"2"},{letter:"E",tex:"\\frac{5}{2}"},{letter:"F",tex:"3"}] },
+        richText: ["Evaluate", "br", {display:"\\sum_{n=0}^{\\infty} \\cos\\!\\left(n\\pi + \\frac{\\pi}{3}\\right) \\cdot \\left(\\frac{1}{3}\\right)^{\\!n}"}],
+        options: [{letter:"A",tex:"0"},{letter:"B",tex:"\\tfrac{1}{4}"},{letter:"C",tex:"\\tfrac{3}{8}"},{letter:"D",tex:"\\tfrac{1}{2}"},{letter:"E",tex:"\\tfrac{3}{4}"},{letter:"F",tex:"1"}] },
 
       { displayNum: 5, topic: "Geometry", correctAnswer: "C", hasWalkthrough: true,
         text: "Equilateral triangle of side 8 with inscribed rectangle. Find largest h.",
-        richText: ["An equilateral triangle of side ", {tex:"8"}, " has a rectangle inscribed with one side along the base. The rectangle has height ", {tex:"h"}, ".", "br", "What is the largest value of ", {tex:"h"}, " such that the area of the rectangle is ", {tex:"6\\sqrt{3}"}, "?"],
-        options: [{letter:"A",tex:"\\sqrt{3}"},{letter:"B",tex:"2"},{letter:"C",tex:"2\\sqrt{3}"},{letter:"D",tex:"3"},{letter:"E",tex:"3\\sqrt{3}"},{letter:"F",tex:"4"}] },
+        richText: ["An equilateral triangle of side 8 has a rectangle inscribed with one side along the base. The rectangle has height ", {tex:"h"}, ".", "br", "What is the largest value of ", {tex:"h"}, " such that the area of the rectangle is ", {tex:"6\\sqrt{3}"}, "?"],
+        options: [{letter:"A",tex:"\\sqrt{3}"},{letter:"B",tex:"2\\sqrt{3}"},{letter:"C",tex:"3\\sqrt{3}"},{letter:"D",tex:"4\\sqrt{3}"},{letter:"E",tex:"3"},{letter:"F",tex:"6"}] },
 
       { displayNum: 6, topic: "Algebra", correctAnswer: "C", hasWalkthrough: true,
         text: "In the expansion of (1+x)^n(1\u2212x)^n, how many terms have odd coefficient?",
-        richText: ["In the expansion of", "br", {display:"(1+x)^n(1-x)^n"}, "how many of the terms have an odd coefficient?"],
-        options: [{letter:"A",tex:"1"},{letter:"B",tex:"2"},{letter:"C",tex:"3"},{letter:"D",tex:"4"},{letter:"E",tex:"5"},{letter:"F",tex:"n+1"}] },
+        richText: ["In the expansion of", "br", {display:"(3 + x)^8"}, "br", "how many of the terms have an odd coefficient?"],
+        options: [{letter:"A",tex:"0"},{letter:"B",tex:"1"},{letter:"C",tex:"2"},{letter:"D",tex:"3"},{letter:"E",tex:"4"},{letter:"F",tex:"5"}] },
 
       { displayNum: 7, topic: "Algebra", correctAnswer: "B", hasWalkthrough: true,
         text: "Find the largest value of x such that the equation holds.",
-        richText: ["Find the largest value of ", {tex:"x"}, " such that", "br", {display:"\\log_2(x+3) + \\log_2(x-1) = 3"}],
-        options: [{letter:"A",tex:"1"},{letter:"B",tex:"3"},{letter:"C",tex:"5"},{letter:"D",tex:"7"},{letter:"E",tex:"9"},{letter:"F",tex:"11"}] },
+        richText: ["Find the largest value of ", {tex:"x"}, " such that", "br", {display:"4^x - 5 \\cdot 2^x + 6 = 0"}],
+        options: [{letter:"A",tex:"1"},{letter:"B",tex:"\\log_2 3"},{letter:"C",tex:"\\log_2 5"},{letter:"D",tex:"2"},{letter:"E",tex:"\\log_2 6"},{letter:"F",tex:"3"}] },
 
       { displayNum: 8, topic: "Trigonometry", correctAnswer: "B", hasWalkthrough: true,
         text: "Triangle PQR with angle QPR = 30\u00B0, PQ = 3\u221A3, QR = 3. Find area ratio S:T.",
-        richText: ["A triangle PQR has angle QPR = ", {tex:"30^\\circ"}, ", ", {tex:"PQ = 3\\sqrt{3}"}, ", and ", {tex:"QR = 3"}, ".", "br", "There are two distinct triangles with these measurements. Let S be the one with larger area and T the one with smaller area.", "br", "Find the ratio area of S : area of T."],
-        options: [{letter:"A",tex:"2:1"},{letter:"B",tex:"\\sqrt{3}:1"},{letter:"C",tex:"3:1"},{letter:"D",tex:"2\\sqrt{3}:1"},{letter:"E",tex:"3\\sqrt{3}:1"},{letter:"F",tex:"4:1"}] },
+        richText: ["A triangle PQR has angle ", {tex:"QPR = 30^\\circ"}, ", ", {tex:"PQ = 3\\sqrt{3}"}, ", and ", {tex:"QR = 3"}, ".", "br", "There are two distinct triangles with these measurements. Let S be the one with larger area and T the one with smaller area.", "br", "Find the ratio area of S : area of T."],
+        options: [{letter:"A",tex:"1:1"},{letter:"B",tex:"2:1"},{letter:"C",tex:"3:1"},{letter:"D",tex:"\\sqrt{3}:1"},{letter:"E",tex:"2:\\sqrt{3}"},{letter:"F",tex:"3:2"}] },
 
       { displayNum: 9, topic: "Coordinate Geometry", correctAnswer: "D", hasWalkthrough: true,
         text: "Find the area enclosed by the curve |x\u22121| + |y+2| = 3.",
